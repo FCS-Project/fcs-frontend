@@ -7,8 +7,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        default: ["Work Sans", "sans-serif"],
+      colors: {
+        white: "#ffffff",
       },
     },
   },
