@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { BASE_API_URL } from "../constants";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <h1 className="font-bold text-4xl mt-5 text-black">
         FCS project is up and running!
       </h1>
+      {env(BASE_API_URL)}
     </div>
   );
 }
