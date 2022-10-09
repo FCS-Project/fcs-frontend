@@ -1,11 +1,9 @@
-import Head from "next/head";
+import SEO from "../components/SEO";
 
 export default function Home() {
   return (
     <div className="p-5">
-      <Head>
-        <title>FCS Project</title>
-      </Head>
+      <SEO />
       <h1 className="font-bold text-4xl mt-5 text-theme">
         FCS project is up and running!
       </h1>
