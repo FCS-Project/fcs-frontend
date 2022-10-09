@@ -6,7 +6,7 @@ export default function Home() {
       <Head>
         <title>FCS Project</title>
       </Head>
-      <h1 className="font-bold text-4xl mt-5 text-black">
+      <h1 className="font-bold text-4xl mt-5 text-theme">
         FCS project is up and running!
       </h1>
     </div>
