@@ -1,22 +1,24 @@
 import React, { useState } from "react";
+import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 
-function Signup() {
+function Login() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [dto, setDto] = useState(null);
   const onSubmit = () => {
     if (email && password) {
       setDto({ email: email, password: password });
-      console.log(dto);
+      console.log("dto", dto);
     }
   };
+
   return (
     <>
       <Header />
       <div className="mt-20 flex justify-center">
-        <div className="flex flex-col border-2 p-10 w-2/3 sm:w-3/5 md:w-2/5 lg:w-1/3 mt-16">
+        <div className="flex flex-col border-2 p-10 w-2/3 sm:w-3/5 md:w-2/5 lg:w-1/3 mt-24">
           <Input
             heading={"Email Address"}
             placeholder={"Email"}
@@ -29,10 +31,11 @@ function Signup() {
             state={password}
             setState={setPassword}
           />
+          <Button text={"Login"} onClick={onSubmit} />
         </div>
       </div>
     </>
   );
 }
 
-export default Signup;
+export default Login;
