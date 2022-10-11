@@ -31,7 +31,7 @@ function Login() {
             state={password}
             setState={setPassword}
           />
-          <Button text={"Login"} onClick={onSubmit} />
+          <Button type={"primary"} text={"Login"} onClick={onSubmit} />
         </div>
       </div>
     </>
