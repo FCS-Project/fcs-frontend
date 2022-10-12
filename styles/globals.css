@@ -10,6 +10,12 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 
+:root {
+  --theme: #e2542d;
+  --black: #001428;
+  --white: #ffffff;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -17,6 +23,11 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--theme);
+  color: var(--white);
 }
 
 /* @media (prefers-color-scheme: dark) {
