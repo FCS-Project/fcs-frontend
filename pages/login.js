@@ -24,12 +24,14 @@ function Login() {
             placeholder={"Email"}
             state={email}
             setState={setEmail}
+            required={true}
           />
           <Input
             heading={"Password"}
             placeholder={"Password"}
             state={password}
             setState={setPassword}
+            required={true}
           />
           <Button type={"primary"} text={"Login"} onClick={onSubmit} />
         </div>
