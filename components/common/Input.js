@@ -10,7 +10,7 @@ function Input({
   disabled,
 }) {
   return (
-    <div className="my-2">
+    <div className="my-1.5 sm:my-2">
       <div className="my-1 text-sm sm:text-base lg:text-lg text-black">
         {heading}
         {required ? <span className="text-theme text-xs">*</span> : <></>}
