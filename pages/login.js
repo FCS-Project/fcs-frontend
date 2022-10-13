@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import Button from "../components/common/Button";
 import Header from "../components/common/Header";
@@ -31,12 +32,19 @@ function Login() {
           />
           <Input
             heading={"Password"}
+            type={"password"}
             placeholder={"Password"}
             state={password}
             setState={setPassword}
             required={true}
           />
           <Button type={"primary"} text={"Login"} onClick={onSubmit} />
+          <div className="text-sm md:text-base">
+            Not a User?{" "}
+            <span className="text-theme hover:underline">
+              <Link href="/signup">Sign Up</Link>
+            </span>
+          </div>
         </div>
       </div>
     </>
