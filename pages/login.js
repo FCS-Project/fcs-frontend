@@ -4,16 +4,30 @@ import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
+import { getUser } from "../utils/test";
 
 function Login() {
+  const id = "921392bf-9c79-48fc-80e8-991353f8bbc6";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [dto, setDto] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const onSubmit = () => {
     if (email != "" && password != "") {
       setDto({ email: email, password: password });
       console.log("dto", dto);
     }
+    getUserDetails(id);
+  };
+
+  const getUserDetails = async (id) => {
+    getUser(id).then((response) => {
+      if (response.success) {
+        setUser(response.data);
+        setLoading(false);
+      }
+    });
   };
 
   return (
@@ -47,6 +61,7 @@ function Login() {
               <Link href="/signup">Sign Up</Link>
             </span>
           </div>
+          {loading ? <p>Loading..</p> : <div>{user["name"]}</div>}
         </div>
       </div>
     </>
