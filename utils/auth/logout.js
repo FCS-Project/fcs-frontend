@@ -1,12 +1,11 @@
 import instance from "../axios";
 
-// authorization bearer jwt needs to be done
-export const getUser = async (id) => {
+export const logout = async () => {
   //   const {
   //     accessToken: { jwtToken },
   //   } = await Auth.currentSession();
   return instance
-    .get(`/user/${id}`, {
+    .post("/auth/logout", {
       //   headers: {
       //     Authorization: `bearer ${jwt}`,
       //   },
@@ -15,7 +14,6 @@ export const getUser = async (id) => {
       if (response.data.success) {
         return {
           success: response.data.success,
-          data: response.data.data,
         };
       }
     })
