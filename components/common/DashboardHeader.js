@@ -8,8 +8,7 @@ function DashboardHeader() {
       <Link href="/">
         <Logo />
       </Link>
-
-      <div className="flex items-center flex-end gap-4">
+      <div className="pr-5 flex items-center flex-end gap-4">
         <Link href="/">
           <p className="transition all delay-30 hover:text-theme cursor-pointer">
             Home
