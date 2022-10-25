@@ -14,7 +14,9 @@ function CreateDocForm() {
 
   return (
     <div>
-      <h1 className="text-xl md:text-2xl mb-10">Upload Document</h1>
+      <h1 className="text-xl md:text-2xl mb-6 md:mb-8 lg:mb-10">
+        Upload Document
+      </h1>
       <Input
         heading="Document Name"
         placeholder="Document Name"
