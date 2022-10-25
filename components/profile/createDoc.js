@@ -10,8 +10,8 @@ function CreateDoc() {
   return (
     <>
       {modal && (
-        <div className="fixed z-10 left-0 top-0 w-[100%] h-[100%] overflow-auto bg-[rgb(0,0,0,0.8)] flex items-center justify-center">
-          <div className="p-5 w-[80%] h-fit bg-white block p-5 border-2 mx-auto ">
+        <div className="fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-[rgb(0,0,0,0.8)] flex items-center justify-center">
+          <div className="p-5 w-11/12 sm:w-10/12 md:w-9/12 lg:w-1/2 h-fit bg-white block p-5 border-2 mx-auto ">
             <div className="flex items-center justify-between">
               <h1 className="text-xl md:text-2xl">Upload Document</h1>
               <div
@@ -22,7 +22,7 @@ function CreateDoc() {
               </div>
             </div>
             <CreateDocForm />
-            <div className="flex justify-between gap-96">
+            <div className="mt-2 flex justify-between gap-40 sm:gap-52 md:gap-64 lg:gap-72">
               <Button
                 text="Cancel"
                 type="secondary"
