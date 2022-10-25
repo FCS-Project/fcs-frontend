@@ -12,7 +12,7 @@ function EditInfo() {
     <>
       <DashboardHeader />
       <div className="flex-col align-center justify-center p-4 md:p-6 lg:p-8">
-        <h1 className="text-lg md:text-xl lg:text-2xl">
+        <h1 className="text-lg md:text-xl lg:text-2xl font-semibold">
           Edit Your Information
         </h1>
         <div className="flex flex-col gap-1 sm:gap-2 my-2 md:my-4 lg:my-5">

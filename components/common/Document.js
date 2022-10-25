@@ -13,7 +13,7 @@ function Document({ name, createdAt, link }) {
       <div className="my-1">
         <div className="text-lg lg:text-xl">{name ?? "Document Name"}</div>
         <div className="text-xs sm:text-sm opacity-50">
-          Created At: {createdAt ?? "22/10/2022"}
+          Uploaded on: {createdAt ?? "22/10/2022"}
         </div>
       </div>
       <Button text="Open Doc" type="secondary" />
