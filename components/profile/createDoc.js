@@ -11,7 +11,7 @@ function CreateDoc() {
     <>
       {modal && (
         <div className="fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-[rgb(0,0,0,0.8)] flex items-center justify-center">
-          <div className="p-5 w-11/12 sm:w-10/12 md:w-9/12 lg:w-1/2 h-fit bg-white block p-5 border-2 mx-auto ">
+          <div className="p-5 w-11/12 sm:w-10/12 md:w-9/12 lg:w-1/2 h-fit bg-white block p-5 border-2 mx-auto">
             <div className="flex items-center justify-between">
               <h1 className="text-xl md:text-2xl">Upload Document</h1>
               <div
@@ -35,7 +35,7 @@ function CreateDoc() {
       )}
       <div
         onClick={() => setModal(true)}
-        className="p-6 md:p-7 lg:p-8 w-3 h-3 sm:h-6 sm:w-6 lg:h-12 lg:w-12 bg-theme fixed bottom-0 right-0 m-2 flex items-center justify-center text-white text-4xl rounded-full cursor-pointer shadow-md"
+        className="p-6 md:p-7 lg:p-8 w-3 h-3 sm:h-6 sm:w-6 lg:h-12 lg:w-12 bg-theme fixed bottom-0 right-0 m-2 flex items-center justify-center text-white text-3xl sm:text-4xl rounded-full cursor-pointer shadow-md"
       >
         +
       </div>
