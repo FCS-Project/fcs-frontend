@@ -30,7 +30,7 @@ function Button({ type, text, onClick, disabled }) {
   return (
     <button
       disabled={disabled}
-      className={`${bgColor} ${textColour} ${borderStyle} w-full py-1.5 my-2 md:my-3 lg:my-4 text-sm sm:text-base hover:opacity-90`}
+      className={`${bgColor} ${textColour} ${borderStyle} w-full py-1.5 text-sm sm:text-base hover:opacity-90`}
       onClick={onClick}
     >
       {text}
