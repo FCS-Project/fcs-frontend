@@ -8,7 +8,7 @@ function Header() {
       <Link href="/">
         <Logo />
       </Link>
-      <div className="flex items-center flex-end gap-4">
+      {/* <div className="flex items-center flex-end gap-4">
         <Link href="/">
           <p className="transition all delay-30 hover:text-theme cursor-pointer">
             Home
@@ -24,7 +24,7 @@ function Header() {
             Signup
           </p>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }
