@@ -22,7 +22,7 @@ function CreateDoc() {
               </div>
             </div>
             <CreateDocForm />
-            <div className="mt-2 flex justify-between gap-40 sm:gap-52 md:gap-64 lg:gap-72">
+            <div className="mt-1 md:mt-2 flex justify-between gap-40 sm:gap-52 md:gap-64 lg:gap-72">
               <Button
                 text="Cancel"
                 type="secondary"
