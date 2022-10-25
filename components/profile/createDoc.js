@@ -35,7 +35,7 @@ function CreateDoc() {
       )}
       <div
         onClick={() => setModal(true)}
-        className="h-12 w-12 bg-theme fixed bottom-0 right-0 m-2 flex items-center justify-center p-[2rem] text-white text-4xl rounded-full cursor-pointer shadow-md"
+        className="p-6 md:p-7 lg:p-8 w-3 h-3 sm:h-6 sm:w-6 lg:h-12 lg:w-12 bg-theme fixed bottom-0 right-0 m-2 flex items-center justify-center text-white text-4xl rounded-full cursor-pointer shadow-md"
       >
         +
       </div>
