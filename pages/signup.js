@@ -9,6 +9,7 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [organisation, setOrganisation] = useState(false);
   const [dto, setDto] = useState(null);
   const onSubmit = () => {
     if (name != "" && email != "" && password != "") {
@@ -46,6 +47,22 @@ function Signup() {
             setState={setPassword}
             required={true}
           />
+          <div className="flex-col align-center justify-center my-2">
+            <input
+              id="organisation"
+              type="checkbox"
+              name="Organisation"
+              value={organisation}
+              onClick={() => setOrganisation(!organisation)}
+            />
+            <label
+              for="organisation"
+              className="my-1 mx-2 text-sm sm:text-base lg:text-lg text-black"
+            >
+              Are you an organisation?
+            </label>
+          </div>
+
           <Button type={"primary"} text={"Sign Up"} onClick={onSubmit} />
           <div className="text-sm md:text-base">
             Already a User?{" "}

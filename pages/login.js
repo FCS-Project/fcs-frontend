@@ -4,7 +4,7 @@ import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
-import { login } from "../utils/user/login";
+import { login } from "../utils/auth/login";
 
 function Login() {
   const id = "921392bf-9c79-48fc-80e8-991353f8bbc6";

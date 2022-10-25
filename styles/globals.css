@@ -30,6 +30,9 @@ a {
   color: var(--white);
 }
 
+input {
+  accent-color: var(--theme);
+}
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
