@@ -12,15 +12,14 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [organization, setOrganization] = useState(false);
   const [patient, setPatient] = useState(false);
-  const [dto, setDto] = useState(null);
   const onSubmit = () => {
     if (name != "" && email != "" && password != "") {
-      setDto({
+      const dto = {
         name: name,
         email: email,
         password: password,
         roles: [patient ? "Patient" : "Organization"],
-      });
+      };
       console.log("dto", dto);
     }
   };
