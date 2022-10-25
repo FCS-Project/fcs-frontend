@@ -12,7 +12,7 @@ function CreateDoc() {
             <div className="flex items-center justify-between">
               <h1 className="text-xl md:text-2xl">Upload Document</h1>
               <div
-                className="cursor-pointer float-right text-3xl"
+                className="cursor-pointer float-right text-3xl text-black"
                 onClick={() => setModal(false)}
               >
                 &times;
@@ -29,7 +29,7 @@ function CreateDoc() {
       )}
       <div
         onClick={() => setModal(true)}
-        className="h-[3rem] w-[3rem] bg-theme fixed bottom-0 right-0 m-2 flex items-center justify-center p-[2rem] text-white text-4xl rounded-full cursor-pointer shadow-md"
+        className="h-12 w-12 bg-theme fixed bottom-0 right-0 m-2 flex items-center justify-center p-[2rem] text-white text-4xl rounded-full cursor-pointer shadow-md"
       >
         +
       </div>
