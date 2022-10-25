@@ -10,7 +10,7 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [organization, setorganization] = useState(false);
+  const [organization, setOrganization] = useState(false);
   const [patient, setPatient] = useState(false);
   const [dto, setDto] = useState(null);
   const onSubmit = () => {
@@ -71,10 +71,10 @@ function Signup() {
               type="checkbox"
               name="organization"
               value={organization}
-              onClick={() => setorganization(!organization)}
+              onClick={() => setOrganization(!organization)}
             />
             <label for="organization" className={labelStyle}>
-              organization
+              Organization
             </label>
           </div>
           <Button type={"primary"} text={"Sign Up"} onClick={onSubmit} />
