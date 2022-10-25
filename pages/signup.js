@@ -61,7 +61,11 @@ function Signup() {
               type="checkbox"
               name="patient"
               value={patient}
-              onClick={() => setPatient(!patient)}
+              checked={patient}
+              onClick={() => {
+                setOrganization(false);
+                setPatient(!patient);
+              }}
             />
             <label for="patient" className={labelStyle}>
               Patient
@@ -71,7 +75,11 @@ function Signup() {
               type="checkbox"
               name="organization"
               value={organization}
-              onClick={() => setOrganization(!organization)}
+              checked={organization}
+              onClick={() => {
+                setPatient(false);
+                setOrganization(!organization);
+              }}
             />
             <label for="organization" className={labelStyle}>
               Organization
