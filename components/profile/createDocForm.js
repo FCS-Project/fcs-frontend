@@ -40,7 +40,6 @@ function CreateDocForm() {
           handleFileClick();
         }}
       />
-      <Button text="Submit" type="primary" />
     </div>
   );
 }

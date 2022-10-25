@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../common/Button";
 import CreateDocForm from "./createDocForm";
 
 function CreateDoc() {
@@ -15,6 +16,11 @@ function CreateDoc() {
               &times;
             </div>
             <CreateDocForm />
+            <Button
+              text="Submit"
+              type="primary"
+              onClick={() => setModal(false)}
+            />
           </div>
         </div>
       )}
