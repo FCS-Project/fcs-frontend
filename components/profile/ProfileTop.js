@@ -13,7 +13,7 @@ function ProfileTop() {
       />
       <h1 className="text-center text-xl md:text-2xl">Arjun Temura</h1>
       <Link href="/edit-info">
-        <Button type="secondary" text="Edit Info" />
+        <Button type="tertiary" text="Edit Info" />
       </Link>
     </div>
   );
