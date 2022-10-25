@@ -11,7 +11,7 @@ function EditInfo() {
   return (
     <>
       <DashboardHeader />
-      <div className="flex-col align-center justify-center p-5 md:p-10 lg:p-12">
+      <div className="flex-col align-center justify-center p-4 md:p-6 lg:p-8">
         <h1 className="text-lg md:text-xl lg:text-2xl">
           Edit Your Information
         </h1>

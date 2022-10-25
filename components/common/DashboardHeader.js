@@ -6,7 +6,7 @@ function DashboardHeader() {
   const linkStyle =
     "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer";
   return (
-    <div className="bg-white top-0 sticky z-10 w-full px-2 md:px-3 lg:px-4 h-10 sm:h-11 md:h-12 lg:h-14 flex justify-between items-center shadow">
+    <div className="mb-3 bg-white top-0 sticky z-10 w-full px-2 md:px-3 lg:px-4 h-10 sm:h-11 md:h-12 lg:h-14 flex justify-between items-center shadow">
       <Link href="/">
         <Logo />
       </Link>
