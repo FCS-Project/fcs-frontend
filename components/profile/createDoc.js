@@ -9,11 +9,14 @@ function CreateDoc() {
       {modal && (
         <div className="fixed z-10 left-0 top-0 w-[100%] h-[100%] overflow-auto bg-[rgb(0,0,0,0.8)] flex items-center justify-center">
           <div className="p-5 w-[80%] h-fit bg-white block p-5 border-2 mx-auto ">
-            <div
-              className="cursor-pointer float-right text-3xl"
-              onClick={() => setModal(false)}
-            >
-              &times;
+            <div className="flex items-center justify-between">
+              <h1 className="text-xl md:text-2xl">Upload Document</h1>
+              <div
+                className="cursor-pointer float-right text-3xl"
+                onClick={() => setModal(false)}
+              >
+                &times;
+              </div>
             </div>
             <CreateDocForm />
             <Button

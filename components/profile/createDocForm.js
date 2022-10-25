@@ -13,8 +13,7 @@ function CreateDocForm() {
   };
 
   return (
-    <div className="flex flex-col">
-      <h1 className="text-xl md:text-2xl">Upload Document</h1>
+    <div className="flex flex-col w-full">
       <Input
         heading="Document Name"
         placeholder="Document Name"
@@ -33,13 +32,15 @@ function CreateDocForm() {
         className="hidden"
         ref={chooseDocButton}
       ></input>
-      <Button
-        text="Choose Document"
-        type="secondary"
-        onClick={() => {
-          handleFileClick();
-        }}
-      />
+      <div className="my-2 sm:my-5">
+        <Button
+          text="Choose Document"
+          type="secondary"
+          onClick={() => {
+            handleFileClick();
+          }}
+        />
+      </div>
     </div>
   );
 }
