@@ -1,8 +1,8 @@
 import instance from "../axios";
 
-export const updateUser = async (id) => {
+export const deleteDocument = async (id) => {
   return instance
-    .patch(`user/${id}`)
+    .delete(`/document/${id}`)
     .then((response) => {
       if (response.data.success) {
         return {

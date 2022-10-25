@@ -1,12 +1,13 @@
-import instance from "../axios";
+import axios from "axios";
 
-export const updateUser = async (id) => {
-  return instance
-    .patch(`user/${id}`)
+export const getDocument = async (id) => {
+  return axios
+    .get(`/document${id}`)
     .then((response) => {
       if (response.data.success) {
         return {
           success: response.data.success,
+          data: response.data.data,
         };
       }
     })
