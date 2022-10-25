@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
@@ -10,15 +10,21 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [organisation, setOrganisation] = useState(false);
+  const [organization, setorganization] = useState(false);
   const [patient, setPatient] = useState(false);
   const [dto, setDto] = useState(null);
   const onSubmit = () => {
     if (name != "" && email != "" && password != "") {
-      setDto({ name: name, email: email, password: password });
+      setDto({
+        name: name,
+        email: email,
+        password: password,
+        roles: [patient ? "Patient" : "Organization"],
+      });
       console.log("dto", dto);
     }
   };
+
   return (
     <>
       <SEO title={"Sign Up"} />
@@ -61,14 +67,14 @@ function Signup() {
               Patient
             </label>
             <input
-              id="organisation"
+              id="organization"
               type="checkbox"
-              name="Organisation"
-              value={organisation}
-              onClick={() => setOrganisation(!organisation)}
+              name="organization"
+              value={organization}
+              onClick={() => setorganization(!organization)}
             />
-            <label for="organisation" className={labelStyle}>
-              Organisation
+            <label for="organization" className={labelStyle}>
+              organization
             </label>
           </div>
           <Button type={"primary"} text={"Sign Up"} onClick={onSubmit} />
