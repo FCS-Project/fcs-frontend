@@ -15,7 +15,7 @@ function EditInfo() {
         <h1 className="text-lg md:text-xl lg:text-2xl">
           Edit Your Information
         </h1>
-        <div className="my-4 lg:my-5">
+        <div className="flex flex-col md:gap-1 my-4 lg:my-5">
           <Input
             heading="Name"
             placeholder="Your Name"
