@@ -6,10 +6,12 @@ import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
 
 function Signup() {
+  const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg text-black";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [organisation, setOrganisation] = useState(false);
+  const [patient, setPatient] = useState(false);
   const [dto, setDto] = useState(null);
   const onSubmit = () => {
     if (name != "" && email != "" && password != "") {
@@ -47,7 +49,17 @@ function Signup() {
             setState={setPassword}
             required={true}
           />
-          <div className="flex-col align-center justify-center my-2">
+          <div className="flex items-center my-2">
+            <input
+              id="patient"
+              type="checkbox"
+              name="patient"
+              value={patient}
+              onClick={() => setPatient(!patient)}
+            />
+            <label for="patient" className={labelStyle}>
+              Patient
+            </label>
             <input
               id="organisation"
               type="checkbox"
@@ -55,14 +67,10 @@ function Signup() {
               value={organisation}
               onClick={() => setOrganisation(!organisation)}
             />
-            <label
-              for="organisation"
-              className="my-1 mx-2 text-sm sm:text-base lg:text-lg text-black"
-            >
-              Are you an organisation?
+            <label for="organisation" className={labelStyle}>
+              Organisation
             </label>
           </div>
-
           <Button type={"primary"} text={"Sign Up"} onClick={onSubmit} />
           <div className="text-sm md:text-base">
             Already a User?{" "}
