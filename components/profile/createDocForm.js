@@ -35,7 +35,7 @@ function CreateDocForm() {
       <div className="my-2 sm:my-5">
         <Button
           text="Choose Document"
-          type="secondary"
+          type="tertiary"
           onClick={() => {
             handleFileClick();
           }}

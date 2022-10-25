@@ -4,6 +4,9 @@ import CreateDocForm from "./createDocForm";
 
 function CreateDoc() {
   const [modal, setModal] = useState(false);
+  const submit = () => {
+    setModal(false);
+  };
   return (
     <>
       {modal && (
@@ -19,11 +22,14 @@ function CreateDoc() {
               </div>
             </div>
             <CreateDocForm />
-            <Button
-              text="Submit"
-              type="primary"
-              onClick={() => setModal(false)}
-            />
+            <div className="flex justify-between gap-96">
+              <Button
+                text="Cancel"
+                type="secondary"
+                onClick={() => setModal(false)}
+              />
+              <Button text="Submit" type="primary" onClick={() => submit()} />
+            </div>
           </div>
         </div>
       )}
