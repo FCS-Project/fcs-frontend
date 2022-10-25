@@ -8,7 +8,7 @@ function UserCard({ id, name, imgSrc, desc, location }) {
   const router = useRouter();
   return (
     <div
-      className="w-64 max-h-72 sm:min-w-72 w-80 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden"
+      className="max-h-72 w-11/12 sm:w-5/12 md:w-64 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden"
       // onClick={() => router.push(`/user/${id}`)}
     >
       <img
