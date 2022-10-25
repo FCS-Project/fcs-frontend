@@ -7,7 +7,7 @@ export const logout = async () => {
   return instance
     .post("/auth/logout", {
       //   headers: {
-      //     Authorization: `bearer ${jwt}`,
+      //     Authorization: `Bearer ${jwt}`,
       //   },
     })
     .then((response) => {
