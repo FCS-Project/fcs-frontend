@@ -1,7 +1,7 @@
-import axios from "axios";
+import instance from "../axios";
 
 export const getDocument = async (id) => {
-  return axios
+  return instance
     .get(`/document${id}`)
     .then((response) => {
       if (response.data.success) {
