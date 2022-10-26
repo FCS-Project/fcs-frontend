@@ -10,10 +10,7 @@ function UserCard({ id, name, imgSrc, desc, location, type }) {
   const router = useRouter();
   return (
     <Link href="user/1">
-      <div
-        className="max-h-56 w-11/12 sm:w-5/12 md:w-64 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden"
-        // onClick={() => router.push(`/user/${id}`)}
-      >
+      <div className="max-h-56 w-11/12 sm:w-5/12 md:w-64 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden pb-2">
         <img
           alt="display picture"
           src={imgSrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
@@ -28,7 +25,7 @@ function UserCard({ id, name, imgSrc, desc, location, type }) {
 
           {location ? (
             <div className="flex items-center">
-              <PlaceIcon className="text-theme text-[1rem] ml-[-0.2rem] mr-1" />
+              <PlaceIcon className="text-theme text-[1rem] ml-[-0.4rem] mr-1" />
               <div className="text-xs">{location}</div>
             </div>
           ) : null}
