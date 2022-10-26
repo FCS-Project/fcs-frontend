@@ -2,8 +2,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import DashboardHeader from "../../components/common/DashboardHeader";
-import CreateDocButton from "../../components/profile/createDocButton";
-import Document from "../../components/common/Document";
 import ProfileInfo from "../../components/profile/ProfileInfo";
 import InfoBox from "../../components/profile/InfoBox";
 
@@ -14,10 +12,18 @@ function User() {
       <DashboardHeader />
       <div className="gap-5 ml-auto mr-auto flex flex-col justify-start w-11/12 lg:w-3/4 md:gap-8 lg:gap-10 pb-10">
         <ProfileInfo />
-        <InfoBox location={"New Delhi, Delhi - 110048 "} />
+        <InfoBox
+          description={
+            "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
+          }
+        />
+        <InfoBox
+          location={
+            "B Block, Sushant Lok 1, Near Huda City Centre MF Husain Marg Sector 43, Gurugram, Haryana 122001"
+          }
+        />
         <InfoBox email={"avi@iiitd.ac.in"} />
-        <InfoBox mobileNumber={"9899659815"} />
-        <InfoBox description={"hi"} />
+        <InfoBox mobileNumber={"0124 662 3000"} />
       </div>
       {/* {!document ? (
         <CreateDocButton />

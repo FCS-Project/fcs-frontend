@@ -10,7 +10,7 @@ function DashboardHeader() {
       <Link href="/">
         <Logo />
       </Link>
-      <div className="sm:pr-5 flex items-center flex-end gap-3.5 md:gap-4 lg:gap-5">
+      <div className="sm:pr-5 flex items-center flex-end gap-5 md:gap-8 lg:gap-10">
         <Link href="/">
           <p className={linkStyle}>Home</p>
         </Link>
