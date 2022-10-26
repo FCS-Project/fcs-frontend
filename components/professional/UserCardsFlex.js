@@ -9,48 +9,56 @@ function UserCardsFlex({ userArr }) {
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
+        type={"Hospital"}
       />
       <UserCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
+        type={"Hospital"}
       />
       <UserCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
+        type={"Hospital"}
       />
       <UserCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
+        type={"Hospital"}
       />
       <UserCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
+        type={"Hospital"}
       />
       <UserCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
+        type={"Hospital"}
       />
       <UserCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
+        type={"Hospital"}
       />
       <UserCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
+        type={"Hospital"}
       />
     </div>
   );

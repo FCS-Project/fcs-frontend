@@ -3,13 +3,14 @@ import { useRouter } from "next/router";
 import React from "react";
 import PlaceIcon from "@mui/icons-material/Place";
 import Link from "next/link";
+import BusinessSharpIcon from "@mui/icons-material/BusinessSharp";
 
-function UserCard({ id, name, imgSrc, desc, location }) {
+function UserCard({ id, name, imgSrc, desc, location, type }) {
   const description = desc?.slice(0, 100);
   const router = useRouter();
   return (
     <div
-      className="max-h-72 w-11/12 sm:w-5/12 md:w-64 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden"
+      className="max-h-56 w-11/12 sm:w-5/12 md:w-64 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden"
       // onClick={() => router.push(`/user/${id}`)}
     >
       <Link href="user/1">
@@ -27,14 +28,20 @@ function UserCard({ id, name, imgSrc, desc, location }) {
             Max Hospital
           </div>
         </Link>
+
         {location ? (
           <div className="flex items-center">
-            <PlaceIcon className="text-theme text-xs ml-[-0.2rem]" />
+            <PlaceIcon className="text-theme text-[1rem] ml-[-0.2rem] mr-1" />
             <div className="text-xs">{location}</div>
           </div>
         ) : null}
-
-        <p className="text-gray-600 text-xs font-light">
+        {type ? (
+          <div className="flex items-center">
+            <BusinessSharpIcon className="text-theme text-[1rem] ml-[-0.2rem] mr-1" />
+            <div className="text-xs">{type}</div>
+          </div>
+        ) : null}
+        {/* <p className="text-gray-600 text-xs font-light">
           {desc?.length > 50 ? (
             <>
               {description}
@@ -43,7 +50,7 @@ function UserCard({ id, name, imgSrc, desc, location }) {
           ) : (
             desc
           )}
-        </p>
+        </p> */}
       </div>
     </div>
   );
