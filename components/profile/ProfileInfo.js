@@ -11,7 +11,7 @@ function ProfileInfo({ name, imgSrc, location, contact }) {
         src={imgSrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
         className="w-full h-2/3 object-cover overflow-hidden bg-gray-200"
       />
-      <div className="flex flex-col justify-between pl-2 gap-1">
+      <div className="flex flex-col justify-between pl-2 sm:pl-4 gap-1">
         <img
           alt="display picture"
           src={imgSrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
