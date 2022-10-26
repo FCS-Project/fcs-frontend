@@ -8,7 +8,7 @@ function Document({ name, createdAt, link }) {
       <img
         alt="document"
         src="https://i.ibb.co/myvq6GR/aryan.jpg"
-        className="w-full h-40 object-fit"
+        className="w-full h-40 object-cover"
       />
       <div className="my-1">
         <div className="text-lg lg:text-xl">{name ?? "Document Name"}</div>
