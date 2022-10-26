@@ -13,7 +13,7 @@ function CreateDocForm() {
   };
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full mt-5">
       <Input
         heading="Document Name"
         placeholder="Document Name"
