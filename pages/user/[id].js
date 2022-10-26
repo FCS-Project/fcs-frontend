@@ -12,7 +12,7 @@ function User() {
   return (
     <>
       <DashboardHeader />
-      <div className="gap-5 ml-auto mr-auto flex flex-col justify-start w-11/12 lg:w-3/4 md:gap-8 lg:gap-10">
+      <div className="gap-5 ml-auto mr-auto flex flex-col justify-start w-11/12 lg:w-3/4 md:gap-8 lg:gap-10 pb-10">
         <ProfileInfo />
         <InfoBox location={"New Delhi, Delhi - 110048 "} />
         <InfoBox email={"avi@iiitd.ac.in"} />
