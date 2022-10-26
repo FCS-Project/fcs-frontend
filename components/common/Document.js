@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Button from "./Button";
+import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
 
 function Document({ name, createdAt, link }) {
   return (
-    <div className="p-2 md:p-3 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 w-full md:mx-3 lg:mx-4 min-w-80 md:w-1/3">
+    <div className="p-2 md:p-3 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 w-full md:mx-3 lg:mx-4 min-w-80 md:w-[30%]">
       <img
         alt="document"
         src="https://i.ibb.co/myvq6GR/aryan.jpg"
@@ -16,7 +17,15 @@ function Document({ name, createdAt, link }) {
           Uploaded on: {createdAt ?? "22/10/2022"}
         </div>
       </div>
-      <Button text="Open Doc" type="secondary" />
+      <div className="flex justify-start items-center gap-1">
+        <Button text="Open Doc" type="tertiary" />
+        <div className="w-[3rem]">
+          <Button
+            icon={<DeleteSharpIcon sx={{ fontSize: "1.2rem" }} />}
+            type="secondary"
+          />
+        </div>
+      </div>
     </div>
   );
 }
