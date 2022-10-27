@@ -50,6 +50,7 @@ function Signup() {
           />
           <Input
             heading={"Password"}
+            type={"password"}
             placeholder={"Password"}
             state={password}
             setState={setPassword}
