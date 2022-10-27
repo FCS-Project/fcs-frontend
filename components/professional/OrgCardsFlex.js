@@ -1,59 +1,75 @@
 import React from "react";
-import UserCard from "./UserCard";
+import OrgCard from "./OrgCard";
 
-function UserCardsFlex({ userArr }) {
+function OrgCardsFlex({ userArr }) {
   return (
     <div className="flex flex-wrap justify-center gap-1">
-      <UserCard
+      {userArr ? (
+        <>
+          {userArr.map((item) => {
+            <OrgCard
+              id={item.id}
+              name={item.name}
+              imgSrc={item.bannerSrc}
+              desc={item.desc}
+              location={item.location}
+              type={item.type}
+            />;
+          })}
+        </>
+      ) : (
+        <></>
+      )}
+      <OrgCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
         type={"Hospital"}
       />
-      <UserCard
+      <OrgCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
         type={"Hospital"}
       />
-      <UserCard
+      <OrgCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
         type={"Hospital"}
       />
-      <UserCard
+      <OrgCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
         type={"Hospital"}
       />
-      <UserCard
+      <OrgCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
         type={"Hospital"}
       />
-      <UserCard
+      <OrgCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
         type={"Hospital"}
       />
-      <UserCard
+      <OrgCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
         location={"Saket, New Delhi, Delhi, 110017"}
         type={"Hospital"}
       />
-      <UserCard
+      <OrgCard
         desc={
           "Max Healthcare Institute Limited is a hospital chain based in New Delhi, India. Max Healthcare owns and operates healthcare facilities across the National Capital Region of Delhi, North India, and the western port city of Mumbai."
         }
@@ -64,4 +80,4 @@ function UserCardsFlex({ userArr }) {
   );
 }
 
-export default UserCardsFlex;
+export default OrgCardsFlex;

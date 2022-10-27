@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/common/Header";
 import Search from "../components/common/Search";
 import SEO from "../components/common/SEO";
-import UserCard from "../components/professional/UserCard";
-import UserCardsFlex from "../components/professional/UserCardsFlex";
+import OrgCardsFlex from "../components/professional/OrgCardsFlex";
 
 export default function Home() {
   const [filter, setFilter] = useState("type");
@@ -39,7 +38,7 @@ export default function Home() {
         filter={filter}
         setFilter={setFilter}
       />
-      <UserCardsFlex userArr={filteredData} />
+      <OrgCardsFlex userArr={filteredData} />
     </>
   );
 }

@@ -1,13 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/router";
 import React from "react";
 import PlaceIcon from "@mui/icons-material/Place";
 import Link from "next/link";
 import BusinessSharpIcon from "@mui/icons-material/BusinessSharp";
 
-function UserCard({ id, name, imgSrc, desc, location, type }) {
+function OrgCard({ id, name, imgSrc, desc, location, type }) {
   const description = desc?.slice(0, 100);
-  const router = useRouter();
   return (
     <Link href="user/1">
       <div className="max-h-56 w-11/12 sm:w-5/12 md:w-64 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden pb-2">
@@ -16,13 +14,11 @@ function UserCard({ id, name, imgSrc, desc, location, type }) {
           src={imgSrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
           className="object-cover w-full h-3/5 bg-gray-200"
         />
-
         <div className="flex flex-col px-2 pt-1.5 gap-1">
           <div className="text-md">
             {name?.length > 30 ? name.slice(0, 30) + "..." : name}
             Max Hospital
           </div>
-
           {location ? (
             <div className="flex items-center">
               <PlaceIcon className="text-theme text-[1rem] ml-[-0.4rem] mr-1" />
@@ -51,4 +47,4 @@ function UserCard({ id, name, imgSrc, desc, location, type }) {
   );
 }
 
-export default UserCard;
+export default OrgCard;
