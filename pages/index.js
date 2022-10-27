@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/common/Header";
 import Search from "../components/common/Search";
 import SEO from "../components/common/SEO";
-import OrgCardsFlex from "../components/professional/OrgCardsFlex";
+import OrgCardsFlex from "../components/organisation/OrgCardsFlex";
 
 export default function Home() {
   const [filter, setFilter] = useState("type");
