@@ -4,10 +4,13 @@ import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
-import { login } from "../utils/auth/login";
+// import { login } from "../utils/auth/login";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../store/actions/auth";
 
 function Login() {
   const id = "921392bf-9c79-48fc-80e8-991353f8bbc6";
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
@@ -22,16 +25,18 @@ function Login() {
   };
 
   const loginUser = (dto) => {
-    login(dto).then((response) => {
-      if (response.error) {
-        setError(response.error);
-        setUser(null);
-      } else {
-        setUser(response.access_token);
-        setLoading(false);
-        setError(null);
-      }
-    });
+    dispatch(
+      login(dto).then((response) => {
+        if (response.error) {
+          setError(response.error);
+          setUser(null);
+        } else {
+          setUser(response.access_token);
+          setLoading(false);
+          setError(null);
+        }
+      })
+    );
   };
 
   return (

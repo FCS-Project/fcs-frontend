@@ -12,6 +12,7 @@ export const logout = async () => {
     })
     .then((response) => {
       if (response.data.success) {
+        localStorage.removeItem("user");
         return {
           success: response.data.success,
         };
