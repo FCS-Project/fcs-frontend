@@ -12,7 +12,7 @@ function Input({
 }) {
   return (
     <div className={`${style}`}>
-      <div className="my-1 text-sm sm:text-base lg:text-lg text-black">
+      <div className="my-1 text-sm sm:text-base lg:text-lg">
         {heading}
         {required ? <span className="text-theme text-xs">*</span> : <></>}
       </div>

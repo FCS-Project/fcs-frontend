@@ -15,7 +15,7 @@ function CreateDocButton() {
             <div className="flex items-center justify-between">
               <h1 className="text-xl md:text-2xl">Upload Document</h1>
               <div
-                className="cursor-pointer float-right text-3xl text-black"
+                className="cursor-pointer float-right text-3xl"
                 onClick={() => setModal(false)}
               >
                 &times;

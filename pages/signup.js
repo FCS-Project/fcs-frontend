@@ -6,7 +6,7 @@ import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
 
 function Signup() {
-  const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg text-black";
+  const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +30,7 @@ function Signup() {
       <Header />
       <div className="mt-10 flex justify-center">
         <div className="flex flex-col p-10 w-10/12 sm:w-4/5 md:w-3/5 lg:w-2/5 mt-24 shadow-lg">
-          <div className="text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl text-black">
+          <div className="text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl">
             Sign Up
           </div>
           <Input
