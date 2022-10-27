@@ -43,8 +43,9 @@ function EditInfo() {
             state={password}
             setState={setPassword}
           />
-          <div className="mt-5">
-            <Button type="primary" text="Save Info" />
+          <div className="mt-5 flex items-center justify-between">
+            <Button type="secondary" text="Cancel" style={"w-1/4 sm:w-1/5"} />
+            <Button type="primary" text="Save Info" style={"w-1/4 sm:w-1/5"} />
           </div>
         </div>
       </div>
