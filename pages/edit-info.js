@@ -44,7 +44,7 @@ function EditInfo() {
             setState={setPassword}
           />
           <div className="mt-5">
-            <Button type="secondary" text="Save Info" />
+            <Button type="primary" text="Save Info" />
           </div>
         </div>
       </div>
