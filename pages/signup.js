@@ -35,6 +35,10 @@ function Signup() {
         name: name,
         email: email,
         password: password,
+        location: location,
+        description: description,
+        displaySrc: "",
+        BannerSrc: "",
         roles: [organisationFlag ? "Organisation" : "User"],
         type: [organisationFlag ? organistionType : userType],
       };
