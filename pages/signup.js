@@ -10,7 +10,7 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [organization, setOrganization] = useState(false);
+  const [professional, setProfessional] = useState(false);
   const [patient, setPatient] = useState(false);
   const onSubmit = () => {
     if (name != "" && email != "" && password != "") {
@@ -64,7 +64,7 @@ function Signup() {
                 value={patient}
                 checked={patient}
                 onClick={() => {
-                  setOrganization(false);
+                  setprofessional(false);
                   setPatient(!patient);
                 }}
               />
@@ -74,18 +74,18 @@ function Signup() {
             </div>
             <div>
               <input
-                id="organization"
+                id="professional"
                 type="checkbox"
-                name="organization"
-                value={organization}
-                checked={organization}
+                name="professional"
+                value={professional}
+                checked={professional}
                 onClick={() => {
                   setPatient(false);
-                  setOrganization(!organization);
+                  setProfessional(!professional);
                 }}
               />
-              <label for="organization" className={labelStyle}>
-                Organization
+              <label for="professional" className={labelStyle}>
+                Professional
               </label>
             </div>
           </div>
