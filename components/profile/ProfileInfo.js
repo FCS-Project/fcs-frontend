@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
-function ProfileInfo({ name, imgSrc, location, contact }) {
+function ProfileInfo({ name, type, imgSrc, location, contact }) {
   return (
     <div className="w-full h-56 sm:h-60 md:h-72 lg:h-80 flex flex-col justify-start overflow-hidden border-2 bg-white shadow-md">
       <img
@@ -9,7 +9,7 @@ function ProfileInfo({ name, imgSrc, location, contact }) {
         src={imgSrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
         className="w-full h-2/3 object-cover overflow-hidden bg-gray-200"
       />
-      <div className="flex flex-col justify-between pl-2 sm:pl-4 gap-1">
+      <div className="flex flex-col justify-between pl-2 sm:pl-4 pb-2">
         <img
           alt="display picture"
           src={imgSrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
@@ -17,6 +17,9 @@ function ProfileInfo({ name, imgSrc, location, contact }) {
         />
         <p className="text-xl md:text-2xl lg:text-3xl">
           {name ?? "Aryan Teng"}
+        </p>
+        <p className="text-sm md:text-md lg:text-lg text-gray-500">
+          {type ?? "Professional"}
         </p>
       </div>
     </div>
