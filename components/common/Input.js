@@ -8,9 +8,10 @@ function Input({
   setState,
   required,
   disabled,
+  style,
 }) {
   return (
-    <>
+    <div className={`${style}`}>
       <div className="my-1 text-sm sm:text-base lg:text-lg text-black">
         {heading}
         {required ? <span className="text-theme text-xs">*</span> : <></>}
@@ -23,7 +24,7 @@ function Input({
         onChange={(e) => setState(e.target.value)}
         disabled={disabled}
       />
-    </>
+    </div>
   );
 }
 

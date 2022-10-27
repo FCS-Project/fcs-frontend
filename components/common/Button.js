@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Button({ type, text, onClick, disabled, icon }) {
+function Button({ type, text, onClick, disabled, icon, style }) {
   const [bgColor, setBgColor] = useState(null);
   const [textColour, setTextColour] = useState(null);
   const [borderStyle, setBorderStyle] = useState(null);
@@ -30,7 +30,7 @@ function Button({ type, text, onClick, disabled, icon }) {
   return (
     <button
       disabled={disabled}
-      className={`${bgColor} ${textColour} ${borderStyle} w-full py-1.5 text-sm sm:text-base hover:opacity-90`}
+      className={`${bgColor} ${textColour} ${borderStyle} w-full py-1.5 text-sm sm:text-base hover:opacity-90 ${style}`}
       onClick={onClick}
     >
       {text ? text : icon}

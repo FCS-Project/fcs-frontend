@@ -28,7 +28,7 @@ function Signup() {
     <>
       <SEO title={"Sign Up"} />
       <Header />
-      <div className="mt-20 flex justify-center">
+      <div className="mt-10 flex justify-center">
         <div className="flex flex-col p-10 w-9/12 sm:w-3/5 md:w-2/5 lg:w-1/3 mt-24 shadow-lg">
           <div className="text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl text-black">
             Sign Up
@@ -46,6 +46,7 @@ function Signup() {
             state={email}
             setState={setEmail}
             required={true}
+            style="my-2"
           />
           <Input
             heading={"Password"}
@@ -54,38 +55,42 @@ function Signup() {
             setState={setPassword}
             required={true}
           />
-          <div className="flex items-center my-2">
-            <input
-              id="patient"
-              type="checkbox"
-              name="patient"
-              value={patient}
-              checked={patient}
-              onClick={() => {
-                setOrganization(false);
-                setPatient(!patient);
-              }}
-            />
-            <label for="patient" className={labelStyle}>
-              Patient
-            </label>
-            <input
-              id="organization"
-              type="checkbox"
-              name="organization"
-              value={organization}
-              checked={organization}
-              onClick={() => {
-                setPatient(false);
-                setOrganization(!organization);
-              }}
-            />
-            <label for="organization" className={labelStyle}>
-              Organization
-            </label>
+          <div className="flex items-center my-4">
+            <div className="mr-3">
+              <input
+                id="patient"
+                type="checkbox"
+                name="patient"
+                value={patient}
+                checked={patient}
+                onClick={() => {
+                  setOrganization(false);
+                  setPatient(!patient);
+                }}
+              />
+              <label for="patient" className={labelStyle}>
+                Patient
+              </label>
+            </div>
+            <div>
+              <input
+                id="organization"
+                type="checkbox"
+                name="organization"
+                value={organization}
+                checked={organization}
+                onClick={() => {
+                  setPatient(false);
+                  setOrganization(!organization);
+                }}
+              />
+              <label for="organization" className={labelStyle}>
+                Organization
+              </label>
+            </div>
           </div>
           <Button type={"primary"} text={"Sign Up"} onClick={onSubmit} />
-          <div className="text-sm md:text-base">
+          <div className="text-sm md:text-base mt-4">
             Already a User?{" "}
             <span className="text-theme hover:underline">
               <Link href="/login">Login</Link>

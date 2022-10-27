@@ -50,7 +50,6 @@ function Login() {
             setState={setEmail}
             required={true}
           />
-          <div className="my-1 sm:my-1.5"></div>
           <Input
             heading={"Password"}
             type={"password"}
