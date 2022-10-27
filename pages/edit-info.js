@@ -13,7 +13,7 @@ function EditInfo() {
     <>
       <SEO title={"Edit Info"} />
       <DashboardHeader />
-      <div className="flex-col align-center justify-center p-4 md:p-6 lg:p-8">
+      <div className="flex-col align-center justify-center px-4 md:px-6 lg:px-8">
         <h1 className="text-lg md:text-xl lg:text-2xl font-semibold">
           Edit Your Information
         </h1>
