@@ -57,11 +57,15 @@ function Login() {
             state={password}
             setState={setPassword}
             required={true}
+            style={"my-2"}
           />
-          <div className="my-5">
-            <Button type={"primary"} text={"Login"} onClick={onSubmit} />
-          </div>
-          <div className="text-sm md:text-base">
+          <Button
+            type={"primary"}
+            text={"Login"}
+            onClick={onSubmit}
+            style={"my-2"}
+          />
+          <div className="my-1 text-sm md:text-base">
             Not a User?{" "}
             <span className="text-theme hover:underline">
               <Link href="/signup">Sign Up</Link>
