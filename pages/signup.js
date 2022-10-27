@@ -65,7 +65,7 @@ function Signup() {
                 value={patient}
                 checked={patient}
                 onClick={() => {
-                  setprofessional(false);
+                  setProfessional(false);
                   setPatient(!patient);
                 }}
               />
