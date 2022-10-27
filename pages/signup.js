@@ -18,7 +18,7 @@ function Signup() {
         name: name,
         email: email,
         password: password,
-        roles: [patient ? "Patient" : "Organization"],
+        roles: [patient ? "Patient" : "Professional"],
       };
       console.log("dto", dto);
     }
