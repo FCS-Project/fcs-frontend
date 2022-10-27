@@ -8,7 +8,7 @@ import InfoBox from "../../components/profile/InfoBox";
 function User() {
   const [document, setDocument] = useState(false);
   return (
-    <>
+    <div className="bg-slate-50">
       <DashboardHeader />
       <div className="gap-5 ml-auto mr-auto flex flex-col justify-start w-11/12 lg:w-3/4 md:gap-8 lg:gap-10 pb-10">
         <ProfileInfo />
@@ -19,10 +19,10 @@ function User() {
         />
         <InfoBox
           location={
-            "B Block, Sushant Lok 1, Near Huda City Centre MF Husain Marg Sector 43, Gurugram, Haryana 122001"
+            "B Block, Sushant Lok 1, Near Huda City Centre MF Husain Marg Sector 43, Gurugram, Haryana 122001."
           }
         />
-        <InfoBox email={"avi@iiitd.ac.in"} />
+        <InfoBox email={"aryan20499@iiitd.ac.in"} />
         <InfoBox mobileNumber={"0124 662 3000"} />
       </div>
       {/* {!document ? (
@@ -35,7 +35,7 @@ function User() {
           <Document />
         </>
       )} */}
-    </>
+    </div>
   );
 }
 

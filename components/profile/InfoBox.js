@@ -7,9 +7,8 @@ function InfoBox({ location, description, email, mobileNumber }) {
   const contentStyle = "lg:text-md md:text-sm text-xs text-gray-500";
   const titleStyle = "text-md md:text-lg lg:text-xl font-semibold text-theme";
   const containerStyle =
-    "gap-1 sm:gap-2 p-3 md:p-4 lg:p-5 border-1 shadow-sm bg-white flex flex-col items-left justify-between border-2";
-  const iconStyle =
-    "text-theme text-sm md:text-base lg:text-lg ml-[-0.25rem] mr-1";
+    "gap-1 sm:gap-2 p-3 md:p-4 lg:p-5 border-1 shadow-sm bg-white flex flex-col items-left justify-between border-2 shadow-md";
+  const iconStyle = "text-theme ml-[-0.25rem] mr-1";
   if (description) {
     return (
       <div className={containerStyle}>
@@ -32,17 +31,21 @@ function InfoBox({ location, description, email, mobileNumber }) {
         </p>
         <div className="flex flex-row items-start sm:items-center gap-5 pb-2 sm:pb-0">
           {location ? (
-            <div className="flex ml-1">
-              <PlaceIcon className={`${iconStyle} mt-0.5`} />
+            <div className="flex md:items-center">
+              <PlaceIcon className={`${iconStyle} mt-0.5 md:mt-0`} />
               <span className={contentStyle}>
                 {location ?? "New Delhi, Delhi - 110048"}
               </span>
             </div>
           ) : email ? (
-            <div className="flex items-center ml-1">
-              <EmailSharpIcon className={iconStyle} />
-              <span className={contentStyle}>{email ?? "email@email.com"}</span>
-            </div>
+            <a href={`mailto:${email}`}>
+              <div className="flex items-center ml-1">
+                <EmailSharpIcon className={iconStyle} />
+                <span className={contentStyle}>
+                  {email ?? "email@email.com"}
+                </span>
+              </div>
+            </a>
           ) : mobileNumber ? (
             <div className="flex items-center ml-1">
               <LocalPhoneSharpIcon className={iconStyle} />

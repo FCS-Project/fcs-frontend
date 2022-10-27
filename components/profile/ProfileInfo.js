@@ -3,7 +3,7 @@ import React from "react";
 
 function ProfileInfo({ name, imgSrc, location, contact }) {
   return (
-    <div className="w-full h-56 sm:h-60 md:h-72 lg:h-80 flex flex-col justify-start overflow-hidden border-2">
+    <div className="w-full h-56 sm:h-60 md:h-72 lg:h-80 flex flex-col justify-start overflow-hidden border-2 bg-white shadow-md">
       <img
         alt="display picture"
         src={imgSrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
