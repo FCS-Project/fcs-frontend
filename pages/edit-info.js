@@ -12,7 +12,6 @@ function EditInfo() {
   const [password, setPassword] = useState(user?.password);
   const [email, setEmail] = useState(user?.email);
   const [mobile, setMobile] = useState(user?.mobileNumber);
-
   const [modal, setModal] = useState(true);
 
   return (

@@ -4,7 +4,7 @@ import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
-import { signin, verifyOtp } from "../store/actions/auth";
+import { signin } from "../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { getUser } from "../store/actions/user";
@@ -25,7 +25,12 @@ function Login() {
     if (email && password) {
       const dto = { email: email, password: password };
       if (otp) {
-        otpSignIn({ email: email });
+        const otpDto = { email: email };
+        otpSignIn(dto).then((response) => {
+          if (response.data.success) {
+            setModal(response.data.success);
+          }
+        });
         setModal(true);
       } else {
         dispatch(signin(dto));

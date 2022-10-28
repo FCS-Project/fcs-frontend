@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyOtp } from "../../store/actions/auth";
 import { getUser } from "../../store/actions/user";
-import { otpSignIn } from "../../utils/otp/otpSignIn";
 import Button from "../common/Button";
 import VerifyPopup from "./VerifyPopup";
 
@@ -25,13 +24,13 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
       setModal(false);
       router.push("/profile");
     }
-  }, [access_token, dispatch]);
+  }, [access_token, dispatch, router, editInfo, setModal]);
 
   useEffect(() => {
     if (success) {
       setModal(false);
     }
-  }, [success, dispatch]);
+  }, [success, dispatch, setModal]);
 
   return (
     <div>
@@ -49,9 +48,7 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
                 </div>
               )}
             </div>
-
             <VerifyPopup otp={otp} setOtp={setOtp} />
-
             <div className="mt-5 flex justify-between gap-10 sm:gap-52 md:gap-64 lg:gap-72 lg:mt-5">
               {!noCancel && (
                 <Button
