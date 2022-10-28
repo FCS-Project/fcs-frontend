@@ -7,7 +7,6 @@ import * as ActionTypes from "../ActionTypes";
 
 const initState = {
   errmess: null,
-  user: null,
   access_token: null,
   refresh_token: null,
 };

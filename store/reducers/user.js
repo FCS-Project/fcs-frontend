@@ -6,19 +6,18 @@ const initState = {
 };
 
 export const userReducer = (state = initState, action) => {
-  const { type, payload } = action;
-
+  const { type } = action;
   switch (type) {
     case ActionTypes.GET_USER_SUCCESS:
       return {
         ...state,
-        user: payload.data,
+        user: action.data,
       };
     case ActionTypes.GET_USER_FAIL:
       return {
         ...state,
         user: null,
-        errmess: payload.errmess,
+        errmess: action.errmess,
       };
     case ActionTypes.UPDATE_USER_SUCCESS:
       return {
@@ -28,7 +27,7 @@ export const userReducer = (state = initState, action) => {
     case ActionTypes.UPDATE_USER_FAIL:
       return {
         ...state,
-        errmess: payload.errmess,
+        errmess: action.errmess,
       };
     default:
       return state;
