@@ -13,7 +13,6 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
   const success = useSelector((state) => state.auth.success);
   const router = useRouter();
   const [emailState, setEmailState] = useState(email);
-
   const submit = () => {
     dispatch(verifyOtp({ email: emailState, otp: otp, editInfo: editInfo }));
   };
@@ -33,7 +32,7 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
   }, [success, dispatch, setModal]);
 
   return (
-    <div>
+    <>
       {modal && (
         <div className="fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-[rgb(0,0,0,0.8)] flex items-center justify-center">
           <div className="p-5 w-11/12 sm:w-10/12 md:w-9/12 lg:w-1/2 h-fit bg-white block p-5 border-2 mx-auto">
@@ -70,7 +69,7 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
