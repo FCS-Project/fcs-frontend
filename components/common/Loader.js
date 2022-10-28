@@ -1,5 +1,5 @@
 import React from "react";
-import { BarLoader, BounceLoader } from "react-spinners";
+import { BounceLoader } from "react-spinners";
 import Header from "./Header";
 
 function Loader() {

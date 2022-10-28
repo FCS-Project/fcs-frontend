@@ -1,10 +1,12 @@
 import Link from "next/link";
 import React from "react";
 import Logo from "./Logo";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/actions/auth";
 
 function Header() {
   const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
   const linkStyle =
     "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer";
   return (
@@ -21,7 +23,7 @@ function Header() {
             <p className={linkStyle}>Profile</p>
           </Link>
           <Link href="/">
-            <p className={linkStyle} onClick>
+            <p className={linkStyle} onClick={() => dispatch(logout())}>
               Logout
             </p>
           </Link>
