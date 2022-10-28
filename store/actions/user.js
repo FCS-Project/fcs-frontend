@@ -1,8 +1,8 @@
 import instance from "../../axios";
-import { GET_USER, SIGNIN, SIGNUP, UPDATE_USER } from "../../constants";
+import { GET_USER, UPDATE_USER } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
-export const getUser = () => {
+export const getUser = (data) => {
   return async (dispatch) => {
     try {
       const response = await instance.post(GET_USER, data);
