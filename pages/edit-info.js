@@ -5,6 +5,7 @@ import DashboardHeader from "../components/common/DashboardHeader";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
 import Modal from "../components/otp/Modal";
+import { updateUser } from "../store/actions/user";
 
 function EditInfo() {
   const user = useSelector((state) => state.user.user);
@@ -13,6 +14,22 @@ function EditInfo() {
   const [email, setEmail] = useState(user?.email);
   const [mobile, setMobile] = useState(user?.mobileNumber);
   const [modal, setModal] = useState(true);
+  const dispatch = useDispatch();
+
+  const submit = () => {
+    //basic error handling
+    if (name != "" && email != "" && password != "") {
+      const dto = {
+        name: name,
+        email: email,
+        location: location,
+        description: description,
+        displaySrc: fileDPSrc,
+        bannerSrc: fileBannerSrc,
+      };
+      dispatch(updateUser(user?.id, dto));
+    }
+  };
 
   return (
     <>
@@ -51,13 +68,6 @@ function EditInfo() {
                 state={mobile}
                 setState={setMobile}
               />
-              <Input
-                heading="Password"
-                placeholder="Password"
-                type="password"
-                state={password}
-                setState={setPassword}
-              />
               <div className="mt-5 flex items-center justify-between gap-20">
                 <Button
                   type="secondary"
@@ -68,6 +78,7 @@ function EditInfo() {
                   type="primary"
                   text="Save Info"
                   style={"w-1/4 sm:w-1/5"}
+                  onClick={submit}
                 />
               </div>
             </div>
