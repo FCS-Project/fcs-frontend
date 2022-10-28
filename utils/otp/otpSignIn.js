@@ -5,7 +5,6 @@ export const otpSignIn = async (dto) => {
     .post("/auth/otp-signin", dto)
     .then((response) => {
       if (response.data.success) {
-        console.log(response.data);
         return {
           success: response.data.success,
         };
