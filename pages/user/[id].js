@@ -6,6 +6,7 @@ import ProfileInfo from "../../components/profile/ProfileInfo";
 import InfoBox from "../../components/profile/InfoBox";
 import { getProfile } from "../../utils/user/getProfile";
 import { useRouter } from "next/router";
+import Loader from "../../components/common/Loader";
 
 function User() {
   const router = useRouter();
@@ -29,8 +30,7 @@ function User() {
   return (
     <>
       {loading ? (
-        // put loader here from spinner package its already installed
-        <>Loading....</>
+        <Loader />
       ) : (
         <div className="bg-slate-50">
           <DashboardHeader />
