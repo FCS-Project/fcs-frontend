@@ -20,7 +20,7 @@ export default function Home() {
       setLoading(false);
       var filteredData = response.data.filter((item) => {
         if (filter == "type") {
-          return item.type.toLowerCase().includes(state);
+          return item.type[0].toLowerCase().includes(state);
         } else if (filter == "name") {
           return item.name.toLowerCase().includes(state);
         } else if (filter == "location") {
