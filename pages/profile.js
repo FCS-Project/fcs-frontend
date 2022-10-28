@@ -24,7 +24,7 @@ function ProfilePage() {
           <SEO title={user.name} />
           <DashboardHeader />
           <ProfileTop name={user.name} displaySrc={user.displaySrc} />
-          <ProfileDocs />
+          <ProfileDocs documents={user.documents} />
           <CreateDoc />
         </>
       ) : null}
