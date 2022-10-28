@@ -10,7 +10,7 @@ export const verifyOtp = async (dto) => {
     .then((response) => {
       if (response.data.success) {
         return {
-          success: response.success,
+          success: response.data.success,
         };
       }
     })
