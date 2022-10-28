@@ -7,14 +7,13 @@ import SEO from "../components/common/SEO";
 import { signin } from "../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { getUser } from "../store/actions/user";
 
 function Login() {
   const dispatch = useDispatch();
   const access_token = useSelector((state) => state.auth.access_token);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const router = useRouter();
 
@@ -27,9 +26,10 @@ function Login() {
 
   useEffect(() => {
     if (access_token) {
+      dispatch(getUser());
       router.push("/profile");
     }
-  }, [access_token, router]);
+  }, [access_token, router, dispatch]);
 
   return (
     <>
@@ -68,7 +68,6 @@ function Login() {
               <Link href="/signup">Sign Up</Link>
             </span>
           </div>
-          {loading ? <p>Loading..</p> : <div>{user}</div>}
           {error ?? ""}
         </div>
       </div>

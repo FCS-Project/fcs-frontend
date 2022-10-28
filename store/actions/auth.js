@@ -1,6 +1,7 @@
 import instance from "../../axios";
 import { SIGNIN, SIGNUP } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
+import { getUser } from "./user";
 
 export const signup = (dto) => {
   return async (dispatch) => {
@@ -30,7 +31,6 @@ export const signin = (dto) => {
     try {
       const response = await instance.post(SIGNIN, dto);
       if (response) {
-        console.log(response);
         dispatch({
           type: ActionTypes.LOGIN_SUCCESS,
           data: response.data,

@@ -6,30 +6,32 @@ import ProfileTop from "../components/profile/ProfileTop";
 import SEO from "../components/common/SEO";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../store/actions/user";
+import Header from "../components/common/Header";
 
 function ProfilePage() {
-  const access_token = useSelector((state) => state.user.access_token);
-  const user = useSelector((state) => state.user);
+  const access_token = useSelector((state) => state.auth.access_token);
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   useEffect(() => {
     if (access_token) {
       dispatch(getUser());
     }
-    if (user) {
-      console.log(user);
-    }
-  }, [access_token, dispatch, user]);
+  }, []);
 
   return (
     <>
       {user ? (
-        <div>
-          <SEO title={"Your Profile"} />
-          <DashboardHeader />
-          <ProfileTop />
-          <ProfileDocs />
+        <>
+          <SEO title={user.name} />
+          <Header />
+          <ProfileTop
+            name={user.name}
+            displaySrc={user.displaySrc}
+            type={user.type}
+          />
+          <ProfileDocs documents={user.documents} />
           <CreateDoc />
-        </div>
+        </>
       ) : null}
     </>
   );
