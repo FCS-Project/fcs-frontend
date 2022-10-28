@@ -29,10 +29,10 @@ export const getUser = () => {
   };
 };
 
-export const updateUser = (id) => {
+export const updateUser = (id, data) => {
   return async (dispatch) => {
     try {
-      const response = await instance.update(UPDATE_USER + "/" + id);
+      const response = await instance.update(UPDATE_USER + "/" + id, data);
       dispatch({
         type: ActionTypes.UPDATE_USER_SUCCESS,
         data: response.data.data,

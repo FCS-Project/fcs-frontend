@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/common/Button";
 import DashboardHeader from "../components/common/DashboardHeader";
 import Input from "../components/common/Input";
@@ -9,10 +9,10 @@ import { updateUser } from "../store/actions/user";
 
 function EditInfo() {
   const user = useSelector((state) => state.user.user);
-  const [name, setName] = useState(user?.name);
-  const [password, setPassword] = useState(user?.password);
-  const [email, setEmail] = useState(user?.email);
-  const [mobile, setMobile] = useState(user?.mobileNumber);
+  const [name, setName] = useState(user?.name ?? "");
+  const [password, setPassword] = useState(user?.password ?? "");
+  const [email, setEmail] = useState(user?.email ?? "");
+  const [mobile, setMobile] = useState(user?.mobileNumber ?? "");
   const [modal, setModal] = useState(true);
   const dispatch = useDispatch();
 
