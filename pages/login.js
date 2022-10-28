@@ -6,6 +6,7 @@ import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
 import { signin } from "../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 // import { login } from "../store/actions/auth";
 
 function Login() {
@@ -17,6 +18,7 @@ function Login() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const router = useRouter();
 
   const onSubmit = () => {
     if (email && password) {
@@ -27,7 +29,7 @@ function Login() {
 
   useEffect(() => {
     if (access_token) {
-      // Redirect the user
+      router.push("/profile");
     }
   }, [access_token]);
 

@@ -6,6 +6,7 @@ import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../store/actions/auth";
+import { useRouter } from "next/router";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
@@ -16,6 +17,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
+  const router = useRouter();
 
   const [organistionType, setOrganistionType] = useState("");
   const [userType, setUserType] = useState("");
@@ -52,7 +54,7 @@ function Signup() {
 
   useEffect(() => {
     if (access_token) {
-      // Redirect the user
+      router.push("/profile");
     }
   }, [access_token]);
 
