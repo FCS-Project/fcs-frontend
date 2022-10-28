@@ -52,6 +52,22 @@ export const authReducer = (state = initState, action) => {
         access_token: null,
         refresh_token: null,
       };
+    case ActionTypes.OTP_LOGIN_SUCCESS:
+      setAccessToken(action.access_token);
+      setRefreshToken(action.refresh_token);
+      return {
+        ...state,
+        errmess: null,
+        access_token: action.access_token,
+        refresh_token: action.refresh_token,
+      };
+    case ActionTypes.OTP_LOGIN_FAIL:
+      return {
+        ...state,
+        errmess: "error",
+        access_token: null,
+        refresh_token: null,
+      };
     default:
       return state;
   }
