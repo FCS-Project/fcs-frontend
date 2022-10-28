@@ -1,15 +1,24 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import uploadImage from "../../utils/imageUpload";
 import Button from "../common/Button";
 import Input from "../common/Input";
 
 function CreateDocForm() {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
-  const [file, setFile] = useState("");
-  const chooseDocButton = useRef(null);
 
-  const handleFileClick = () => {
-    chooseDocButton.current.click();
+  const [file, setFile] = useState("");
+  const [fileSrc, setFileSrc] = useState("");
+
+  const handleFileChange = async (changeEvent) => {
+    const reader = new FileReader();
+
+    reader.onload = function (onLoadEvent) {
+      setFile(onLoadEvent.target.result);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+    await uploadImage(changeEvent, setFileSrc);
   };
 
   return (
@@ -26,20 +35,33 @@ function CreateDocForm() {
         state={type}
         setState={setType}
       />
-      <input
-        type="file"
-        name="my_file"
-        className="hidden"
-        ref={chooseDocButton}
-      ></input>
+
       <div className="my-2 sm:my-5">
-        <Button
-          text="Choose Document"
-          type="tertiary"
-          onClick={() => {
-            handleFileClick();
-          }}
-        />
+        <form method="post" onChange={(event) => handleFileChange(event)}>
+          <label htmlFor="file">
+            <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
+              Upload File
+            </div>
+          </label>
+
+          {fileSrc && (
+            <>
+              <p className="text-sm mt-5">Image Uploaded</p>
+              <img
+                src={file}
+                className="w-fit max-w-1/3 block ml-auto mr-auto border-theme my-5"
+              />
+            </>
+          )}
+
+          <input
+            type="file"
+            id="file"
+            name="file"
+            accept=".png,.jpg,.jpeg,.webp"
+            style={{ display: "none" }}
+          />
+        </form>
       </div>
     </div>
   );
