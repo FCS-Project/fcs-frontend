@@ -52,23 +52,44 @@ export const signin = (dto) => {
 export const verifyOtp = (dto) => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(VERIFY_OTP, dto);
-      if (response) {
-        dispatch({
-          type: ActionTypes.OTP_LOGIN_SUCCESS,
-          access_token: response.data.access_token,
-          refresh_token: response.data.refresh_token,
-        });
+      if (dto.editInfo) {
+        const response = await instance.post(VERIFY_OTP, dto);
+        if (response) {
+          dispatch({
+            type: ActionTypes.EDIT_INFO_OTP_SUCCESS,
+            success: response.data.success,
+          });
+        }
+      } else {
+        const response = await instance.post(VERIFY_OTP, dto);
+        if (response) {
+          dispatch({
+            type: ActionTypes.OTP_LOGIN_SUCCESS,
+            access_token: response.data.access_token,
+            refresh_token: response.data.refresh_token,
+          });
+        }
       }
     } catch (e) {
-      dispatch({
-        type: ActionTypes.LOGIN_FAIL,
-        errmess:
-          e?.response?.data?.error?.message ??
-          e?.response?.data?.message ??
-          e?.response?.message ??
-          e,
-      });
+      if (dto.editInfo) {
+        dispatch({
+          type: ActionTypes.EDIT_INFO_OTP_FAIL,
+          errmess:
+            e?.response?.data?.error?.message ??
+            e?.response?.data?.message ??
+            e?.response?.message ??
+            e,
+        });
+      } else {
+        dispatch({
+          type: ActionTypes.LOGIN_FAIL,
+          errmess:
+            e?.response?.data?.error?.message ??
+            e?.response?.data?.message ??
+            e?.response?.message ??
+            e,
+        });
+      }
     }
   };
 };

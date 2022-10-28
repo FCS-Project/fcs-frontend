@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Button from "../components/common/Button";
 import DashboardHeader from "../components/common/DashboardHeader";
 import Input from "../components/common/Input";
@@ -6,10 +7,11 @@ import SEO from "../components/common/SEO";
 import Modal from "../components/otp/Modal";
 
 function EditInfo() {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const user = useSelector((state) => state.user.user);
+  const [name, setName] = useState(user?.name);
+  const [password, setPassword] = useState(user?.password);
+  const [email, setEmail] = useState(user?.email);
+  const [mobile, setMobile] = useState(user?.mobileNumber);
 
   const [modal, setModal] = useState(true);
 
@@ -20,7 +22,8 @@ function EditInfo() {
           modal={modal}
           setModal={setModal}
           noCancel={true}
-          functionOnVerify={() => console.log("verify")}
+          editInfo={true}
+          email={email}
         />
       ) : (
         <>
