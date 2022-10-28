@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import DashboardHeader from "../../components/common/DashboardHeader";
 import ProfileInfo from "../../components/profile/ProfileInfo";
 import InfoBox from "../../components/profile/InfoBox";
 import { getProfile } from "../../utils/user/getProfile";

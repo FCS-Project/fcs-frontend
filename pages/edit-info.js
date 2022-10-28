@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/common/Button";
-import DashboardHeader from "../components/common/DashboardHeader";
+import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
 import Modal from "../components/otp/Modal";
@@ -101,7 +101,7 @@ function EditInfo() {
       ) : (
         <>
           <SEO title={"Edit Info"} />
-          <DashboardHeader />
+          <Header />
           <div className="flex-col align-center justify-center px-4 md:px-6 lg:px-8">
             <h1 className="text-lg md:text-xl lg:text-2xl font-semibold">
               Edit Your Information
