@@ -68,7 +68,6 @@ function Login() {
               <Link href="/signup">Sign Up</Link>
             </span>
           </div>
-          {loading ? <p>Loading..</p> : <div>{user}</div>}
           {error ?? ""}
         </div>
       </div>

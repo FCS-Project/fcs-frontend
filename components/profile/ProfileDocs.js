@@ -15,12 +15,12 @@ function ProfileDocs({ documents }) {
         ) : (
           <div>You have no uploaded documents.</div>
         )}
+        {/* <Document />
         <Document />
         <Document />
         <Document />
         <Document />
-        <Document />
-        <Document />
+        <Document /> */}
       </div>
     </div>
   );
