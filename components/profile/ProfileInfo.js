@@ -16,15 +16,13 @@ function ProfileInfo({ name, type, displaySrc, bannerSrc }) {
           src={displaySrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
           className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden bg-gray-200 mt-[-3.5rem] md:mt-[-4rem] lg:mt-[-5rem]"
         />
-        <p className="text-xl md:text-2xl lg:text-3xl">
+        <p className="mt-1 text-lg md:text-xl lg:text-2xl">
           {name ?? "Aryan Teng"}
         </p>
         {type ? (
           <div className="flex items-center">
-            <BusinessSharpIcon className="text-theme text-[2rem] mr-1" />
-            <p className="text-sm md:text-md lg:text-lg text-gray-500">
-              {type}
-            </p>
+            <BusinessSharpIcon className="text-theme mr-1 text-xs" />
+            <p className="text-xs md:text-md lg:text- text-gray-500">{type}</p>
           </div>
         ) : null}
       </div>
