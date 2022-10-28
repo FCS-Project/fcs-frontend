@@ -8,6 +8,7 @@ import { getProfile } from "../../utils/user/getProfile";
 import { useRouter } from "next/router";
 import Loader from "../../components/common/Loader";
 import SEO from "../../components/common/SEO";
+import Header from "../../components/common/Header";
 
 function User() {
   const router = useRouter();
@@ -35,7 +36,7 @@ function User() {
       ) : (
         <div className="bg-slate-50">
           <SEO title={user.name} />
-          <DashboardHeader />
+          <Header />
           <div className="gap-5 ml-auto mr-auto flex flex-col justify-start w-11/12 lg:w-3/4 md:gap-8 lg:gap-10 pb-10">
             <ProfileInfo
               name={user.name}
