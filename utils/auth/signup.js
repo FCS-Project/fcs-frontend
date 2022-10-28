@@ -12,7 +12,6 @@ export const signup = async (dto) => {
       }
     })
     .catch((error) => {
-      console.log(error);
       return {
         error: error.message,
       };
