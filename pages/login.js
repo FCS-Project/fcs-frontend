@@ -28,10 +28,10 @@ function Login() {
 
   useEffect(() => {
     if (access_token) {
-      dispatch(getUser());
+      dispatch(getUser(access_token));
       router.push("/profile");
     }
-  }, [access_token, router]);
+  }, [access_token, router, dispatch]);
 
   return (
     <>

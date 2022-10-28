@@ -8,12 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../store/actions/user";
 
 function ProfilePage() {
-  const access_token = useSelector((state) => state.user.access_token);
-  const user = useSelector((state) => state.user);
+  const access_token = useSelector((state) => state.auth.access_token);
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   useEffect(() => {
     if (access_token) {
-      dispatch(getUser());
+      dispatch(getUser(access_token));
     }
     if (user) {
       console.log(user);

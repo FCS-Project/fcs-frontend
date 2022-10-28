@@ -6,7 +6,7 @@ function VerifyPopup() {
 
   return (
     <div className="flex flex-col w-full mt-5">
-      <Input heading="OTP" placeholder="OTP" state={otp} setName={setOtp} />
+      <Input heading="OTP" placeholder="OTP" state={otp} setState={setOtp} />
     </div>
   );
 }
