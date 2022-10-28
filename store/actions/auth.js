@@ -1,7 +1,6 @@
 import instance from "../../axios";
 import { SIGNIN, SIGNUP } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
-import { getUser } from "./user";
 
 export const signup = (dto) => {
   return async (dispatch) => {
