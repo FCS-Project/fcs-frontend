@@ -21,16 +21,6 @@ export default function Home() {
     }
   };
 
-  // var filteredData = data.filter((item) => {
-  //   if (filter == "type") {
-  //     return item.type.toLowerCase().includes(state);
-  //   } else if (filter == "name") {
-  //     return item.name.toLowerCase().includes(state);
-  //   } else if (filter == "location") {
-  //     return item.location.toLowerCase().includes(state);
-  //   }
-  // });
-
   useEffect(() => {
     fetchHomeData();
   }, []);
