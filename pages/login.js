@@ -7,6 +7,7 @@ import SEO from "../components/common/SEO";
 import { signin } from "../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { getUser } from "../store/actions/user";
 
 function Login() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function Login() {
 
   useEffect(() => {
     if (access_token) {
+      dispatch(getUser());
       router.push("/profile");
     }
   }, [access_token, router]);
