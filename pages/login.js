@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { getUser } from "../store/actions/user";
 import Modal from "../components/otp/Modal";
+import { otpSignIn } from "../utils/otp/otpSignIn";
 
 function Login() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function Login() {
     if (email && password) {
       const dto = { email: email, password: password };
       if (otp) {
+        otpSignIn({ email: email });
         setModal(true);
       } else {
         dispatch(signin(dto));

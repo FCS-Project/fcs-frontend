@@ -27,6 +27,7 @@ function ProfilePage() {
             name={user.name}
             displaySrc={user.displaySrc}
             type={user.type}
+            email={user.email}
           />
           <ProfileDocs documents={user.documents} />
           <CreateDoc />

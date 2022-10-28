@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
+import { otpSignIn } from "../../utils/otp/otpSignIn";
 import Button from "../common/Button";
 
-function ProfileTop({ name, type, displaySrc }) {
+function ProfileTop({ name, type, displaySrc, email }) {
   return (
     <div className="flex flex-col items-center gap-3 md:gap-4 shadow-md px-8 py-4 md:py-4 md:px-8 lg:px-10 lg:py-5 w-4/5 ml-auto my-6 md:my-8 lg:my-10 mr-auto md:w-1/3">
       <img
@@ -16,7 +17,13 @@ function ProfileTop({ name, type, displaySrc }) {
         <div className="text-lg md:text-xl text-gray-500">{type}</div>
       </div>
       <Link href="/edit-info">
-        <Button type="tertiary" text="Edit Info" />
+        <Button
+          type="tertiary"
+          text="Edit Info"
+          onClick={() => {
+            otpSignIn({ email: email });
+          }}
+        />
       </Link>
     </div>
   );
