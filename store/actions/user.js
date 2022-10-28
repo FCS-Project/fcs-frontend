@@ -8,7 +8,7 @@ export const getUser = (access_token) => {
       const response = await instance.get(GET_USER, {
         headers: { Authorization: `Bearer ${access_token}` },
       });
-      if (response.success) {
+      if (response.data.success) {
         dispatch({
           type: ActionTypes.GET_USER_SUCCESS,
           data: response.data.data,
