@@ -16,7 +16,12 @@ function EditInfo() {
   return (
     <>
       {modal ? (
-        <Modal modal={modal} setModal={setModal} noCancel={true} />
+        <Modal
+          modal={modal}
+          setModal={setModal}
+          noCancel={true}
+          functionOnVerify={() => console.log("verify")}
+        />
       ) : (
         <>
           <SEO title={"Edit Info"} />
