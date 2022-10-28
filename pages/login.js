@@ -26,7 +26,7 @@ function Login() {
       const dto = { email: email, password: password };
       if (otp) {
         const otpDto = { email: email };
-        otpSignIn(dto).then((response) => {
+        otpSignIn(otpDto).then((response) => {
           if (response.data.success) {
             setModal(response.data.success);
           }
