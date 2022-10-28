@@ -7,7 +7,6 @@ export const logout = async () => {
     .post("/auth/logout", { headers: { Authorization: `Bearer ${jwt}` } })
     .then((response) => {
       if (response.data.success) {
-        localStorage.removeItem("user");
         return {
           success: response.data.success,
         };

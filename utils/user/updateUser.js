@@ -1,5 +1,5 @@
+import instance from "../../axios";
 import authHeader from "../../store/services/auth-header";
-import instance from "../axios";
 
 export const updateUser = async (id) => {
   return instance

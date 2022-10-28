@@ -7,7 +7,6 @@ import SEO from "../components/common/SEO";
 import { signin } from "../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-// import { login } from "../store/actions/auth";
 
 function Login() {
   const id = "921392bf-9c79-48fc-80e8-991353f8bbc6";
@@ -29,9 +28,9 @@ function Login() {
 
   useEffect(() => {
     if (access_token) {
-      console.log("access_token>>>", access_token);
+      router.push("/profile");
     }
-  }, [access_token]);
+  }, [access_token, router]);
 
   return (
     <>

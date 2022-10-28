@@ -1,9 +1,10 @@
-import instance from "../axios";
-import { useSelector } from "react-redux";
+import instance from "../../axios";
+import { getAccessToken } from "../../lib/auth";
 
 export const deleteDocument = async (id) => {
+  const jwt = getAccessToken();
   return instance
-    .delete(`/document/${id}`, { headers: { Authorization: user } })
+    .delete(`/document/${id}`, { headers: { Authorization: `Bearer ${jwt}` } })
     .then((response) => {
       if (response.data.success) {
         return {
