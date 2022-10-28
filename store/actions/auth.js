@@ -49,31 +49,33 @@ export const signin = (dto) => {
   };
 };
 
-export const logout = async () => {
-  const jwt = getAccessToken();
-  try {
-    const response = await instance.post("/auth/logout", {
-      headers: { Authorization: `Bearer ${jwt}` },
-    });
-    if (response.data.success) {
-      removeTokenFromState();
+export const logout = () => {
+  return async (dispatch) => {
+    const jwt = getAccessToken();
+    try {
+      const response = await instance.post("/auth/logout", {
+        headers: { Authorization: `Bearer ${jwt}` },
+      });
+      if (response.data.success) {
+        removeTokenFromState();
+        dispatch({
+          type: ActionTypes.LOGOUT_SUCCESS,
+          success: response.data.success,
+          access_token: null,
+          refresh_token: null,
+        });
+      }
+    } catch (error) {
       dispatch({
-        type: ActionTypes.LOGOUT_SUCCESS,
-        success: response.data.success,
-        access_token: null,
-        refresh_token: null,
+        type: ActionTypes.LOGOUT_FAIL,
+        errmess:
+          e?.response?.data?.error?.message ??
+          e?.response?.data?.message ??
+          e?.response?.message ??
+          e,
       });
     }
-  } catch (error) {
-    dispatch({
-      type: ActionTypes.LOGOUT_FAIL,
-      errmess:
-        e?.response?.data?.error?.message ??
-        e?.response?.data?.message ??
-        e?.response?.message ??
-        e,
-    });
-  }
+  };
 };
 
 export const verifyOtp = (dto) => {
