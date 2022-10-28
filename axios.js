@@ -58,14 +58,14 @@ const instance = axios.create({
 //           if (tokenParts.exp > now) {
 //             return instance
 //               .post(API_URL + REFRESH_TOKEN, {
-//                 refresh: refreshToken,
+//                 headers: { Authorzation: `Bearer refreshToken` }
 //               })
 //               .then((response) => {
 //                 // console.log('Refresh token success', response);
-//                 setAccessToken(response.data.access);
+//                 setAccessToken(response.data.access_token);
 //                 instance.defaults.headers.common["token"] =
 //                   response.data.access;
-//                 originalRequest.headers["token"] = response.data.access;
+//                 originalRequest.headers["token"] = response.data.access_token;
 
 //                 // console.log('Refresh token success complete', response);
 //                 return instance(originalRequest);

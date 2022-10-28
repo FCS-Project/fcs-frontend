@@ -18,12 +18,9 @@ function Signup() {
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const router = useRouter();
-
   const [organistionType, setOrganistionType] = useState("");
   const [userType, setUserType] = useState("");
-
   const [organisationFlag, setOrganizationFlag] = useState(false);
-
   const chooseDPButton = useRef(null);
   const chooseBannerButton = useRef(null);
 
@@ -52,11 +49,11 @@ function Signup() {
     }
   };
 
-  useEffect(() => {
-    if (access_token) {
-      router.push("/profile");
-    }
-  }, [access_token]);
+  // useEffect(() => {
+  //   if (access_token) {
+  //     router.push("/profile");
+  //   }
+  // }, [access_token]);
 
   return (
     <>
