@@ -93,3 +93,25 @@ export const verifyOtp = (dto) => {
     }
   };
 };
+
+export const setTokensInState = (access, refresh) => (dispatch) => {
+  return dispatch({
+    type: ActionTypes.SET_TOKEN_IN_STATE,
+    access: access,
+    refresh,
+    data: {
+      access,
+      refresh,
+    },
+  });
+};
+
+export const removeTokenFromState = () => (dispatch) => {
+  // axios.defaults.headers["Cookie"] = null;
+  setAccessToken(null);
+  setRefreshToken(null);
+  // clearAuthToken();
+  return dispatch({
+    type: ActionTypes.REMOVE_TOKEN_FROM_STATE,
+  });
+};
