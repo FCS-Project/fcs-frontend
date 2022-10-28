@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import Header from "../components/common/Header";
 import Search from "../components/common/Search";
@@ -17,14 +18,21 @@ export default function Home() {
     if (response.success) {
       setData(response.data);
       setLoading(false);
-      console.log("hello", response);
+      var filteredData = response.data.filter((item) => {
+        if (filter == "type") {
+          return item.type.toLowerCase().includes(state);
+        } else if (filter == "name") {
+          return item.name.toLowerCase().includes(state);
+        } else if (filter == "location") {
+          return item.location.toLowerCase().includes(state);
+        }
+      });
     }
   };
 
   useEffect(() => {
     fetchHomeData();
   }, []);
-
   return (
     <>
       {loading ? (
