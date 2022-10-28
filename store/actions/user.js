@@ -30,12 +30,16 @@ export const getUser = () => {
 };
 
 export const updateUser = (id, data) => {
+  const jwt = getAccessToken();
   return async (dispatch) => {
     try {
-      const response = await instance.update(UPDATE_USER + "/" + id, data);
+      const response = await instance.patch(UPDATE_USER + "/" + id, data, {
+        headers: { Authorization: `Bearer ${jwt}` },
+      });
       dispatch({
         type: ActionTypes.UPDATE_USER_SUCCESS,
         data: response.data.data,
+        success: true,
       });
     } catch (e) {
       dispatch({

@@ -3,6 +3,7 @@ import * as ActionTypes from "../ActionTypes";
 const initState = {
   errmess: null,
   user: null,
+  success: null,
 };
 
 export const userReducer = (state = initState, action) => {
@@ -23,6 +24,7 @@ export const userReducer = (state = initState, action) => {
       return {
         ...state,
         errmess: null,
+        success: true,
       };
     case ActionTypes.UPDATE_USER_FAIL:
       return {

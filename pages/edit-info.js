@@ -1,35 +1,91 @@
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/common/Button";
 import DashboardHeader from "../components/common/DashboardHeader";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
 import Modal from "../components/otp/Modal";
-import { updateUser } from "../store/actions/user";
+import { getUser, updateUser } from "../store/actions/user";
+import uploadImage from "../utils/imageUpload";
 
 function EditInfo() {
   const user = useSelector((state) => state.user.user);
   const [name, setName] = useState(user?.name ?? "");
-  const [password, setPassword] = useState(user?.password ?? "");
   const [email, setEmail] = useState(user?.email ?? "");
   const [mobile, setMobile] = useState(user?.mobileNumber ?? "");
+  const [location, setLocation] = useState(user?.location ?? "");
+  const [description, setDescription] = useState(user?.description ?? "");
+  const success = useSelector((state) => state.user.success);
   const [modal, setModal] = useState(true);
+  const roles = user?.roles[0];
+  const router = useRouter();
+  console.log("roles", roles);
+
   const dispatch = useDispatch();
+
+  const [fileDP, setFileDP] = useState("");
+  const [fileDPSrc, setFileDPSrc] = useState(user?.displaySrc ?? "");
+
+  const [fileBanner, setFileBanner] = useState("");
+  const [fileBannerSrc, setFileBannerSrc] = useState(user?.bannerSrc ?? "");
+
+  const handleFileChange = async (changeEvent, dp) => {
+    const reader = new FileReader();
+
+    console.log("changeEvent>>>", changeEvent);
+
+    if (dp) {
+      console.log("hi");
+      reader.onload = function (onLoadEvent) {
+        setFileDP(onLoadEvent.target.result);
+      };
+
+      reader.readAsDataURL(changeEvent.target.files[0]);
+      await uploadImage(changeEvent, setFileDPSrc, "dp");
+    } else {
+      reader.onload = function (onLoadEvent) {
+        setFileBanner(onLoadEvent.target.result);
+      };
+      reader.readAsDataURL(changeEvent.target.files[0]);
+      await uploadImage(changeEvent, setFileBannerSrc, "banner");
+    }
+  };
 
   const submit = () => {
     //basic error handling
-    if (name != "" && email != "" && password != "") {
-      const dto = {
-        name: name,
-        email: email,
-        location: location,
-        description: description,
-        displaySrc: fileDPSrc,
-        bannerSrc: fileBannerSrc,
-      };
-      dispatch(updateUser(user?.id, dto));
+    if (roles == "User") {
+      if (name != "" && email != "") {
+        const dto = {
+          name: name,
+          email: email,
+          mobileNumber: mobile,
+          displaySrc: fileDPSrc,
+        };
+        dispatch(updateUser(user?.id, dto));
+      }
+    } else if ((roles = "Organisation")) {
+      if (name != "" && email != "") {
+        const dto = {
+          name: name,
+          email: email,
+          location: location,
+          mobileNumber: mobile,
+          description: description,
+          displaySrc: fileDPSrc,
+          bannerSrc: fileBannerSrc,
+        };
+        dispatch(updateUser(user?.id, dto));
+      }
     }
   };
+
+  useEffect(() => {
+    if (success) {
+      dispatch(getUser());
+      router.push("/profile");
+    }
+  }, [success]);
 
   return (
     <>
@@ -68,6 +124,102 @@ function EditInfo() {
                 state={mobile}
                 setState={setMobile}
               />
+              {roles == "Organisation" && (
+                <>
+                  <Input
+                    heading="Location"
+                    placeholder="Location"
+                    state={location}
+                    setState={setLocation}
+                  />
+                  <Input
+                    heading="Description"
+                    placeholder="Description"
+                    state={description}
+                    setState={setDescription}
+                  />
+                </>
+              )}
+
+              <div className="mt-2 text-sm sm:text-base lg:text-lg">
+                Upload Pictures
+              </div>
+
+              <div className="flex w-full items-start justify-between mt-2 gap-2 lg:gap-5">
+                <form
+                  method="post"
+                  onChange={(event) => handleFileChange(event, true)}
+                  className="w-[100%]"
+                >
+                  {fileDPSrc && (
+                    <>
+                      <p className="text-sm mt-5">
+                        {fileDP ? "DP Uploaded" : "Current DP"}
+                      </p>
+                      <img
+                        alt="display picture"
+                        src={fileDP ? fileDP : fileDPSrc}
+                        className="w-[50%] object-contain max-w-1/2  block mr-auto border-theme my-5"
+                      />
+                    </>
+                  )}
+                  <label htmlFor="dp">
+                    <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
+                      Upload Dp
+                    </div>
+                  </label>
+
+                  <input
+                    type="file"
+                    id="dp"
+                    name="dp"
+                    accept=".png,.jpg,.jpeg,.webp"
+                    style={{ display: "none" }}
+                  />
+                </form>
+              </div>
+
+              {roles == "Organisation" && (
+                <>
+                  <div className="mt-2 text-sm sm:text-base lg:text-lg">
+                    Upload Pictures
+                  </div>
+                  <div className="flex w-full items-start justify-between mt-2 gap-2 lg:gap-5">
+                    <form
+                      method="post"
+                      onChange={(event) => handleFileChange(event)}
+                      className="w-[100%]"
+                    >
+                      {fileBannerSrc && (
+                        <>
+                          <p className="text-sm mt-5">
+                            {fileBanner ? "Banner Uploaded" : "Current Banner"}
+                          </p>
+                          <img
+                            alt="display picture"
+                            src={fileBanner ? fileBanner : fileBannerSrc}
+                            className="w-[50%] object-contain max-w-1/2  block mr-auto border-theme my-5"
+                          />
+                        </>
+                      )}
+                      <label htmlFor="banner">
+                        <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
+                          Upload Dp
+                        </div>
+                      </label>
+
+                      <input
+                        type="file"
+                        id="banner"
+                        name="banner"
+                        accept=".png,.jpg,.jpeg,.webp"
+                        style={{ display: "none" }}
+                      />
+                    </form>
+                  </div>
+                </>
+              )}
+
               <div className="mt-5 flex items-center justify-between gap-20">
                 <Button
                   type="secondary"
@@ -78,7 +230,7 @@ function EditInfo() {
                   type="primary"
                   text="Save Info"
                   style={"w-1/4 sm:w-1/5"}
-                  onClick={() => submit}
+                  onClick={() => submit()}
                 />
               </div>
             </div>
