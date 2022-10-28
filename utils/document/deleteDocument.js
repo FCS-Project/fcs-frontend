@@ -1,9 +1,9 @@
-import authHeader from "../../store/services/auth-header";
 import instance from "../axios";
+import { useSelector } from "react-redux";
 
 export const deleteDocument = async (id) => {
   return instance
-    .delete(`/document/${id}`, { headers: authHeader() })
+    .delete(`/document/${id}`, { headers: { Authorization: user } })
     .then((response) => {
       if (response.data.success) {
         return {

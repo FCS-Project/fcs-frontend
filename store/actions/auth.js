@@ -29,12 +29,15 @@ export const signin = (data) => {
   return async (dispatch) => {
     try {
       const response = await instance.post(SIGNIN, data);
-      dispatch({
-        type: ActionTypes.LOGIN_SUCCESS,
-        data: response.data,
-        access_token: response.data.access_token,
-        refresh_token: response.data.refresh_token,
-      });
+      if (response) {
+        console.log(response);
+        dispatch({
+          type: ActionTypes.LOGIN_SUCCESS,
+          data: response.data,
+          access_token: response.data.access_token,
+          refresh_token: response.data.refresh_token,
+        });
+      }
     } catch (e) {
       dispatch({
         type: ActionTypes.LOGIN_FAIL,
