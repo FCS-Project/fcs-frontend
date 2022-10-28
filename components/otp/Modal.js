@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyOtp } from "../../store/actions/auth";
 import { getUser } from "../../store/actions/user";
+import { otpSignIn } from "../../utils/otp/otpSignIn";
 import Button from "../common/Button";
 import VerifyPopup from "./VerifyPopup";
 
@@ -16,6 +17,8 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
   const submit = () => {
     dispatch(verifyOtp({ email: emailState, otp: otp, editInfo: editInfo }));
   };
+
+  console.log("emailll", email);
 
   useEffect(() => {
     if (access_token && !editInfo) {
@@ -55,6 +58,15 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
                   type="secondary"
                   onClick={() => {
                     setModal(false);
+                  }}
+                />
+              )}
+              {editInfo && (
+                <Button
+                  text={"Resend OTP"}
+                  type="secondary"
+                  onClick={() => {
+                    otpSignIn({ email: email });
                   }}
                 />
               )}
