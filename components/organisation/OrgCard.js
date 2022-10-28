@@ -7,7 +7,7 @@ import BusinessSharpIcon from "@mui/icons-material/BusinessSharp";
 function OrgCard({ id, name, imgSrc, desc, location, type }) {
   const description = desc?.slice(0, 100);
   return (
-    <Link href="user/b8ecb788-5e44-4aed-8a0e-a47f5ad7889b">
+    <Link href={`user/${id}`}>
       <div className="max-h-56 w-11/12 sm:w-5/12 md:w-64 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden pb-2">
         <img
           alt="display picture"
@@ -16,19 +16,28 @@ function OrgCard({ id, name, imgSrc, desc, location, type }) {
         />
         <div className="flex flex-col px-2 pt-1.5 gap-1">
           <div className="text-md">
-            {name?.length > 30 ? name.slice(0, 30) + "..." : name}
-            Max Hospital
+            {name?.length > 5 ? name.slice(0, 25) + "..." : name}
           </div>
           {location ? (
             <div className="flex items-center">
-              <PlaceIcon className="text-theme text-[1rem] ml-[-0.4rem] mr-1" />
-              <div className="text-xs">{location}</div>
+              <PlaceIcon
+                sx={{ fontSize: "1.25rem" }}
+                className="text-theme ml-[-0.1rem] mr-1"
+              />
+              <div className="text-xs text-gray-500">
+                {location?.length > 20
+                  ? location.slice(0, 30) + "..."
+                  : location}
+              </div>
             </div>
           ) : null}
           {type ? (
             <div className="flex items-center">
-              <BusinessSharpIcon className="text-theme text-[1rem] ml-[-0.2rem] mr-1" />
-              <div className="text-xs">{type}</div>
+              <BusinessSharpIcon
+                sx={{ fontSize: "1.25rem" }}
+                className="text-theme mr-1"
+              />
+              <div className="text-xs text-gray-500">{type}</div>
             </div>
           ) : null}
         </div>

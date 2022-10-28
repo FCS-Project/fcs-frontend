@@ -3,42 +3,55 @@ import Header from "../components/common/Header";
 import Search from "../components/common/Search";
 import SEO from "../components/common/SEO";
 import OrgCardsFlex from "../components/organisation/OrgCardsFlex";
+import Loader from "../components/common/Loader";
+import { getHome } from "../utils/user/getHome";
 
 export default function Home() {
   const [filter, setFilter] = useState("type");
   const [state, setState] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
 
-  const data = [
-    { name: "Avi", type: "hi", location: "delhi" },
-    { name: "Avi2", type: "bye", location: "haryana" },
-    { name: "Aryan", type: "hello", location: "london" },
-  ];
-
-  var filteredData = data.filter((item) => {
-    if (filter == "type") {
-      return item.type.toLowerCase().includes(state);
-    } else if (filter == "name") {
-      return item.name.toLowerCase().includes(state);
-    } else if (filter == "location") {
-      return item.location.toLowerCase().includes(state);
+  const fetchHomeData = async () => {
+    const response = await getHome();
+    if (response.success) {
+      setData(response.data);
+      setLoading(false);
+      console.log("hello", response);
     }
-  });
+  };
+
+  // var filteredData = data.filter((item) => {
+  //   if (filter == "type") {
+  //     return item.type.toLowerCase().includes(state);
+  //   } else if (filter == "name") {
+  //     return item.name.toLowerCase().includes(state);
+  //   } else if (filter == "location") {
+  //     return item.location.toLowerCase().includes(state);
+  //   }
+  // });
 
   useEffect(() => {
-    console.log("filteredData>>>", filteredData);
-  }, [filteredData]);
+    fetchHomeData();
+  }, []);
 
   return (
     <>
-      <SEO />
-      <Header />
-      <Search
-        state={state}
-        setState={setState}
-        filter={filter}
-        setFilter={setFilter}
-      />
-      <OrgCardsFlex userArr={filteredData} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <SEO />
+          <Header />
+          <Search
+            state={state}
+            setState={setState}
+            filter={filter}
+            setFilter={setFilter}
+          />
+          <OrgCardsFlex userArr={data} />
+        </>
+      )}
     </>
   );
 }

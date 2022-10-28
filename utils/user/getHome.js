@@ -9,7 +9,7 @@ export const getHome = async () => {
       if (response.data.success) {
         return {
           success: response.data.success,
-          response: response.data.data,
+          data: response.data.data,
         };
       }
     })
