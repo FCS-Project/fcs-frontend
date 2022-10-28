@@ -6,6 +6,7 @@ import ProfileTop from "../components/profile/ProfileTop";
 import SEO from "../components/common/SEO";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../store/actions/user";
+import Header from "../components/common/Header";
 
 function ProfilePage() {
   const access_token = useSelector((state) => state.auth.access_token);
@@ -15,14 +16,14 @@ function ProfilePage() {
     if (access_token) {
       dispatch(getUser());
     }
-  }, [access_token, dispatch, user]);
+  }, []);
 
   return (
     <>
       {user ? (
         <>
           <SEO title={user.name} />
-          <DashboardHeader />
+          <Header />
           <ProfileTop
             name={user.name}
             displaySrc={user.displaySrc}
