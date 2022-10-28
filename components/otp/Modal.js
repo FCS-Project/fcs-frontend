@@ -3,9 +3,10 @@ import Button from "../common/Button";
 import EmailPopup from "./EmailPopup";
 import VerifyPopup from "./VerifyPopup";
 
-function Modal({ modal, setModal, noCancel }) {
+function Modal({ modal, setModal, noCancel, functionOnVerify }) {
   const submit = () => {
     alert("OTP Submitted");
+    functionOnVerify();
     setModal(false);
   };
 
