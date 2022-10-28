@@ -43,7 +43,7 @@ instance.interceptors.response.use(
           const now = Math.ceil(Date.now() / 1000);
           if (tokenParts.exp > now) {
             return instance
-              .post(API_URL + REFRESH_TOKEN, {
+              .post(REFRESH_TOKEN, {
                 headers: { Authorzation: `Bearer ${refreshToken}` },
               })
               .then((response) => {
