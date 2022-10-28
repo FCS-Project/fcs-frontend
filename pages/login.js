@@ -17,13 +17,17 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [modal, setModal] = useState(false);
-
+  const [otp, setOtp] = useState(false);
   const router = useRouter();
 
   const onSubmit = () => {
     if (email && password) {
       const dto = { email: email, password: password };
-      setModal(true);
+      if (otp) {
+        setModal(true);
+      } else {
+        dispatch(signin(dto));
+      }
     }
   };
 
@@ -45,7 +49,7 @@ function Login() {
           <div className="mt-10 flex justify-center">
             <div className="flex flex-col p-10 w-10/12 sm:w-4/5 md:w-3/5 lg:w-2/5 mt-24 shadow-lg">
               <div className="text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl">
-                Login
+                Login {otp ? "With OTP" : "With Password"}
               </div>
               <Input
                 heading={"Email Address"}
@@ -54,24 +58,47 @@ function Login() {
                 setState={setEmail}
                 required={true}
               />
-              <Input
-                heading={"Password"}
-                type={"password"}
-                placeholder={"Password"}
-                state={password}
-                setState={setPassword}
-                required={true}
-                style={"my-2"}
-              />
+              {!otp && (
+                <Input
+                  heading={"Password"}
+                  type={"password"}
+                  placeholder={"Password"}
+                  state={password}
+                  setState={setPassword}
+                  required={true}
+                  style={"my-2"}
+                />
+              )}
               <Button
                 type={"primary"}
                 text={"Login"}
                 onClick={onSubmit}
                 style={"my-2"}
               />
+              {otp ? (
+                <div
+                  className="my-1 text-sm md:text-base"
+                  onClick={() => setOtp(false)}
+                >
+                  Login with Password{" "}
+                  <span className="text-theme hover:underline cursor-pointer">
+                    Click Here.
+                  </span>
+                </div>
+              ) : (
+                <div
+                  className="my-1 text-sm md:text-base"
+                  onClick={() => setOtp(true)}
+                >
+                  Login with OTP{" "}
+                  <span className="text-theme hover:underline cursor-pointer">
+                    Click Here.
+                  </span>
+                </div>
+              )}
               <div className="my-1 text-sm md:text-base">
                 Not a User?{" "}
-                <span className="text-theme hover:underline">
+                <span className="text-theme hover:underline cursor-pointer">
                   <Link href="/signup">Sign Up</Link>
                 </span>
               </div>

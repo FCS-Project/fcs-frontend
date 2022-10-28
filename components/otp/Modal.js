@@ -7,25 +7,32 @@ import Button from "../common/Button";
 import EmailPopup from "./EmailPopup";
 import VerifyPopup from "./VerifyPopup";
 
-function Modal({ email, modal, setModal, noCancel }) {
+function Modal({ email, modal, setModal, noCancel, editInfo }) {
   const [verify, setVerify] = useState(false);
   const [otp, setOtp] = useState("");
   const dispatch = useDispatch();
   const access_token = useSelector((state) => state.auth.access_token);
+  const success = useSelector((state) => state.auth.success);
   const router = useRouter();
+  const [emailState, setEmailState] = useState(email);
 
   const submit = () => {
-    alert("OTP Submitted");
-    dispatch(verifyOtp({ email: email, otp: otp }));
-    setModal(false);
+    dispatch(verifyOtp({ email: emailState, otp: otp, editInfo: editInfo }));
   };
 
   useEffect(() => {
-    if (access_token) {
+    if (access_token && !editInfo) {
       dispatch(getUser());
+      setModal(false);
       router.push("/profile");
     }
   }, [access_token, dispatch]);
+
+  useEffect(() => {
+    if (success) {
+      setModal(false);
+    }
+  }, [success, dispatch]);
 
   return (
     <div>
@@ -34,7 +41,7 @@ function Modal({ email, modal, setModal, noCancel }) {
           <div className="p-5 w-11/12 sm:w-10/12 md:w-9/12 lg:w-1/2 h-fit bg-white block p-5 border-2 mx-auto">
             <div className="flex items-center justify-between">
               <h1 className="text-xl md:text-2xl">
-                {!verify ? "Enter Email" : "Verify OTP"}
+                {!verify ? "Your Email" : "Verify OTP"}
               </h1>
               {!noCancel && (
                 <div
@@ -47,7 +54,10 @@ function Modal({ email, modal, setModal, noCancel }) {
             </div>
 
             {!verify ? (
-              <EmailPopup email={email} verify={verify} setVerify={setVerify} />
+              <EmailPopup
+                emailState={emailState}
+                setEmailState={setEmailState}
+              />
             ) : (
               <VerifyPopup otp={otp} setOtp={setOtp} />
             )}
