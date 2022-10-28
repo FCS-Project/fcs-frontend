@@ -78,7 +78,7 @@ function EditInfo() {
                   type="primary"
                   text="Save Info"
                   style={"w-1/4 sm:w-1/5"}
-                  onClick={submit}
+                  onClick={() => submit}
                 />
               </div>
             </div>
