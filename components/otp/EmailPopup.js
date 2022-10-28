@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import Input from "../common/Input";
 
-function EmailPopup() {
-  const [email, setEmail] = useState("");
+function EmailPopup({ email }) {
+  const [emailState, setEmailState] = useState(email);
 
   return (
     <div className="flex flex-col w-full mt-5">
       <Input
         heading="Email"
         placeholder="Email"
-        state={email}
-        setState={setEmail}
+        state={emailState}
+        setState={setEmailState}
       />
     </div>
   );

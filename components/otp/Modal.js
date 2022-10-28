@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { verifyOtp } from "../../store/actions/auth";
+import { otpSignIn } from "../../utils/otp/otpSignIn";
 import Button from "../common/Button";
 import EmailPopup from "./EmailPopup";
 import VerifyPopup from "./VerifyPopup";
 
-function Modal({ modal, setModal, noCancel, functionOnVerify }) {
+function Modal({ email, modal, setModal, noCancel }) {
+  const [verify, setVerify] = useState(false);
+  const [otp, setOtp] = useState("");
+  const dispatch = useDispatch();
+  const access_token = useSelector((state) => state.auth.access_token);
+  const router = useRouter();
+
   const submit = () => {
     alert("OTP Submitted");
-    functionOnVerify();
+    dispatch(verifyOtp({ email: email, otp: otp }));
     setModal(false);
   };
 
-  const [verify, setVerify] = useState(false);
+  useEffect(() => {
+    if (access_token) {
+      dispatch(getUser());
+      router.push("/profile");
+    }
+  }, [access_token, dispatch]);
 
   return (
     <div>
@@ -32,9 +47,9 @@ function Modal({ modal, setModal, noCancel, functionOnVerify }) {
             </div>
 
             {!verify ? (
-              <EmailPopup verify={verify} setVerify={setVerify} />
+              <EmailPopup email={email} verify={verify} setVerify={setVerify} />
             ) : (
-              <VerifyPopup />
+              <VerifyPopup otp={otp} setOtp={setOtp} />
             )}
 
             <div className="mt-5 flex justify-between gap-10 sm:gap-52 md:gap-64 lg:gap-72 lg:mt-5">
@@ -51,6 +66,7 @@ function Modal({ modal, setModal, noCancel, functionOnVerify }) {
                 text={!verify ? "Next" : "Submit"}
                 type="primary"
                 onClick={() => {
+                  !verify && otpSignIn({ email: email });
                   !verify ? setVerify(true) : submit();
                 }}
               />

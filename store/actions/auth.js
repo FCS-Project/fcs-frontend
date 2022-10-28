@@ -1,5 +1,5 @@
 import instance from "../../axios";
-import { OTPSIGNIN, SIGNIN, SIGNUP } from "../../constants";
+import { OTPSIGNIN, SIGNIN, SIGNUP, VERIFY_OTP } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
 export const signup = (dto) => {

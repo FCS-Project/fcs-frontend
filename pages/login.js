@@ -4,7 +4,7 @@ import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
-import { signin } from "../store/actions/auth";
+import { signin, verifyOtp } from "../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { getUser } from "../store/actions/user";
@@ -37,11 +37,7 @@ function Login() {
   return (
     <>
       {modal ? (
-        <Modal
-          modal={modal}
-          setModal={setModal}
-          functionOnVerify={() => console.log("verify")}
-        />
+        <Modal modal={modal} email={email} setModal={setModal} />
       ) : (
         <>
           <SEO title={"Login"} />
