@@ -1,5 +1,5 @@
 import instance from "../../axios";
-import { SIGNIN, SIGNUP, VERIFY_OTP } from "../../constants";
+import { LOGOUT, SIGNIN, SIGNUP, VERIFY_OTP } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
 export const signup = (dto) => {
@@ -53,7 +53,7 @@ export const logout = () => {
   const jwt = getAccessToken();
   return async (dispatch) => {
     try {
-      const response = await instance.post("/auth/logout", {
+      const response = await instance.post(LOGOUT, {
         headers: { Authorization: `Bearer ${jwt}` },
       });
       if (response.data.success) {
