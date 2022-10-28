@@ -7,7 +7,7 @@ import BusinessSharpIcon from "@mui/icons-material/BusinessSharp";
 function OrgCard({ id, name, imgSrc, desc, location, type }) {
   const description = desc?.slice(0, 100);
   return (
-    <Link href="user/1">
+    <Link href="user/b8ecb788-5e44-4aed-8a0e-a47f5ad7889b">
       <div className="max-h-56 w-11/12 sm:w-5/12 md:w-64 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden pb-2">
         <img
           alt="display picture"
