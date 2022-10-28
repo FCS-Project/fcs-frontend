@@ -6,6 +6,7 @@ import SEO from "../components/common/SEO";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../store/actions/user";
 import Header from "../components/common/Header";
+import Loader from "../components/common/Loader";
 
 function ProfilePage() {
   const access_token = useSelector((state) => state.auth.access_token);
@@ -19,6 +20,7 @@ function ProfilePage() {
 
   return (
     <>
+      <SEO />
       {user ? (
         <>
           <SEO title={user.name} />
@@ -32,7 +34,9 @@ function ProfilePage() {
           <ProfileDocs documents={user.documents} />
           <CreateDoc />
         </>
-      ) : null}
+      ) : (
+        <Loader />
+      )}
     </>
   );
 }
