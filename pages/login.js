@@ -79,7 +79,7 @@ function Login() {
                 type={"primary"}
                 text={"Login"}
                 onClick={onSubmit}
-                style={"my-2"}
+                style={"my-4"}
               />
               {otp ? (
                 <div
