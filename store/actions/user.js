@@ -36,11 +36,13 @@ export const updateUser = (id, data) => {
       const response = await instance.patch(UPDATE_USER + "/" + id, data, {
         headers: { Authorization: `Bearer ${jwt}` },
       });
-      dispatch({
-        type: ActionTypes.UPDATE_USER_SUCCESS,
-        data: response.data.data,
-        success: true,
-      });
+      if (response.data.success) {
+        dispatch({
+          type: ActionTypes.UPDATE_USER_SUCCESS,
+          data: response.data.data,
+          success: response.data.success,
+        });
+      }
     } catch (e) {
       dispatch({
         type: ActionTypes.UPDATE_USER_FAIL,
@@ -52,4 +54,29 @@ export const updateUser = (id, data) => {
       });
     }
   };
+};
+
+export const logout = async () => {
+  const jwt = getAccessToken();
+  try {
+    const response = await instance.post("/auth/logout", {
+      headers: { Authorization: `Bearer ${jwt}` },
+    });
+    if (response.data.success) {
+      dispatch({
+        type: ActionTypes.LOGOUT_SUCCESS,
+        data: response.data,
+        success: response.data.success,
+      });
+    }
+  } catch (e) {
+    dispatch({
+      type: ActionTypes.LOGOUT_USER_FAIL,
+      errmess:
+        e?.response?.data?.error?.message ??
+        e?.response?.data?.message ??
+        e?.response?.message ??
+        e,
+    });
+  }
 };
