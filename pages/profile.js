@@ -15,21 +15,18 @@ function ProfilePage() {
     if (access_token) {
       dispatch(getUser(access_token));
     }
-    if (user) {
-      console.log(user);
-    }
   }, [access_token, dispatch, user]);
 
   return (
     <>
       {user ? (
-        <div>
-          <SEO title={"Your Profile"} />
+        <>
+          <SEO title={user.name} />
           <DashboardHeader />
-          <ProfileTop />
+          <ProfileTop name={user.name} displaySrc={user.displaySrc} />
           <ProfileDocs />
           <CreateDoc />
-        </div>
+        </>
       ) : null}
     </>
   );

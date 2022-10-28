@@ -1,12 +1,14 @@
 import instance from "../../axios";
 import { GET_USER, UPDATE_USER } from "../../constants";
+import { getAccessToken } from "../../lib/auth";
 import * as ActionTypes from "../ActionTypes";
 
-export const getUser = (access_token) => {
+export const getUser = () => {
+  const jwt = getAccessToken();
   return async (dispatch) => {
     try {
       const response = await instance.get(GET_USER, {
-        headers: { Authorization: `Bearer ${access_token}` },
+        headers: { Authorization: `Bearer ${jwt}` },
       });
       if (response.data.success) {
         dispatch({

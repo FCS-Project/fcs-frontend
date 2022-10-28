@@ -28,7 +28,7 @@ function Login() {
 
   useEffect(() => {
     if (access_token) {
-      dispatch(getUser(access_token));
+      dispatch(getUser());
       router.push("/profile");
     }
   }, [access_token, router, dispatch]);
