@@ -29,7 +29,8 @@ function Login() {
 
   useEffect(() => {
     if (access_token) {
-      router.push("/profile");
+      // router.push("/profile");
+      console.log("access_token>>>", access_token);
     }
   }, [access_token]);
 
