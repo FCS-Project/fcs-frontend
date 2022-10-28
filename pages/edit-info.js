@@ -21,6 +21,7 @@ function EditInfo() {
   const roles = user?.roles[0];
   const router = useRouter();
   console.log("roles", roles);
+  console.log("user", user);
 
   const dispatch = useDispatch();
 
@@ -95,7 +96,7 @@ function EditInfo() {
           setModal={setModal}
           noCancel={true}
           editInfo={true}
-          email={email}
+          email={user?.email}
         />
       ) : (
         <>
