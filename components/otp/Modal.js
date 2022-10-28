@@ -3,9 +3,10 @@ import Button from "../common/Button";
 import EmailPopup from "./EmailPopup";
 import VerifyPopup from "./VerifyPopup";
 
-function Modal({ modal, setModal }) {
+function Modal({ modal, setModal, noCancel }) {
   const submit = () => {
     alert("OTP Submitted");
+    setModal(false);
   };
 
   const [verify, setVerify] = useState(false);
@@ -19,12 +20,14 @@ function Modal({ modal, setModal }) {
               <h1 className="text-xl md:text-2xl">
                 {!verify ? "Enter Email" : "Verify OTP"}
               </h1>
-              <div
-                className="cursor-pointer float-right text-3xl"
-                onClick={() => setModal(false)}
-              >
-                &times;
-              </div>
+              {!noCancel && (
+                <div
+                  className="cursor-pointer float-right text-3xl"
+                  onClick={() => setModal(false)}
+                >
+                  &times;
+                </div>
+              )}
             </div>
 
             {!verify ? (
@@ -34,13 +37,15 @@ function Modal({ modal, setModal }) {
             )}
 
             <div className="mt-5 flex justify-between gap-10 sm:gap-52 md:gap-64 lg:gap-72 lg:mt-5">
-              <Button
-                text={!verify ? "Cancel" : "Back"}
-                type="secondary"
-                onClick={() => {
-                  !verify ? setModal(false) : setVerify(false);
-                }}
-              />
+              {!noCancel && (
+                <Button
+                  text={verify ? "Cancel" : "Back"}
+                  type="secondary"
+                  onClick={() => {
+                    !verify ? setModal(false) : setVerify(false);
+                  }}
+                />
+              )}
               <Button
                 text={!verify ? "Next" : "Submit"}
                 type="primary"
