@@ -27,11 +27,10 @@ function Login() {
       if (otp) {
         const otpDto = { email: email };
         otpSignIn(otpDto).then((response) => {
-          if (response.data.success) {
-            setModal(response.data.success);
+          if (response.success) {
+            setModal(response.success);
           }
         });
-        setModal(true);
       } else {
         dispatch(signin(dto));
       }
