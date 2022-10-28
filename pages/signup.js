@@ -1,12 +1,16 @@
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
+import { useDispatch, useSelector } from "react-redux";
+import { signup } from "../store/actions/auth";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
+  const dispatch = useDispatch();
+  const access_token = useSelector((state) => state.auth.access_token);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +35,7 @@ function Signup() {
 
   const onSubmit = () => {
     if (name != "" && email != "" && password != "") {
-      const dto = {
+      const data = {
         name: name,
         email: email,
         password: password,
@@ -42,9 +46,15 @@ function Signup() {
         roles: [organisationFlag ? "Organisation" : "User"],
         type: [organisationFlag ? organistionType : userType],
       };
-      console.log("dto", dto);
+      dispatch(signup(data));
     }
   };
+
+  useEffect(() => {
+    if (access_token) {
+      // Redirect the user
+    }
+  }, [access_token]);
 
   return (
     <>
