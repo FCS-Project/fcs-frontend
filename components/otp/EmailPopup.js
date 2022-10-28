@@ -10,7 +10,7 @@ function EmailPopup() {
         heading="Email"
         placeholder="Email"
         state={email}
-        setName={setEmail}
+        setState={setEmail}
       />
     </div>
   );

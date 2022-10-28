@@ -18,13 +18,13 @@ function CreateDocForm() {
         heading="Document Name"
         placeholder="Document Name"
         state={name}
-        setName={setName}
+        setState={setName}
       />
       <Input
         heading="Document Type"
         placeholder="Document Type"
         state={type}
-        setName={setType}
+        setState={setType}
       />
       <input
         type="file"
