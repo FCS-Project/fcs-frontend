@@ -58,13 +58,6 @@ export const authReducer = (state = initState, action) => {
         errmess: null,
         success: action.success,
       };
-    case ActionTypes.LOGOUT:
-      clearAuthToken();
-      return {
-        ...state,
-        access_token: null,
-        refresh_token: null,
-      };
     case ActionTypes.OTP_LOGIN_SUCCESS:
       setAccessToken(action.access_token);
       setRefreshToken(action.refresh_token);
