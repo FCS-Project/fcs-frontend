@@ -1,12 +1,8 @@
 import instance from "../../axios";
-import { getAccessToken } from "../../lib/auth";
 
-export const verifyOtp = async (dto) => {
-  const jwt = getAccessToken();
+export const otpSignIn = async (dto) => {
   return instance
-    .post("/auth/verify-otp", dto, {
-      headers: { Authorization: `Bearer ${jwt}` },
-    })
+    .post("/auth/otp-signin", dto)
     .then((response) => {
       if (response.data.success) {
         return {

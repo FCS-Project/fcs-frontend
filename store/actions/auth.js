@@ -49,10 +49,10 @@ export const signin = (dto) => {
   };
 };
 
-export const otpSignIn = (dto) => {
+export const verifyOtp = (dto) => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(OTPSIGNIN, dto);
+      const response = await instance.post(VERIFY_OTP, dto);
       if (response) {
         dispatch({
           type: ActionTypes.OTP_LOGIN_SUCCESS,
