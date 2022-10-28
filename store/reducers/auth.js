@@ -39,7 +39,6 @@ export const authReducer = (state = initState, action) => {
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };
-
     case ActionTypes.LOGIN_FAIL:
       return {
         ...state,
@@ -94,6 +93,20 @@ export const authReducer = (state = initState, action) => {
         access: null,
         refresh: null,
       };
+    case ActionTypes.LOGOUT_SUCCESS:
+      return {
+        ...state,
+        errmess: null,
+        success: action.success,
+        access_token: action.access_token,
+        refresh_token: action.refresh_token,
+      };
+    case ActionTypes.LOGOUT_FAIL:
+      return {
+        ...state,
+        errmess: "error",
+      };
+
     default:
       return state;
   }

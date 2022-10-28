@@ -55,28 +55,3 @@ export const updateUser = (id, data) => {
     }
   };
 };
-
-export const logout = async () => {
-  const jwt = getAccessToken();
-  try {
-    const response = await instance.post("/auth/logout", {
-      headers: { Authorization: `Bearer ${jwt}` },
-    });
-    if (response.data.success) {
-      dispatch({
-        type: ActionTypes.LOGOUT_SUCCESS,
-        data: response.data,
-        success: response.data.success,
-      });
-    }
-  } catch (e) {
-    dispatch({
-      type: ActionTypes.LOGOUT_USER_FAIL,
-      errmess:
-        e?.response?.data?.error?.message ??
-        e?.response?.data?.message ??
-        e?.response?.message ??
-        e,
-    });
-  }
-};

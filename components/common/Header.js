@@ -21,7 +21,9 @@ function Header() {
             <p className={linkStyle}>Profile</p>
           </Link>
           <Link href="/">
-            <p className={linkStyle}>Logout</p>
+            <p className={linkStyle} onClick>
+              Logout
+            </p>
           </Link>
         </div>
       ) : null}
