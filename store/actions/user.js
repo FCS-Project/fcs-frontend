@@ -2,10 +2,10 @@ import instance from "../../axios";
 import { GET_USER, UPDATE_USER } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
-export const getUser = (id) => {
+export const getUser = () => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(GET_USER + "/" + id);
+      const response = await instance.post(GET_USER);
       if (response.success) {
         dispatch({
           type: ActionTypes.GET_USER_SUCCESS,

@@ -4,5 +4,5 @@ export const SIGNUP = "/auth/signup";
 export const SIGNIN = "/auth/signin";
 export const REFRESH_TOKEN = "/auth/refresh";
 
-export const GET_USER = "/user";
+export const GET_USER = "/user/me";
 export const UPDATE_USER = "/user";
