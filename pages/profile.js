@@ -19,7 +19,7 @@ function ProfilePage() {
 
   return (
     <>
-      {user ? (
+      {user === !null ? (
         <>
           <SEO title={user.name} />
           <DashboardHeader />
