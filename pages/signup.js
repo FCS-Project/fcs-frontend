@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../components/common/Button";
@@ -146,6 +147,7 @@ function Signup() {
                     <>
                       <p className="text-sm mt-5">Image Uploaded</p>
                       <img
+                        alt="display picture"
                         src={fileDP}
                         className="w-[50%] max-h-[10rem] object-contain max-w-1/2  block ml-auto mr-auto border-theme my-5"
                       />
@@ -201,6 +203,7 @@ function Signup() {
                     <>
                       <p className="text-sm mt-5">Image Uploaded</p>
                       <img
+                        alt="display picture"
                         src={fileDP}
                         className="w-[100%] h-[10rem] object-cover max-w-1/2  block ml-auto mr-auto border-theme my-5"
                       />
@@ -231,6 +234,7 @@ function Signup() {
                     <>
                       <p className="text-sm mt-5">Image Uploaded</p>
                       <img
+                        alt="display picture"
                         src={fileBanner}
                         className="w-[100%] object-cover h-[10rem] block ml-auto mr-auto border-theme my-5"
                       />
