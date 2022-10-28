@@ -1,11 +1,7 @@
 import authHeader from "../../store/services/auth-header";
 import instance from "../axios";
 
-// authorization bearer jwt needs to be done
 export const getUser = async (id) => {
-  //   const {
-  //     accessToken: { jwtToken },
-  //   } = await Auth.currentSession();
   return instance
     .get(`/user/${id}`, { headers: authHeader() })
     .then((response) => {
