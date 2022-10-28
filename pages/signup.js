@@ -38,12 +38,12 @@ function Signup() {
         name: name,
         email: email,
         password: password,
-        location: location,
-        description: description,
-        displaySrc: "",
-        BannerSrc: "",
         roles: [organisationFlag ? "Organisation" : "User"],
         type: [organisationFlag ? organistionType : userType],
+        location: location,
+        description: description,
+        // displaySrc: null,
+        // bannerSrc: null,
       };
       dispatch(signup(data));
     }
@@ -152,9 +152,9 @@ function Signup() {
                     type="checkbox"
                     name="hospital"
                     value={organistionType}
-                    checked={organistionType == "hospital"}
+                    checked={organistionType == "Hospital"}
                     onClick={() => {
-                      setOrganistionType("hospital");
+                      setOrganistionType("Hospital");
                     }}
                   />
                   <label for="hospital" className={labelStyle}>
@@ -167,9 +167,9 @@ function Signup() {
                     type="checkbox"
                     name="pharmacy"
                     value={organistionType}
-                    checked={organistionType == "pharmacy"}
+                    checked={organistionType == "Pharmacy"}
                     onClick={() => {
-                      setOrganistionType("pharmacy");
+                      setOrganistionType("Pharmacy");
                     }}
                   />
                   <label for="pharmacy" className={labelStyle}>
@@ -182,9 +182,9 @@ function Signup() {
                     type="checkbox"
                     name="insurance"
                     value={organistionType}
-                    checked={organistionType == "insurance"}
+                    checked={organistionType == "Insurance"}
                     onClick={() => {
-                      setOrganistionType("insurance");
+                      setOrganistionType("Insurance");
                     }}
                   />
                   <label for="insurance" className={labelStyle}>
@@ -200,9 +200,9 @@ function Signup() {
                     type="checkbox"
                     name="patient"
                     value={userType}
-                    checked={userType == "patient"}
+                    checked={userType == "Patient"}
                     onClick={() => {
-                      setUserType("patient");
+                      setUserType("Patient");
                     }}
                   />
                   <label for="patient" className={labelStyle}>
@@ -215,9 +215,9 @@ function Signup() {
                     type="checkbox"
                     name="professional"
                     value={userType}
-                    checked={userType == "professional"}
+                    checked={userType == "Professional"}
                     onClick={() => {
-                      setUserType("professional");
+                      setUserType("Professional");
                     }}
                   />
                   <label for="professional" className={labelStyle}>
