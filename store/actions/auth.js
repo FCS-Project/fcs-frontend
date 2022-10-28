@@ -8,7 +8,6 @@ export const signup = (dto) => {
       const response = await instance.post(SIGNUP, dto);
       dispatch({
         type: ActionTypes.REGISTER_SUCCESS,
-        data: response.data,
         access_token: response.data.access_token,
         refresh_token: response.data.refresh_token,
       });
@@ -57,7 +56,6 @@ export const otpSignIn = (dto) => {
       if (response) {
         dispatch({
           type: ActionTypes.OTP_LOGIN_SUCCESS,
-          data: response.data,
           access_token: response.data.access_token,
           refresh_token: response.data.refresh_token,
         });
