@@ -1,5 +1,5 @@
 import instance from "../../axios";
-import { LOGOUT, SIGNIN, SIGNUP, VERIFY_OTP } from "../../constants";
+import { SIGNIN, SIGNUP, VERIFY_OTP } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
 export const signup = (dto) => {
@@ -65,7 +65,7 @@ export const logout = () => {
           refresh_token: null,
         });
       }
-    } catch (error) {
+    } catch (e) {
       dispatch({
         type: ActionTypes.LOGOUT_FAIL,
         errmess:

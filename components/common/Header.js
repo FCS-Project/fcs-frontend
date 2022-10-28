@@ -1,12 +1,22 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "./Logo";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/actions/auth";
+import { useRouter } from "next/router";
 
 function Header() {
   const user = useSelector((state) => state.user.user);
+  const success = useSelector((state) => state.auth.success);
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (success) {
+      router.push("/");
+    }
+  }, [success]);
+
   const linkStyle =
     "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer";
   return (
@@ -22,11 +32,10 @@ function Header() {
           <Link href="/profile">
             <p className={linkStyle}>Profile</p>
           </Link>
-          <Link href="/">
-            <p className={linkStyle} onClick={() => dispatch(logout())}>
-              Logout
-            </p>
-          </Link>
+
+          <p className={linkStyle} onClick={() => dispatch(logout())}>
+            Logout
+          </p>
         </div>
       ) : null}
     </div>
