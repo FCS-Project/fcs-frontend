@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 function Login() {
-  const id = "921392bf-9c79-48fc-80e8-991353f8bbc6";
   const dispatch = useDispatch();
   const access_token = useSelector((state) => state.auth.access_token);
   const [email, setEmail] = useState("");
@@ -21,8 +20,8 @@ function Login() {
 
   const onSubmit = () => {
     if (email && password) {
-      const data = { email: email, password: password };
-      dispatch(signin(data));
+      const dto = { email: email, password: password };
+      dispatch(signin(dto));
     }
   };
 

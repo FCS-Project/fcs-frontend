@@ -2,14 +2,16 @@ import instance from "../../axios";
 import { GET_USER, UPDATE_USER } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
-export const getUser = (data) => {
+export const getUser = (id) => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(GET_USER, data);
-      dispatch({
-        type: ActionTypes.GET_USER_SUCCESS,
-        data: response.data.data,
-      });
+      const response = await instance.post(GET_USER + "/" + id);
+      if (response.success) {
+        dispatch({
+          type: ActionTypes.GET_USER_SUCCESS,
+          data: response.data.data,
+        });
+      }
     } catch (e) {
       dispatch({
         type: ActionTypes.GET_USER_FAIL,
@@ -23,10 +25,10 @@ export const getUser = (data) => {
   };
 };
 
-export const updateUser = (data) => {
+export const updateUser = (id) => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(UPDATE_USER, data);
+      const response = await instance.post(UPDATE_USER + "/" + id);
       dispatch({
         type: ActionTypes.UPDATE_USER_SUCCESS,
         data: response.data,

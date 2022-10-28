@@ -2,10 +2,10 @@ import instance from "../../axios";
 import { SIGNIN, SIGNUP } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
-export const signup = (data) => {
+export const signup = (dto) => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(SIGNUP, data);
+      const response = await instance.post(SIGNUP, dto);
       dispatch({
         type: ActionTypes.REGISTER_SUCCESS,
         data: response.data,
@@ -25,10 +25,10 @@ export const signup = (data) => {
   };
 };
 
-export const signin = (data) => {
+export const signin = (dto) => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(SIGNIN, data);
+      const response = await instance.post(SIGNIN, dto);
       if (response) {
         console.log(response);
         dispatch({

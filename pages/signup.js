@@ -34,7 +34,7 @@ function Signup() {
 
   const onSubmit = () => {
     if (name != "" && email != "" && password != "") {
-      const data = {
+      const dto = {
         name: name,
         email: email,
         password: password,
@@ -45,15 +45,15 @@ function Signup() {
         // displaySrc: null,
         // bannerSrc: null,
       };
-      dispatch(signup(data));
+      dispatch(signup(dto));
     }
   };
 
-  // useEffect(() => {
-  //   if (access_token) {
-  //     router.push("/profile");
-  //   }
-  // }, [access_token]);
+  useEffect(() => {
+    if (access_token) {
+      router.push("/profile");
+    }
+  }, [access_token, router]);
 
   return (
     <>
