@@ -1,15 +1,8 @@
 import instance from "../../axios";
 
 export const logout = async () => {
-  //   const {
-  //     accessToken: { jwtToken },
-  //   } = await Auth.currentSession();
   return instance
-    .post("/auth/logout", {
-      //   headers: {
-      //     Authorization: `Bearer ${jwt}`,
-      //   },
-    })
+    .post("/auth/logout", {})
     .then((response) => {
       if (response.data.success) {
         localStorage.removeItem("user");
