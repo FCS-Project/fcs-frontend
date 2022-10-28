@@ -44,7 +44,7 @@ instance.interceptors.response.use(
           if (tokenParts.exp > now) {
             return instance
               .post(API_URL + REFRESH_TOKEN, {
-                headers: { Authorzation: `Bearer refreshToken` },
+                headers: { Authorzation: `Bearer ${refreshToken}` },
               })
               .then((response) => {
                 setAccessToken(response.data.access_token);
@@ -54,6 +54,9 @@ instance.interceptors.response.use(
                 return instance(originalRequest);
               })
               .catch((err) => {
+                return {
+                  err: err.message,
+                };
                 // console.log('Caught error', err);
               });
           } else {
