@@ -1,50 +1,60 @@
 import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-} from "../actions/types";
+  clearAuthToken,
+  setAccessToken,
+  setRefreshToken,
+} from "../../lib/auth";
+import * as ActionTypes from "../ActionTypes";
 
-const user = JSON.parse(localStorage.getItem("user"));
+const initState = {
+  errmess: null,
+  user: null,
+  access_token: null,
+  refresh_token: null,
+};
 
-const initialState = user
-  ? { isLoggedIn: true, user }
-  : { isLoggedIn: false, user: null };
-
-export default function (state = initialState, action) {
+export const authReducer = (state = initState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case REGISTER_SUCCESS:
+    case ActionTypes.REGISTER_SUCCESS:
+      setAccessToken(action.access_token);
+      setRefreshToken(action.refresh_token);
       return {
         ...state,
-        isLoggedIn: false,
+        access_token: payload.access_token,
+        refresh_token: payload.refresh_token,
       };
-    case REGISTER_FAIL:
+    case ActionTypes.REGISTER_FAIL:
       return {
         ...state,
-        isLoggedIn: false,
+        access_token: null,
+        refresh_token: null,
+        errmess: payload.errmess,
       };
-    case LOGIN_SUCCESS:
+    case ActionTypes.LOGIN_SUCCESS:
+      setAccessToken(action.access_token);
+      setRefreshToken(action.refresh_token);
       return {
         ...state,
-        isLoggedIn: true,
-        user: payload.user,
+        errmess: null,
+        access_token: payload.access_token,
+        refresh_token: payload.refresh_token,
       };
-    case LOGIN_FAIL:
+    case ActionTypes.LOGIN_FAIL:
       return {
         ...state,
-        isLoggedIn: false,
-        user: null,
+        errmess: payload.errmess,
+        access_token: null,
+        refresh_token: null,
       };
-    case LOGOUT:
+    case ActionTypes.LOGOUT:
+      clearAuthToken();
       return {
         ...state,
-        isLoggedIn: false,
-        user: null,
+        access_token: null,
+        refresh_token: null,
       };
     default:
       return state;
   }
-}
+};

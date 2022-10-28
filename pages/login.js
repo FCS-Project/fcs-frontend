@@ -1,43 +1,35 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
-// import { login } from "../utils/auth/login";
+import { signin } from "../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../store/actions/auth";
+// import { login } from "../store/actions/auth";
 
 function Login() {
   const id = "921392bf-9c79-48fc-80e8-991353f8bbc6";
   const dispatch = useDispatch();
+  const access_token = useSelector((state) => state.auth.access_token);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const onSubmit = () => {
-    if (email != "" && password != "") {
-      const dto = { email: email, password: password };
-      loginUser(dto);
-      console.log("dto", dto);
+    if (email && password) {
+      const data = { email: email, password: password };
+      dispatch(signin(data));
     }
   };
 
-  const loginUser = (dto) => {
-    dispatch(
-      login(dto).then((response) => {
-        if (response.error) {
-          setError(response.error);
-          setUser(null);
-        } else {
-          setUser(response.access_token);
-          setLoading(false);
-          setError(null);
-        }
-      })
-    );
-  };
+  useEffect(() => {
+    if (access_token) {
+      // Redirect the user
+    }
+  }, [access_token]);
 
   return (
     <>

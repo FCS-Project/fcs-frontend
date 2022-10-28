@@ -1,20 +1,18 @@
 import instance from "../../axios";
-import { SIGNIN, SIGNUP } from "../../constants";
+import { GET_USER, SIGNIN, SIGNUP, UPDATE_USER } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
-export const signup = (data) => {
+export const getUser = () => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(SIGNUP, data);
+      const response = await instance.post(GET_USER, data);
       dispatch({
-        type: ActionTypes.REGISTER_SUCCESS,
-        data: response.data,
-        access_token: response.data.access_token,
-        refresh_token: response.data.refresh_token,
+        type: ActionTypes.GET_USER_SUCCESS,
+        data: response.data.data,
       });
     } catch (e) {
       dispatch({
-        type: ActionTypes.REGISTER_FAIL,
+        type: ActionTypes.GET_USER_FAIL,
         errmess:
           e?.response?.data?.error?.message ??
           e?.response?.data?.message ??
@@ -25,19 +23,17 @@ export const signup = (data) => {
   };
 };
 
-export const signin = (data) => {
+export const updateUser = (data) => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(SIGNIN, data);
+      const response = await instance.post(UPDATE_USER, data);
       dispatch({
-        type: ActionTypes.LOGIN_SUCCESS,
+        type: ActionTypes.UPDATE_USER_SUCCESS,
         data: response.data,
-        access_token: response.data.access_token,
-        refresh_token: response.data.refresh_token,
       });
     } catch (e) {
       dispatch({
-        type: ActionTypes.LOGIN_FAIL,
+        type: ActionTypes.UPDATE_USER_FAIL,
         errmess:
           e?.response?.data?.error?.message ??
           e?.response?.data?.message ??
