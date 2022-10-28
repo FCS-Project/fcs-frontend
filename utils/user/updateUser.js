@@ -1,9 +1,8 @@
 import instance from "../../axios";
-import authHeader from "../../store/services/auth-header";
 
 export const updateUser = async (id) => {
   return instance
-    .patch(`user/${id}`, { headers: authHeader() })
+    .patch(`user/${id}`)
     .then((response) => {
       if (response.data.success) {
         return {
