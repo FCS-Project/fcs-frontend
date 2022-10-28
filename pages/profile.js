@@ -15,7 +15,7 @@ function ProfilePage() {
     if (access_token) {
       dispatch(getUser());
     }
-  }, []);
+  }, [access_token, dispatch]);
 
   return (
     <>
