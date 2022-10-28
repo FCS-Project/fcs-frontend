@@ -13,13 +13,13 @@ function ProfilePage() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (access_token) {
-      dispatch(getUser(access_token));
+      dispatch(getUser());
     }
   }, [access_token, dispatch, user]);
 
   return (
     <>
-      {user === !null ? (
+      {user ? (
         <>
           <SEO title={user.name} />
           <DashboardHeader />

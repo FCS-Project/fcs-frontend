@@ -14,8 +14,6 @@ function Login() {
   const access_token = useSelector((state) => state.auth.access_token);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const router = useRouter();
 
