@@ -7,6 +7,7 @@ import SEO from "../components/common/SEO";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../store/actions/auth";
 import { useRouter } from "next/router";
+import uploadImage from "../utils/imageUpload";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
@@ -21,15 +22,50 @@ function Signup() {
   const [organistionType, setOrganistionType] = useState("");
   const [userType, setUserType] = useState("");
   const [organisationFlag, setOrganizationFlag] = useState(false);
-  const chooseDPButton = useRef(null);
-  const chooseBannerButton = useRef(null);
 
-  const handleDPClick = () => {
-    chooseDPButton.current.click();
+  const [fileDP, setFileDP] = useState("");
+  const [fileDPSrc, setFileDPSrc] = useState("");
+
+  const [fileBanner, setFileBanner] = useState("");
+  const [fileBannerSrc, setFileBannerSrc] = useState("");
+
+  const handleFileChange = async (changeEvent, dp) => {
+    const reader = new FileReader();
+
+    console.log("changeEvent>>>", changeEvent);
+
+    if (dp) {
+      console.log("hi");
+      reader.onload = function (onLoadEvent) {
+        setFileDP(onLoadEvent.target.result);
+      };
+
+      reader.readAsDataURL(changeEvent.target.files[0]);
+      await uploadImage(changeEvent, setFileDPSrc, "dp");
+    } else {
+      reader.onload = function (onLoadEvent) {
+        setFileBanner(onLoadEvent.target.result);
+      };
+      reader.readAsDataURL(changeEvent.target.files[0]);
+      await uploadImage(changeEvent, setFileBannerSrc, "banner");
+    }
   };
 
-  const handleBannerClick = () => {
-    chooseBannerButton.current.click();
+  const onSubmitOrg = () => {
+    if (name != "" && email != "" && password != "") {
+      const dto = {
+        name: name,
+        email: email,
+        password: password,
+        roles: [organisationFlag ? "Organisation" : "User"],
+        type: [organisationFlag ? organistionType : userType],
+        location: location,
+        description: description,
+        displaySrc: fileDPSrc,
+        bannerSrc: fileBannerSrc,
+      };
+      dispatch(signup(dto));
+    }
   };
 
   const onSubmit = () => {
@@ -40,10 +76,7 @@ function Signup() {
         password: password,
         roles: [organisationFlag ? "Organisation" : "User"],
         type: [organisationFlag ? organistionType : userType],
-        location: location,
-        description: description,
-        // displaySrc: null,
-        // bannerSrc: null,
+        displaySrc: fileDPSrc,
       };
       dispatch(signup(dto));
     }
@@ -92,6 +125,45 @@ function Signup() {
             required={true}
           />
 
+          {!organisationFlag && (
+            <>
+              <div className="mt-2 text-sm sm:text-base lg:text-lg">
+                Upload Pictures
+              </div>
+              <div className="flex w-full items-start justify-between mt-2 gap-2 lg:gap-5">
+                <form
+                  method="post"
+                  onChange={(event) => handleFileChange(event, true)}
+                  className="w-[100%]"
+                >
+                  <label htmlFor="dp">
+                    <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
+                      Upload Dp
+                    </div>
+                  </label>
+
+                  {fileDPSrc && (
+                    <>
+                      <p className="text-sm mt-5">Image Uploaded</p>
+                      <img
+                        src={fileDP}
+                        className="w-[50%] max-h-[10rem] object-contain max-w-1/2  block ml-auto mr-auto border-theme my-5"
+                      />
+                    </>
+                  )}
+
+                  <input
+                    type="file"
+                    id="dp"
+                    name="dp"
+                    accept=".png,.jpg,.jpeg,.webp"
+                    style={{ display: "none" }}
+                  />
+                </form>
+              </div>
+            </>
+          )}
+
           {organisationFlag && (
             <>
               <Input
@@ -113,33 +185,65 @@ function Signup() {
               <div className="mt-2 text-sm sm:text-base lg:text-lg">
                 Upload Pictures
               </div>
-              <div className="flex w-full items-center justify-between mt-2 gap-2 lg:gap-5">
-                <input
-                  type="file"
-                  name="dp"
-                  className="hidden"
-                  ref={chooseDPButton}
-                ></input>
-                <Button
-                  text="Profile Pic"
-                  type="secondary"
-                  onClick={() => {
-                    handleDPClick();
-                  }}
-                />
-                <input
-                  type="file"
-                  name="banner"
-                  className="hidden"
-                  ref={chooseBannerButton}
-                ></input>
-                <Button
-                  text="Banner Pic"
-                  type="secondary"
-                  onClick={() => {
-                    handleBannerClick();
-                  }}
-                />
+              <div className="flex w-full items-start justify-between mt-2 gap-2 lg:gap-5">
+                <form
+                  method="post"
+                  onChange={(event) => handleFileChange(event, true)}
+                  className="w-[50%]"
+                >
+                  <label htmlFor="dp">
+                    <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
+                      Upload Dp
+                    </div>
+                  </label>
+
+                  {fileDPSrc && (
+                    <>
+                      <p className="text-sm mt-5">Image Uploaded</p>
+                      <img
+                        src={fileDP}
+                        className="w-[100%] h-[10rem] object-cover max-w-1/2  block ml-auto mr-auto border-theme my-5"
+                      />
+                    </>
+                  )}
+
+                  <input
+                    type="file"
+                    id="dp"
+                    name="dp"
+                    accept=".png,.jpg,.jpeg,.webp"
+                    style={{ display: "none" }}
+                  />
+                </form>
+
+                <form
+                  method="post"
+                  onChange={(event) => handleFileChange(event, false)}
+                  className="w-[50%]"
+                >
+                  <label htmlFor="banner">
+                    <div className="w-[full] py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
+                      Upload Banner
+                    </div>
+                  </label>
+
+                  {fileBannerSrc && (
+                    <>
+                      <p className="text-sm mt-5">Image Uploaded</p>
+                      <img
+                        src={fileBanner}
+                        className="w-[100%] object-cover h-[10rem] block ml-auto mr-auto border-theme my-5"
+                      />
+                    </>
+                  )}
+                  <input
+                    type="file"
+                    id="banner"
+                    name="banner"
+                    accept=".png,.jpg,.jpeg,.webp"
+                    style={{ display: "none" }}
+                  />
+                </form>
               </div>
             </>
           )}
@@ -227,7 +331,11 @@ function Signup() {
               </>
             )}
           </div>
-          <Button type={"primary"} text={"Sign Up"} onClick={onSubmit} />
+          <Button
+            type={"primary"}
+            text={"Sign Up"}
+            onClick={organisationFlag ? onSubmitOrg : onSubmit}
+          />
           <div className="text-sm md:text-base mt-4">
             Already a User?{" "}
             <span className="text-theme hover:underline">
