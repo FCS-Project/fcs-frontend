@@ -1,9 +1,8 @@
-import authHeader from "../../store/services/auth-header";
 import instance from "../axios";
 
 export const getUser = async (id) => {
   return instance
-    .get(`/user/${id}`, { headers: authHeader() })
+    .get(`/user/${id}`)
     .then((response) => {
       if (response.data.success) {
         return {
