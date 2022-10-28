@@ -31,16 +31,6 @@ function OrgCard({ id, name, imgSrc, desc, location, type }) {
               <div className="text-xs">{type}</div>
             </div>
           ) : null}
-          {/* <p className="text-gray-600 text-xs font-light">
-          {desc?.length > 50 ? (
-            <>
-              {description}
-              <span className="text-gray-400">...Read More</span>
-            </>
-          ) : (
-            desc
-          )}
-        </p> */}
         </div>
       </div>
     </Link>
