@@ -1,11 +1,21 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { postDocument } from "../../utils/document/postDocument";
 import Button from "../common/Button";
 import CreateDocForm from "./createDocForm";
 
 function CreateDoc() {
   const [modal, setModal] = useState(false);
+  const [file, setFile] = useState("");
+  const user = useSelector((state) => state.user.data);
+
   const submit = () => {
     setModal(false);
+    if (file) {
+      let dataURI = file.split(";base64,").pop();
+      console.log("data uriii>>>>>", dataURI);
+      postDocument({ dataURI: dataURI, userId: user?.id });
+    }
   };
   return (
     <>
@@ -21,7 +31,7 @@ function CreateDoc() {
                 &times;
               </div>
             </div>
-            <CreateDocForm />
+            <CreateDocForm file={file} setFile={setFile} />
             <div className="mt-1 md:mt-2 flex justify-between gap-40 sm:gap-52 md:gap-64 lg:gap-72">
               <Button
                 text="Cancel"

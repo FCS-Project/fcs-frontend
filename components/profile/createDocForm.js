@@ -1,23 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
+
 import uploadImage from "../../utils/imageUpload";
 import Button from "../common/Button";
 import Input from "../common/Input";
 
-function CreateDocForm() {
+function CreateDocForm({ file, setFile }) {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
-  const [file, setFile] = useState("");
-  const [fileSrc, setFileSrc] = useState("");
 
   const handleFileChange = async (changeEvent) => {
+    console.log("hello");
     const reader = new FileReader();
     reader.onload = function (onLoadEvent) {
       setFile(onLoadEvent.target.result);
     };
-
     reader.readAsDataURL(changeEvent.target.files[0]);
-    await uploadImage(changeEvent, setFileSrc, "file");
+    // await uploadImage(changeEvent, setFileBannerSrc, "file");
   };
 
   useEffect(() => {
@@ -47,20 +46,11 @@ function CreateDocForm() {
               Upload File
             </div>
           </label>
-          {fileSrc && (
-            <>
-              <p className="text-sm mt-5">Image Uploaded</p>
-              <img
-                alt="image"
-                src={file}
-                className="w-fit max-w-1/3 block ml-auto mr-auto border-theme my-5"
-              />
-            </>
-          )}
           <input
             type="file"
             id="file"
             name="file"
+            accept=".pdf"
             style={{ display: "none" }}
           />
         </form>
