@@ -15,9 +15,16 @@ function CreateDocForm() {
     reader.onload = function (onLoadEvent) {
       setFile(onLoadEvent.target.result);
     };
+
     reader.readAsDataURL(changeEvent.target.files[0]);
-    await uploadImage(changeEvent, setFileSrc);
+    await uploadImage(changeEvent, setFileSrc, "file");
   };
+
+  useEffect(() => {
+    if (file) {
+      console.log("fileSet", file);
+    }
+  }, [file]);
 
   return (
     <div className="flex flex-col w-full mt-5">
@@ -54,7 +61,6 @@ function CreateDocForm() {
             type="file"
             id="file"
             name="file"
-            accept=".png,.jpg,.jpeg,.webp"
             style={{ display: "none" }}
           />
         </form>
