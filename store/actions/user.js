@@ -6,6 +6,7 @@ import * as ActionTypes from "../ActionTypes";
 export const getUser = () => {
   const jwt = getAccessToken();
   return async (dispatch) => {
+    dispatch({ type: ActionTypes.GET_USER_REQUEST });
     try {
       const response = await instance.get(GET_USER, {
         headers: { Authorization: `Bearer ${jwt}` },

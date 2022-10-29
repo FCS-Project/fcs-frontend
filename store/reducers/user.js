@@ -9,6 +9,12 @@ const initState = {
 export const userReducer = (state = initState, action) => {
   const { type } = action;
   switch (type) {
+    case ActionTypes.GET_USER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        errmess: null,
+      };
     case ActionTypes.GET_USER_SUCCESS:
       return {
         ...state,
