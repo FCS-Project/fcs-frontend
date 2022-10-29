@@ -53,7 +53,7 @@ export const logout = () => {
   const jwt = getAccessToken();
   return async (dispatch) => {
     try {
-      const response = await instance.get(LOGOUT, {
+      const response = await instance.post(LOGOUT, {
         headers: { Authorization: `Bearer ${jwt}` },
       });
       if (response.data.success) {
