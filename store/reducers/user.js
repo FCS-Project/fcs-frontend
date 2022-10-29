@@ -2,7 +2,7 @@ import * as ActionTypes from "../ActionTypes";
 
 const initState = {
   errmess: null,
-  user: null,
+  data: null,
   success: null,
 };
 
@@ -12,18 +12,19 @@ export const userReducer = (state = initState, action) => {
     case ActionTypes.GET_USER_SUCCESS:
       return {
         ...state,
-        user: action.data,
+        data: action.data,
       };
     case ActionTypes.GET_USER_FAIL:
       return {
         ...state,
-        user: null,
+        data: null,
         errmess: action.errmess,
       };
     case ActionTypes.UPDATE_USER_SUCCESS:
       return {
         ...state,
         errmess: null,
+        data: action.data,
         success: true,
       };
     case ActionTypes.UPDATE_USER_FAIL:

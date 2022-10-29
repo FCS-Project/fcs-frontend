@@ -21,7 +21,7 @@ function Header() {
       <Link href="/">
         <Logo />
       </Link>
-      {user ? (
+      {user && (
         <div className="sm:pr-5 flex items-center flex-end gap-5 md:gap-8 lg:gap-10">
           <Link href="/">
             <p className={linkStyle}>Home</p>
@@ -33,7 +33,20 @@ function Header() {
             Logout
           </p>
         </div>
-      ) : null}
+      )}
+      {user?.roles[0] == "Admin" && (
+        <div className="sm:pr-5 flex items-center flex-end gap-5 md:gap-8 lg:gap-10">
+          <Link href="/">
+            <p className={linkStyle}>Home</p>
+          </Link>
+          <Link href="/profile">
+            <p className={linkStyle}>Profile</p>
+          </Link>
+          <p className={linkStyle} onClick={() => onClick()}>
+            Logout
+          </p>
+        </div>
+      )}
     </div>
   );
 }
