@@ -1,5 +1,6 @@
 import instance from "../../axios";
 import { LOGOUT, SIGNIN, SIGNUP, VERIFY_OTP } from "../../constants";
+import { getAccessToken } from "../../lib/auth";
 import * as ActionTypes from "../ActionTypes";
 
 export const signup = (dto) => {
