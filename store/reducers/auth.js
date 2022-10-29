@@ -6,6 +6,7 @@ const initState = {
   loading: false,
   access_token: null,
   refresh_token: null,
+  otp_verified: false,
 };
 
 export const authReducer = (state = initState, action) => {
@@ -56,17 +57,30 @@ export const authReducer = (state = initState, action) => {
         access_token: null,
         refresh_token: null,
       };
+    case ActionTypes.EDIT_INFO_REQUEST:
+      return {
+        ...state,
+        otp_verified: false,
+        errmess: null,
+      };
     case ActionTypes.EDIT_INFO_OTP_SUCCESS:
       return {
         ...state,
         errmess: action.errmess,
-        success: action.success,
+        otp_verified: true,
       };
     case ActionTypes.EDIT_INFO_OTP_FAIL:
       return {
         ...state,
         errmess: action.errmess,
-        success: action.success,
+        otp_verified: false,
+      };
+    case ActionTypes.OTP_LOGIN_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        otp_verified: false,
+        errmess: null,
       };
     case ActionTypes.OTP_LOGIN_SUCCESS:
       setAccessToken(action.access_token);
@@ -74,23 +88,29 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         errmess: null,
+        loading: false,
+        otp_verified: true,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };
     case ActionTypes.OTP_LOGIN_FAIL:
       return {
         ...state,
+        loading: false,
+        otp_verified: true,
         errmess: action.errmess,
       };
     case ActionTypes.SET_TOKEN_IN_STATE:
       return {
         ...state,
+        loading: false,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };
     case ActionTypes.REMOVE_TOKEN_FROM_STATE:
       return {
         ...state,
+        loading: false,
         access_token: null,
         refresh_token: null,
       };

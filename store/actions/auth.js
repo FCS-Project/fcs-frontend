@@ -96,15 +96,17 @@ export const verifyOtp = (dto) => {
   return async (dispatch) => {
     try {
       if (dto.editInfo) {
+        dispatch({ type: ActionTypes.EDIT_INFO_OTP_REQUEST });
         const response = await instance.post(VERIFY_OTP, dto);
-        if (response) {
+        if (response.data.success) {
           dispatch({
             type: ActionTypes.EDIT_INFO_OTP_SUCCESS,
           });
         }
       } else {
+        dispatch({ type: ActionTypes.OTP_LOGIN_REQUEST });
         const response = await instance.post(VERIFY_OTP, dto);
-        if (response) {
+        if (response.data.success) {
           dispatch({
             type: ActionTypes.OTP_LOGIN_SUCCESS,
             errmess: null,
@@ -125,7 +127,7 @@ export const verifyOtp = (dto) => {
         });
       } else {
         dispatch({
-          type: ActionTypes.LOGIN_FAIL,
+          type: ActionTypes.OTP_LOGIN_FAIL,
           errmess:
             e?.response?.data?.error?.message ??
             e?.response?.data?.message ??
