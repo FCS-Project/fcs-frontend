@@ -50,13 +50,17 @@ export const signin = (dto) => {
   };
 };
 
-export const logout = () => {
+export const logout = (id) => {
   const jwt = getAccessToken();
   return async (dispatch) => {
     try {
-      const response = await instance.post(LOGOUT, {
-        headers: { Authorization: `Bearer ${jwt}` },
-      });
+      const response = await instance.post(
+        LOGOUT,
+        { id: id },
+        {
+          headers: { Authorization: `Bearer ${jwt}` },
+        }
+      );
       if (response.data.success) {
         dispatch({
           type: ActionTypes.LOGOUT_SUCCESS,
