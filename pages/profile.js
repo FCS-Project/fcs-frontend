@@ -18,7 +18,7 @@ function ProfilePage() {
     if (!auth?.loading) {
       dispatch(getUser());
     }
-  }, [user.data]);
+  }, [user?.data]);
 
   if (user?.loading || auth?.loading) {
     return (
