@@ -9,6 +9,7 @@ import * as ActionTypes from "../ActionTypes";
 
 export const signup = (dto) => {
   return async (dispatch) => {
+    dispatch({ type: ActionTypes.SIGNUP_REQUEST });
     try {
       const response = await instance.post(SIGNUP, dto);
       if (response.data) {

@@ -84,11 +84,15 @@ function Signup() {
       <Header />
       <div className="flex justify-center items-center ">
         <div
-          className={`flex flex-col p-10 w-11/12 sm:w-4/5 md:w-3/5 lg:w-2/5 shadow-lg ${
-            organisationFlag ? " mt-7" : " mt-24"
+          className={`flex flex-col p-10 w-11/12 sm:w-4/5 md:w-3/5 lg:w-1/2 shadow-lg ${
+            organisationFlag ? " mt-0" : "mt-10"
           }`}
         >
-          <div className="text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl">
+          <div
+            className={`text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl ${
+              organisationFlag ? "mb-0" : "mb-2"
+            }`}
+          >
             Sign Up as {organisationFlag ? "an Organisation" : "a User"}
           </div>
           <Input
@@ -97,6 +101,7 @@ function Signup() {
             state={name}
             setState={setName}
             required={true}
+            style="my-0.5"
           />
           <Input
             heading={"Email Address"}
@@ -104,7 +109,7 @@ function Signup() {
             state={email}
             setState={setEmail}
             required={true}
-            style="my-2"
+            style="my-0.5"
           />
           <Input
             heading={"Password"}
@@ -113,6 +118,7 @@ function Signup() {
             state={password}
             setState={setPassword}
             required={true}
+            style="my-0.5"
           />
 
           {!organisationFlag && (
@@ -124,7 +130,7 @@ function Signup() {
                 <form
                   method="post"
                   onChange={(event) => handleFileChange(event, true)}
-                  className="w-[100%]"
+                  className="w-full"
                 >
                   <label htmlFor="dp">
                     <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
@@ -138,7 +144,7 @@ function Signup() {
                       <img
                         alt="display picture"
                         src={fileDP}
-                        className="w-[50%] max-h-[10rem] object-contain max-w-1/2  block ml-auto mr-auto border-theme my-5"
+                        className="w-1/2 max-h-[10rem] object-contain max-w-1/2 block ml-auto mr-auto border-theme my-5"
                       />
                     </>
                   )}
@@ -164,6 +170,7 @@ function Signup() {
                 state={description}
                 setState={setDescription}
                 required={true}
+                style="my-0.5"
               />
               <Input
                 heading={"Location"}
@@ -172,6 +179,7 @@ function Signup() {
                 state={location}
                 setState={setLocation}
                 required={true}
+                style="my-0.5"
               />
               <div className="mt-2 text-sm sm:text-base lg:text-lg">
                 Upload Pictures
@@ -198,7 +206,6 @@ function Signup() {
                       />
                     </>
                   )}
-
                   <input
                     type="file"
                     id="dp"
@@ -207,18 +214,16 @@ function Signup() {
                     style={{ display: "none" }}
                   />
                 </form>
-
                 <form
                   method="post"
                   onChange={(event) => handleFileChange(event, false)}
-                  className="w-[50%]"
+                  className="w-1/2"
                 >
                   <label htmlFor="banner">
                     <div className="w-[full] py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
                       Upload Banner
                     </div>
                   </label>
-
                   {fileBannerSrc && (
                     <>
                       <p className="text-sm mt-5">Image Uploaded</p>
@@ -273,7 +278,7 @@ function Signup() {
                     Pharmacy
                   </label>
                 </div>
-                <div>
+                <div className="mr-3 flex items-center">
                   <input
                     id="insurance"
                     type="checkbox"
@@ -306,7 +311,7 @@ function Signup() {
                     Patient
                   </label>
                 </div>
-                <div>
+                <div className="mr-3 flex items-center">
                   <input
                     id="professional"
                     type="checkbox"

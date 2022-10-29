@@ -11,11 +11,18 @@ const initState = {
 export const authReducer = (state = initState, action) => {
   const { type } = action;
   switch (type) {
+    case ActionTypes.LOGIN_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        errmess: null,
+      };
     case ActionTypes.REGISTER_SUCCESS:
       setAccessToken(action.access_token);
       setRefreshToken(action.refresh_token);
       return {
         ...state,
+        loading: false,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };
