@@ -11,11 +11,15 @@ function Header() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  useEffect(() => {
-    if (success) {
-      router.push("/login");
-    }
-  }, [success, router]);
+  if (success) {
+    router.push("/login");
+  }
+
+  // useEffect(() => {
+  //   if (success) {
+  //     router.push("/login");
+  //   }
+  // }, [success, router]);
 
   const linkStyle =
     "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer";

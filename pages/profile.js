@@ -7,20 +7,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../store/actions/user";
 import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
+import { useRouter } from "next/router";
 
 function ProfilePage() {
+  const router = useRouter();
   const access_token = useSelector((state) => state.auth.access_token);
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (access_token) {
+  const checkAuth = () => {
+    if (access_token != null) {
       dispatch(getUser());
+    } else {
+      router.push("/login");
     }
-  }, [access_token, dispatch]);
+  };
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
 
   return (
     <>
-      <SEO />
+      <SEO title={"Profile"} />
       {user ? (
         <>
           <SEO title={user.name} />

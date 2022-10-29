@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Button from "../components/common/Button";
@@ -7,9 +8,9 @@ import SEO from "../components/common/SEO";
 import { signin } from "../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { getUser } from "../store/actions/user";
 import Modal from "../components/otp/Modal";
 import { otpSignIn } from "../utils/otp/otpSignIn";
+import { getAccessToken } from "../lib/auth";
 
 function Login() {
   const dispatch = useDispatch();
@@ -37,12 +38,15 @@ function Login() {
     }
   };
 
-  useEffect(() => {
-    if (access_token) {
-      dispatch(getUser());
+  const checkUser = () => {
+    if (getAccessToken() != null) {
       router.push("/profile");
     }
-  }, [dispatch]);
+  };
+
+  useEffect(() => {
+    checkUser();
+  }, []);
 
   return (
     <>

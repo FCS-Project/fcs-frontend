@@ -89,6 +89,8 @@ export const authReducer = (state = initState, action) => {
         ...state,
         errmess: null,
         success: action.success,
+        access_token: action.access_token,
+        refresh_token: action.refresh_token,
       };
     case ActionTypes.LOGOUT_FAIL:
       return {

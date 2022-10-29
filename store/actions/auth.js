@@ -1,17 +1,23 @@
 import instance from "../../axios";
 import { LOGOUT, SIGNIN, SIGNUP, VERIFY_OTP } from "../../constants";
-import { getAccessToken } from "../../lib/auth";
+import {
+  getAccessToken,
+  setAccessToken,
+  setRefreshToken,
+} from "../../lib/auth";
 import * as ActionTypes from "../ActionTypes";
 
 export const signup = (dto) => {
   return async (dispatch) => {
     try {
       const response = await instance.post(SIGNUP, dto);
-      dispatch({
-        type: ActionTypes.REGISTER_SUCCESS,
-        access_token: response.data.access_token,
-        refresh_token: response.data.refresh_token,
-      });
+      if (response.data) {
+        dispatch({
+          type: ActionTypes.REGISTER_SUCCESS,
+          access_token: response.data.access_token,
+          refresh_token: response.data.refresh_token,
+        });
+      }
     } catch (e) {
       dispatch({
         type: ActionTypes.REGISTER_FAIL,
@@ -29,7 +35,7 @@ export const signin = (dto) => {
   return async (dispatch) => {
     try {
       const response = await instance.post(SIGNIN, dto);
-      if (response) {
+      if (response.data) {
         dispatch({
           type: ActionTypes.LOGIN_SUCCESS,
           access_token: response.data.access_token,
@@ -65,6 +71,8 @@ export const logout = () => {
         dispatch({
           type: ActionTypes.LOGOUT_SUCCESS,
           success: response.data.success,
+          access_token: null,
+          refresh_token: null,
         });
       }
     } catch (e) {

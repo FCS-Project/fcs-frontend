@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../store/actions/auth";
 import { useRouter } from "next/router";
 import uploadImage from "../utils/imageUpload";
+import { getAccessToken } from "../lib/auth";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
@@ -83,11 +84,15 @@ function Signup() {
     }
   };
 
-  useEffect(() => {
-    if (access_token) {
+  const checkAuth = () => {
+    if (getAccessToken() != null) {
       router.push("/profile");
     }
-  }, [access_token, router]);
+  };
+
+  useEffect(() => {
+    checkAuth();
+  });
 
   return (
     <>
