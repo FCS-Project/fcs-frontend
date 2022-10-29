@@ -57,6 +57,7 @@ function EditInfo() {
           displaySrc: fileDPSrc,
         };
         dispatch(updateUser(user?.id, dto));
+        router.push("/profile");
       }
     } else if ((roles = "Organisation")) {
       if (name != "" && email != "") {
@@ -70,16 +71,10 @@ function EditInfo() {
           bannerSrc: fileBannerSrc,
         };
         dispatch(updateUser(user?.id, dto));
+        router.push("/profile");
       }
     }
   };
-
-  useEffect(() => {
-    if (success) {
-      dispatch(getUser());
-      router.push("/profile");
-    }
-  }, [success, dispatch, router]);
 
   return (
     <>

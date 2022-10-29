@@ -29,6 +29,12 @@ export const userReducer = (state = initState, action) => {
         loading: false,
         errmess: action.errmess,
       };
+    case ActionTypes.UPDATE_USER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        errmess: null,
+      };
     case ActionTypes.UPDATE_USER_SUCCESS:
       return {
         ...state,
