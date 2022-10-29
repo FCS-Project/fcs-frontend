@@ -15,7 +15,7 @@ function OrgCard({ id, name, imgSrc, location, type }) {
         />
         <div className="flex flex-col px-2 pt-1.5 gap-1">
           <div className="text-md">
-            {name?.length > 5 ? name.slice(0, 25) + "..." : name}
+            {name?.length > 40 ? name.slice(0, 40) + "..." : name}
           </div>
           {location ? (
             <div className="flex items-center">
@@ -24,8 +24,8 @@ function OrgCard({ id, name, imgSrc, location, type }) {
                 className="text-theme ml-[-0.1rem] mr-1"
               />
               <div className="text-xs text-gray-500">
-                {location?.length > 20
-                  ? location.slice(0, 30) + "..."
+                {location?.length > 40
+                  ? location.slice(0, 40) + "..."
                   : location}
               </div>
             </div>
