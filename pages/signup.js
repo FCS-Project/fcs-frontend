@@ -60,9 +60,7 @@ function Signup() {
         bannerSrc: fileBannerSrc,
       };
       dispatch(signup(dto));
-      if (auth.success) {
-        router.push("/profile");
-      }
+      router.push("/profile");
     }
   };
 
@@ -81,15 +79,11 @@ function Signup() {
     }
   };
 
-  // const checkAuth = () => {
-  //   if (getAccessToken() != null) {
+  // useEffect(() => {
+  //   if (auth.access_token != "null") {
   //     router.push("/profile");
   //   }
-  // };
-
-  useEffect(() => {
-    // checkAuth();
-  }, []);
+  // }, [auth]);
 
   return (
     <>

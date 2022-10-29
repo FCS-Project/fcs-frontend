@@ -22,8 +22,6 @@ export const authReducer = (state = initState, action) => {
     case ActionTypes.REGISTER_FAIL:
       return {
         ...state,
-        access_token: null,
-        refresh_token: null,
         errmess: action.errmess,
       };
     case ActionTypes.LOGIN_SUCCESS:
@@ -38,20 +36,20 @@ export const authReducer = (state = initState, action) => {
     case ActionTypes.LOGIN_FAIL:
       return {
         ...state,
-        errmess: "error",
+        errmess: action.errmess,
         access_token: null,
         refresh_token: null,
       };
     case ActionTypes.EDIT_INFO_OTP_SUCCESS:
       return {
         ...state,
-        errmess: null,
+        errmess: action.errmess,
         success: action.success,
       };
     case ActionTypes.EDIT_INFO_OTP_FAIL:
       return {
         ...state,
-        errmess: null,
+        errmess: action.errmess,
         success: action.success,
       };
     case ActionTypes.OTP_LOGIN_SUCCESS:
@@ -66,15 +64,13 @@ export const authReducer = (state = initState, action) => {
     case ActionTypes.OTP_LOGIN_FAIL:
       return {
         ...state,
-        errmess: "error",
-        access_token: null,
-        refresh_token: null,
+        errmess: action.errmess,
       };
     case ActionTypes.SET_TOKEN_IN_STATE:
       return {
         ...state,
-        access_token: action.access_token,
-        refresh_token: action.refresh_token,
+        access_token: action.data.access_token,
+        refresh_token: action.data.refresh_token,
       };
     case ActionTypes.REMOVE_TOKEN_FROM_STATE:
       return {
@@ -95,7 +91,7 @@ export const authReducer = (state = initState, action) => {
     case ActionTypes.LOGOUT_FAIL:
       return {
         ...state,
-        errmess: "error",
+        errmess: action.errmess,
       };
     default:
       return state;

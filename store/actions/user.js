@@ -13,6 +13,7 @@ export const getUser = () => {
       if (response.data.success) {
         dispatch({
           type: ActionTypes.GET_USER_SUCCESS,
+          success: response.data.success,
           data: response.data.data,
         });
       }
