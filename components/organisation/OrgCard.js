@@ -4,11 +4,10 @@ import PlaceIcon from "@mui/icons-material/Place";
 import Link from "next/link";
 import BusinessSharpIcon from "@mui/icons-material/BusinessSharp";
 
-function OrgCard({ id, name, imgSrc, desc, location, type }) {
-  const description = desc?.slice(0, 100);
+function OrgCard({ id, name, imgSrc, location, type }) {
   return (
     <Link href={`user/${id}`}>
-      <div className="h-56 w-11/12 sm:w-5/12 md:w-64 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden pb-2">
+      <div className="h-56 w-11/12 sm:w-72 md:w-2/5 lg:w-80 shadow-sm hover:shadow-md bg-white border-2 cursor-pointer m-2 duration-500 overflow-hidden pb-2">
         <img
           alt="display picture"
           src={imgSrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
