@@ -21,9 +21,6 @@ function EditInfo() {
   const [modal, setModal] = useState(true);
   const roles = user?.roles[0];
   const router = useRouter();
-  console.log("roles", roles);
-  console.log("user", user);
-
   const dispatch = useDispatch();
 
   const [fileDP, setFileDP] = useState("");
@@ -34,15 +31,10 @@ function EditInfo() {
 
   const handleFileChange = async (changeEvent, dp) => {
     const reader = new FileReader();
-
-    console.log("changeEvent>>>", changeEvent);
-
     if (dp) {
-      console.log("hi");
       reader.onload = function (onLoadEvent) {
         setFileDP(onLoadEvent.target.result);
       };
-
       reader.readAsDataURL(changeEvent.target.files[0]);
       await uploadImage(changeEvent, setFileDPSrc, "dp");
     } else {

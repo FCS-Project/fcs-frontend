@@ -1,15 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
+import React, { useEffect } from "react";
 import CreateDoc from "../components/profile/createDoc";
 import ProfileDocs from "../components/profile/ProfileDocs";
 import ProfileTop from "../components/profile/ProfileTop";
 import SEO from "../components/common/SEO";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
+import { getUser } from "../store/actions/user";
 
 function ProfilePage() {
   const user = useSelector((state) => state.user.data);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUser());
+  }, []);
   return (
     <>
       <SEO title={"Profile"} />
