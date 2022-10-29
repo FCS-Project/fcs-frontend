@@ -10,12 +10,10 @@ function Header() {
   const success = useSelector((state) => state.auth.success);
   const dispatch = useDispatch();
   const router = useRouter();
-
   const onClick = () => {
     dispatch(logout());
     router.push("/login");
   };
-
   const linkStyle =
     "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer";
   return (
