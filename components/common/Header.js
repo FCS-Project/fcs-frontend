@@ -21,32 +21,31 @@ function Header() {
       <Link href="/">
         <Logo />
       </Link>
-      {user && (
-        <div className="sm:pr-5 flex items-center flex-end gap-5 md:gap-8 lg:gap-10">
-          <Link href="/">
-            <p className={linkStyle}>Home</p>
-          </Link>
-          <Link href="/profile">
-            <p className={linkStyle}>Profile</p>
-          </Link>
-          <p className={linkStyle} onClick={() => onClick()}>
-            Logout
-          </p>
-        </div>
-      )}
-      {user?.roles[0] == "Admin" && (
-        <div className="sm:pr-5 flex items-center flex-end gap-5 md:gap-8 lg:gap-10">
-          <Link href="/">
-            <p className={linkStyle}>Home</p>
-          </Link>
-          <Link href="/profile">
-            <p className={linkStyle}>Profile</p>
-          </Link>
-          <p className={linkStyle} onClick={() => onClick()}>
-            Logout
-          </p>
-        </div>
-      )}
+      <div className="sm:pr-5 flex items-center flex-end gap-5 md:gap-8 lg:gap-10">
+        {user && (
+          <>
+            <Link href="/">
+              <p className={linkStyle}>Home</p>
+            </Link>
+            {user?.roles[0] == "Admin" && (
+              <>
+                <Link href="/">
+                  <p className={linkStyle}>Users</p>
+                </Link>
+                <Link href="/">
+                  <p className={linkStyle}>Organisations</p>
+                </Link>
+              </>
+            )}
+            <Link href="/profile">
+              <p className={linkStyle}>Profile</p>
+            </Link>
+            <p className={linkStyle} onClick={() => onClick()}>
+              Logout
+            </p>
+          </>
+        )}
+      </div>
     </div>
   );
 }
