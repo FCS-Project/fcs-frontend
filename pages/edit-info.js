@@ -11,7 +11,7 @@ import { getUser, updateUser } from "../store/actions/user";
 import uploadImage from "../utils/imageUpload";
 
 function EditInfo() {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.data);
   const [name, setName] = useState(user?.name ?? "");
   const [email, setEmail] = useState(user?.email ?? "");
   const [mobile, setMobile] = useState(user?.mobileNumber ?? "");

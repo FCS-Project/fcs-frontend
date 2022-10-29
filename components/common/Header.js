@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { logout } from "../../store/actions/auth";
 
 function Header() {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.data);
   const success = useSelector((state) => state.auth.success);
   const dispatch = useDispatch();
   const router = useRouter();

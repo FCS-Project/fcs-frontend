@@ -14,7 +14,7 @@ import { getAccessToken } from "../lib/auth";
 function ProfilePage() {
   const router = useRouter();
   const access_token = useSelector((state) => state.auth.access_token);
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.data);
   const dispatch = useDispatch();
   // const checkAuth = () => {
   //   if (user == null) {
