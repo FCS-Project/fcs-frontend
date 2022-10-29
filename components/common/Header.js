@@ -11,6 +11,12 @@ function Header() {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const logout = () => {
+    if (user) {
+      dispatch(logout);
+    }
+  };
+
   if (success) {
     router.push("/login");
   }
@@ -36,7 +42,7 @@ function Header() {
           <Link href="/profile">
             <p className={linkStyle}>Profile</p>
           </Link>
-          <p className={linkStyle} onClick={() => dispatch(logout())}>
+          <p className={linkStyle} onClick={() => logout()}>
             Logout
           </p>
         </div>
