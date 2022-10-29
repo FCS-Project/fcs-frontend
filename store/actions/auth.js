@@ -50,13 +50,13 @@ export const signin = (dto) => {
   };
 };
 
-export const logout = (id) => {
+export const logout = () => {
   const jwt = getAccessToken();
   return async (dispatch) => {
     try {
       const response = await instance.post(
         LOGOUT,
-        { id: id },
+        {},
         {
           headers: { Authorization: `Bearer ${jwt}` },
         }
