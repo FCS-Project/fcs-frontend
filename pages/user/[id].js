@@ -33,7 +33,7 @@ function User() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="h-[100vh] bg-slate-50">
+        <>
           <SEO title={user.name} />
           <Header />
           <div className="gap-5 ml-auto mr-auto flex flex-col justify-start w-11/12 lg:w-3/4 md:gap-8 lg:gap-10 pb-10">
@@ -48,7 +48,7 @@ function User() {
             {user.email && <InfoBox email={user.email} />}
             {user.mobileNumber && <InfoBox mobileNumber={user.mobileNumber} />}
           </div>
-        </div>
+        </>
       )}
     </>
   );
