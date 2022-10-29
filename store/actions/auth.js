@@ -120,14 +120,14 @@ export const verifyOtp = (dto) => {
   };
 };
 
-export const setTokensInState = (access, refresh) => (dispatch) => {
+export const setTokensInState = (access_token, refresh_token) => (dispatch) => {
   return dispatch({
     type: ActionTypes.SET_TOKEN_IN_STATE,
-    access: access,
-    refresh,
+    access_token: access_token,
+    refresh_token: refresh_token,
     data: {
-      access,
-      refresh,
+      access_token,
+      refresh_token,
     },
   });
 };
