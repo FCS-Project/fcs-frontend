@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../store/actions/auth";
 import { useRouter } from "next/router";
 import uploadImage from "../utils/imageUpload";
-import { getAccessToken } from "../lib/auth";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
@@ -78,12 +77,6 @@ function Signup() {
       router.push("/profile");
     }
   };
-
-  // useEffect(() => {
-  //   if (auth.access_token != "null") {
-  //     router.push("/profile");
-  //   }
-  // }, [auth]);
 
   return (
     <>
