@@ -15,10 +15,19 @@ function ProfilePage() {
   useEffect(() => {
     dispatch(getUser());
   }, []);
+
+  if (user?.loading) {
+    return (
+      <>
+        <SEO title={"Profile"} />
+        <Loader />
+      </>
+    );
+  }
+
   return (
     <>
-      <SEO title={"Profile"} />
-      {user ? (
+      {user && (
         <>
           <SEO title={user.name} />
           <Header />
@@ -31,8 +40,6 @@ function ProfilePage() {
           <ProfileDocs documents={user.documents} />
           <CreateDoc />
         </>
-      ) : (
-        <Loader />
       )}
     </>
   );
