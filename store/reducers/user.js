@@ -3,7 +3,7 @@ import * as ActionTypes from "../ActionTypes";
 const initState = {
   errmess: null,
   data: null,
-  success: null,
+  success: false,
 };
 
 export const userReducer = (state = initState, action) => {
@@ -13,6 +13,7 @@ export const userReducer = (state = initState, action) => {
       return {
         ...state,
         data: action.data,
+        success: true,
       };
     case ActionTypes.GET_USER_FAIL:
       return {

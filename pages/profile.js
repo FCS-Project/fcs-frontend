@@ -16,17 +16,11 @@ function ProfilePage() {
   const access_token = useSelector((state) => state.auth.access_token);
   const user = useSelector((state) => state.user.data);
   const dispatch = useDispatch();
-  // const checkAuth = () => {
-  //   if (user == null) {
-  //     dispatch(getUser());
-  //   } else {
-  //     router.push("/login");
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   checkAuth();
-  // }, []);
+  useEffect(() => {
+    if (access_token) {
+      dispatch(getUser());
+    }
+  }, []);
 
   return (
     <>

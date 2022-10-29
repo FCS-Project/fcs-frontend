@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import Modal from "../components/otp/Modal";
 import { otpSignIn } from "../utils/otp/otpSignIn";
 import { getAccessToken } from "../lib/auth";
+import { getUser } from "../store/actions/user";
 
 function Login() {
   const dispatch = useDispatch();
@@ -34,19 +35,10 @@ function Login() {
         });
       } else {
         dispatch(signin(dto));
+        router.push("/profile");
       }
     }
   };
-
-  // const checkUser = () => {
-  //   if (getAccessToken() != null) {
-  //     router.push("/profile");
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   checkUser();
-  // }, []);
 
   return (
     <>

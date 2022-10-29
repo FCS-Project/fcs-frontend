@@ -14,6 +14,7 @@ export const signup = (dto) => {
       if (response.data) {
         dispatch({
           type: ActionTypes.REGISTER_SUCCESS,
+          errmess: null,
           access_token: response.data.access_token,
           refresh_token: response.data.refresh_token,
         });
@@ -38,6 +39,7 @@ export const signin = (dto) => {
       if (response.data) {
         dispatch({
           type: ActionTypes.LOGIN_SUCCESS,
+          errmess: null,
           access_token: response.data.access_token,
           refresh_token: response.data.refresh_token,
         });
@@ -70,6 +72,7 @@ export const logout = () => {
         removeTokenFromState();
         dispatch({
           type: ActionTypes.LOGOUT_SUCCESS,
+          errmess: null,
           success: response.data.success,
           access_token: null,
           refresh_token: null,
@@ -104,6 +107,7 @@ export const verifyOtp = (dto) => {
         if (response) {
           dispatch({
             type: ActionTypes.OTP_LOGIN_SUCCESS,
+            errmess: null,
             access_token: response.data.access_token,
             refresh_token: response.data.refresh_token,
           });
