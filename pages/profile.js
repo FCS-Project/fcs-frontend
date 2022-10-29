@@ -15,12 +15,12 @@ function ProfilePage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!auth.loading) {
+    if (!auth?.loading) {
       dispatch(getUser());
     }
   }, []);
 
-  if (user?.loading) {
+  if (user?.loading || auth?.loading) {
     return (
       <>
         <SEO title={"Profile"} />
