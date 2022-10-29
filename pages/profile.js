@@ -8,17 +8,25 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
 import { getUser } from "../store/actions/user";
+import { useRouter } from "next/router";
 
 function ProfilePage() {
   const user = useSelector((state) => state.user.data);
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     if (!auth?.loading) {
       dispatch(getUser());
     }
   }, [user?.data]);
+
+  useEffect(() => {
+    if (!auth?.access_token) {
+      router.push("/login");
+    }
+  }, [auth]);
 
   if (user?.loading || auth?.loading) {
     return (

@@ -39,6 +39,7 @@ export const userReducer = (state = initState, action) => {
       return {
         ...state,
         loading: false,
+        verfied_otp: false,
         errmess: null,
         data: action.data,
       };
@@ -46,6 +47,7 @@ export const userReducer = (state = initState, action) => {
       return {
         ...state,
         loading: false,
+        verfied_otp: false,
         errmess: action.errmess,
       };
     case ActionTypes.EMPTY_USER_SUCCESS:

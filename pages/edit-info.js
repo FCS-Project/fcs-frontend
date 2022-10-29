@@ -12,6 +12,7 @@ import uploadImage from "../utils/imageUpload";
 
 function EditInfo() {
   const user = useSelector((state) => state.user.data);
+  const auth = useSelector((state) => state.auth);
   const [name, setName] = useState(user?.name ?? "");
   const [email, setEmail] = useState(user?.email ?? "");
   const [mobile, setMobile] = useState(user?.mobileNumber ?? "");
@@ -75,6 +76,12 @@ function EditInfo() {
       }
     }
   };
+
+  useEffect(() => {
+    if (auth?.verified_otp == false) {
+      router.push("/profile");
+    }
+  }, [auth, router]);
 
   return (
     <>
