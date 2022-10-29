@@ -12,9 +12,8 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     if (typeof window !== undefined) {
       if (getAccessToken() != "null" || getRefreshToken() != "null") {
-        // User may not be authenticated, found tokens so set them in state and get user data if it is not present already
         dispatch(setTokensInState(getAccessToken(), getRefreshToken()));
-        // dispatch(getUser());
+        dispatch(getUser());
       }
     }
   }, [dispatch]);

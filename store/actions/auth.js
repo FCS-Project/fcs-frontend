@@ -142,10 +142,6 @@ export const setTokensInState = (access_token, refresh_token) => (dispatch) => {
     type: ActionTypes.SET_TOKEN_IN_STATE,
     access_token: access_token,
     refresh_token: refresh_token,
-    data: {
-      access_token,
-      refresh_token,
-    },
   });
 };
 

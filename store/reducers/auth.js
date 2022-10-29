@@ -69,8 +69,8 @@ export const authReducer = (state = initState, action) => {
     case ActionTypes.SET_TOKEN_IN_STATE:
       return {
         ...state,
-        access_token: action.data.access_token,
-        refresh_token: action.data.refresh_token,
+        access_token: action.access_token,
+        refresh_token: action.refresh_token,
       };
     case ActionTypes.REMOVE_TOKEN_FROM_STATE:
       return {
