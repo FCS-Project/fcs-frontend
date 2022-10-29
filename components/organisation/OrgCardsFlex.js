@@ -3,7 +3,7 @@ import OrgCard from "./OrgCard";
 
 function OrgCardsFlex({ userArr }) {
   return (
-    <div className="px-5 md:px-8 lg:px-10 flex flex-wrap gap-1">
+    <div className="px-2 lg:px-8 flex flex-wrap justify-center gap-1">
       {userArr ? (
         <>
           {userArr.map((item, i) => {
