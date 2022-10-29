@@ -100,13 +100,14 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         errmess: null,
-        success: action.success,
+        loading: false,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };
     case ActionTypes.LOGOUT_FAIL:
       return {
         ...state,
+        loading: false,
         errmess: action.errmess,
       };
     default:
