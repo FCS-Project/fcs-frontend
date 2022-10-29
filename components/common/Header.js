@@ -32,7 +32,6 @@ function Header() {
           <Link href="/profile">
             <p className={linkStyle}>Profile</p>
           </Link>
-
           <p className={linkStyle} onClick={() => dispatch(logout())}>
             Logout
           </p>
