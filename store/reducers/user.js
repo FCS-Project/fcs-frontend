@@ -12,6 +12,7 @@ export const userReducer = (state = initState, action) => {
     case ActionTypes.GET_USER_SUCCESS:
       return {
         ...state,
+        errmess: null,
         data: action.data,
         success: true,
       };
@@ -29,6 +30,18 @@ export const userReducer = (state = initState, action) => {
         success: true,
       };
     case ActionTypes.UPDATE_USER_FAIL:
+      return {
+        ...state,
+        errmess: action.errmess,
+      };
+    case ActionTypes.EMPTY_USER_SUCCESS:
+      return {
+        ...state,
+        errmess: action.errmess,
+        data: action.data,
+        success: action.success,
+      };
+    case ActionTypes.EMPTY_USER_FAIL:
       return {
         ...state,
         errmess: action.errmess,

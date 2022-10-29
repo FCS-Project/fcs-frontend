@@ -4,14 +4,16 @@ import Logo from "./Logo";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { logout } from "../../store/actions/auth";
+import { emptyUser } from "../../store/actions/user";
 
 function Header() {
   const user = useSelector((state) => state.user.data);
-  const success = useSelector((state) => state.auth.success);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const router = useRouter();
   const onClick = () => {
     dispatch(logout());
+    dispatch(emptyUser());
     router.push("/login");
   };
   const linkStyle =

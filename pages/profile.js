@@ -9,18 +9,18 @@ import { getUser } from "../store/actions/user";
 import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
 import { useRouter } from "next/router";
-import { getAccessToken } from "../lib/auth";
 
 function ProfilePage() {
   const router = useRouter();
-  const access_token = useSelector((state) => state.auth.access_token);
+  const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user.data);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    if (access_token) {
+    if (auth.access_token) {
       dispatch(getUser());
     }
-  }, []);
+  }, [auth]);
 
   return (
     <>

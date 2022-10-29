@@ -56,3 +56,21 @@ export const updateUser = (id, data) => {
     }
   };
 };
+
+export const emptyUser = () => {
+  return (dispatch) => {
+    try {
+      dispatch({
+        type: ActionTypes.EMPTY_USER_SUCCESS,
+        data: null,
+        success: true,
+      });
+    } catch (e) {
+      dispatch({
+        type: ActionTypes.EMPTY_USER_FAIL,
+        errmess: "EMPTY USER FAILED",
+        success: false,
+      });
+    }
+  };
+};
