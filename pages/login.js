@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
@@ -10,12 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Modal from "../components/otp/Modal";
 import { otpSignIn } from "../utils/otp/otpSignIn";
-import { getAccessToken } from "../lib/auth";
-import { getUser } from "../store/actions/user";
 
 function Login() {
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
