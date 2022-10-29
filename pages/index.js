@@ -23,11 +23,11 @@ export default function Home() {
 
   var filteredData = data?.filter((item) => {
     if (filter == "type") {
-      return item?.type[0]?.toLowerCase().includes(state);
+      return item?.type[0]?.toLowerCase().includes(state.toLowerCase());
     } else if (filter == "name") {
-      return item?.name?.toLowerCase().includes(state);
+      return item?.name?.toLowerCase().includes(state.toLowerCase());
     } else if (filter == "location") {
-      return item?.location?.toLowerCase().includes(state);
+      return item?.location?.toLowerCase().includes(state.toLowerCase());
     }
   });
 
