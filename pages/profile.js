@@ -11,12 +11,14 @@ import { getUser } from "../store/actions/user";
 
 function ProfilePage() {
   const user = useSelector((state) => state.user.data);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getUser());
   }, []);
 
-  if (user?.loading) {
+  if (auth?.loading) {
     return (
       <>
         <SEO title={"Profile"} />

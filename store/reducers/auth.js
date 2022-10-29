@@ -24,12 +24,19 @@ export const authReducer = (state = initState, action) => {
         ...state,
         errmess: action.errmess,
       };
+    case ActionTypes.LOGIN_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        errmess: null,
+      };
     case ActionTypes.LOGIN_SUCCESS:
       setAccessToken(action.access_token);
       setRefreshToken(action.refresh_token);
       return {
         ...state,
         errmess: null,
+        loading: false,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };

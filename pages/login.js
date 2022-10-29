@@ -15,7 +15,7 @@ import { getUser } from "../store/actions/user";
 
 function Login() {
   const dispatch = useDispatch();
-  const access_token = useSelector((state) => state.auth.access_token);
+  const auth = useSelector((state) => state.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);

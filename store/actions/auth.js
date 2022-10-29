@@ -34,6 +34,7 @@ export const signup = (dto) => {
 
 export const signin = (dto) => {
   return async (dispatch) => {
+    dispatch({ type: ActionTypes.LOGIN_REQUEST });
     try {
       const response = await instance.post(SIGNIN, dto);
       if (response.data) {
