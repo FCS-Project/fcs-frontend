@@ -10,11 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../store/actions/auth";
 import { useRouter } from "next/router";
 import uploadImage from "../utils/imageUpload";
+import { getUser } from "../store/actions/user";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   const auth = useSelector((state) => state.auth);
+  const [error, setError] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -76,15 +79,25 @@ function Signup() {
         displaySrc: fileDPSrc,
       };
       dispatch(signup(dto));
-      router.push("/profile");
+      // router.push("/profile");
     }
   };
+
+  useEffect(() => {
+    if (!auth?.loading) {
+      if (auth.errmess) {
+        setError(auth.errmess);
+      } else {
+        router.push("/profile");
+      }
+    }
+  }, [auth]);
 
   return (
     <>
       <SEO title={"Sign Up"} />
       <Header />
-      <div className="flex justify-center items-center ">
+      <div className="flex justify-center items-center">
         <div
           className={`flex flex-col p-10 w-11/12 sm:w-4/5 md:w-3/5 lg:w-1/2 shadow-lg ${
             organisationFlag ? " mt-0" : "mt-10"
@@ -97,6 +110,9 @@ function Signup() {
           >
             Sign Up as {organisationFlag ? "an Organisation" : "a User"}
           </div>
+          {error && (
+            <div className="text-theme text-center">Error: {error}</div>
+          )}
           <Input
             heading={"Name"}
             placeholder={"Name"}

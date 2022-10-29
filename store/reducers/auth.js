@@ -22,6 +22,7 @@ export const authReducer = (state = initState, action) => {
       setRefreshToken(action.refresh_token);
       return {
         ...state,
+        errmess: null,
         loading: false,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
