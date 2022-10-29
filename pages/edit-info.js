@@ -74,12 +74,12 @@ function EditInfo() {
     }
   };
 
-  useEffect(() => {
-    if (success) {
-      dispatch(getUser());
-      router.push("/profile");
-    }
-  }, [success, dispatch, router]);
+  // useEffect(() => {
+  //   if (success) {
+  //     dispatch(getUser());
+  //     router.push("/profile");
+  //   }
+  // }, [success, dispatch, router]);
 
   return (
     <>
