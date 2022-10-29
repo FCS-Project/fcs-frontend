@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
@@ -14,7 +15,7 @@ import { getAccessToken } from "../lib/auth";
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
   const dispatch = useDispatch();
-  const access_token = useSelector((state) => state.auth.access_token);
+  const auth = useSelector((state) => state.auth);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,24 +25,16 @@ function Signup() {
   const [organistionType, setOrganistionType] = useState("");
   const [userType, setUserType] = useState("");
   const [organisationFlag, setOrganizationFlag] = useState(false);
-
   const [fileDP, setFileDP] = useState("");
   const [fileDPSrc, setFileDPSrc] = useState("");
-
   const [fileBanner, setFileBanner] = useState("");
   const [fileBannerSrc, setFileBannerSrc] = useState("");
-
   const handleFileChange = async (changeEvent, dp) => {
     const reader = new FileReader();
-
-    console.log("changeEvent>>>", changeEvent);
-
     if (dp) {
-      console.log("hi");
       reader.onload = function (onLoadEvent) {
         setFileDP(onLoadEvent.target.result);
       };
-
       reader.readAsDataURL(changeEvent.target.files[0]);
       await uploadImage(changeEvent, setFileDPSrc, "dp");
     } else {
@@ -67,6 +60,9 @@ function Signup() {
         bannerSrc: fileBannerSrc,
       };
       dispatch(signup(dto));
+      if (auth.success) {
+        router.push("/profile");
+      }
     }
   };
 
@@ -81,18 +77,19 @@ function Signup() {
         displaySrc: fileDPSrc,
       };
       dispatch(signup(dto));
-    }
-  };
-
-  const checkAuth = () => {
-    if (getAccessToken() != null) {
       router.push("/profile");
     }
   };
 
+  // const checkAuth = () => {
+  //   if (getAccessToken() != null) {
+  //     router.push("/profile");
+  //   }
+  // };
+
   useEffect(() => {
-    checkAuth();
-  });
+    // checkAuth();
+  }, []);
 
   return (
     <>

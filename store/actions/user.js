@@ -1,6 +1,6 @@
 import instance from "../../axios";
 import { GET_USER, UPDATE_USER } from "../../constants";
-import { getAccessToken } from "../../lib/auth";
+import { clearAuthToken, getAccessToken } from "../../lib/auth";
 import * as ActionTypes from "../ActionTypes";
 
 export const getUser = () => {
@@ -37,6 +37,7 @@ export const updateUser = (id, data) => {
         headers: { Authorization: `Bearer ${jwt}` },
       });
       if (response.data.success) {
+        clearAuthToken();
         dispatch({
           type: ActionTypes.UPDATE_USER_SUCCESS,
           data: response.data.data,

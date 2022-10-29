@@ -9,23 +9,24 @@ import { getUser } from "../store/actions/user";
 import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
 import { useRouter } from "next/router";
+import { getAccessToken } from "../lib/auth";
 
 function ProfilePage() {
   const router = useRouter();
   const access_token = useSelector((state) => state.auth.access_token);
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
-  const checkAuth = () => {
-    if (access_token != null) {
-      dispatch(getUser());
-    } else {
-      router.push("/login");
-    }
-  };
+  // const checkAuth = () => {
+  //   if (user == null) {
+  //     dispatch(getUser());
+  //   } else {
+  //     router.push("/login");
+  //   }
+  // };
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
+  // useEffect(() => {
+  //   checkAuth();
+  // }, []);
 
   return (
     <>

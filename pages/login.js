@@ -38,15 +38,15 @@ function Login() {
     }
   };
 
-  const checkUser = () => {
-    if (getAccessToken() != null) {
-      router.push("/profile");
-    }
-  };
+  // const checkUser = () => {
+  //   if (getAccessToken() != null) {
+  //     router.push("/profile");
+  //   }
+  // };
 
-  useEffect(() => {
-    checkUser();
-  }, []);
+  // useEffect(() => {
+  //   checkUser();
+  // }, []);
 
   return (
     <>
