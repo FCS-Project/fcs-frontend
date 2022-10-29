@@ -11,7 +11,7 @@ const initState = {
 export const authReducer = (state = initState, action) => {
   const { type } = action;
   switch (type) {
-    case ActionTypes.LOGIN_REQUEST:
+    case ActionTypes.REGISTER_REQUEST:
       return {
         ...state,
         loading: true,
@@ -29,6 +29,7 @@ export const authReducer = (state = initState, action) => {
     case ActionTypes.REGISTER_FAIL:
       return {
         ...state,
+        loading: false,
         errmess: action.errmess,
       };
     case ActionTypes.LOGIN_REQUEST:

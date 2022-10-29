@@ -18,6 +18,7 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const router = useRouter();
@@ -51,6 +52,7 @@ function Signup() {
         name: name,
         email: email,
         password: password,
+        mobileNumber: mobileNumber,
         roles: [organisationFlag ? "Organisation" : "User"],
         type: [organisationFlag ? organistionType : userType],
         location: location,
@@ -163,6 +165,15 @@ function Signup() {
 
           {organisationFlag && (
             <>
+              <Input
+                heading={"Mobile Number"}
+                type={"text"}
+                placeholder={"Mobile Number"}
+                state={mobileNumber}
+                setState={setMobileNumber}
+                required={true}
+                style="my-0.5"
+              />
               <Input
                 heading={"Description"}
                 type={"text"}
