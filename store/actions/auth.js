@@ -73,7 +73,6 @@ export const logout = () => {
         dispatch({
           type: ActionTypes.LOGOUT_SUCCESS,
           errmess: null,
-          success: response.data.success,
           access_token: null,
           refresh_token: null,
         });
@@ -99,7 +98,6 @@ export const verifyOtp = (dto) => {
         if (response) {
           dispatch({
             type: ActionTypes.EDIT_INFO_OTP_SUCCESS,
-            success: response.data.success,
           });
         }
       } else {

@@ -2,8 +2,8 @@ import * as ActionTypes from "../ActionTypes";
 
 const initState = {
   errmess: null,
+  loading: false,
   data: null,
-  success: false,
 };
 
 export const userReducer = (state = initState, action) => {
@@ -14,7 +14,6 @@ export const userReducer = (state = initState, action) => {
         ...state,
         errmess: null,
         data: action.data,
-        success: true,
       };
     case ActionTypes.GET_USER_FAIL:
       return {
@@ -27,7 +26,6 @@ export const userReducer = (state = initState, action) => {
         ...state,
         errmess: null,
         data: action.data,
-        success: true,
       };
     case ActionTypes.UPDATE_USER_FAIL:
       return {
@@ -39,7 +37,6 @@ export const userReducer = (state = initState, action) => {
         ...state,
         errmess: action.errmess,
         data: action.data,
-        success: action.success,
       };
     case ActionTypes.EMPTY_USER_FAIL:
       return {

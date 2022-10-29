@@ -13,7 +13,6 @@ export const getUser = () => {
       if (response.data.success) {
         dispatch({
           type: ActionTypes.GET_USER_SUCCESS,
-          success: response.data.success,
           data: response.data.data,
         });
       }
@@ -42,7 +41,6 @@ export const updateUser = (id, data) => {
         dispatch({
           type: ActionTypes.UPDATE_USER_SUCCESS,
           data: response.data.data,
-          success: response.data.success,
         });
       }
     } catch (e) {
@@ -64,13 +62,11 @@ export const emptyUser = () => {
       dispatch({
         type: ActionTypes.EMPTY_USER_SUCCESS,
         data: null,
-        success: true,
       });
     } catch (e) {
       dispatch({
         type: ActionTypes.EMPTY_USER_FAIL,
         errmess: "EMPTY USER FAILED",
-        success: false,
       });
     }
   };
