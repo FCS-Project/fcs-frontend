@@ -42,7 +42,7 @@ function Login() {
       dispatch(getUser());
       router.push("/profile");
     }
-  }, [access_token, router, dispatch]);
+  }, [dispatch]);
 
   return (
     <>

@@ -1,8 +1,4 @@
-import {
-  clearAuthToken,
-  setAccessToken,
-  setRefreshToken,
-} from "../../lib/auth";
+import { setAccessToken, setRefreshToken } from "../../lib/auth";
 import * as ActionTypes from "../ActionTypes";
 
 const initState = {
@@ -87,19 +83,18 @@ export const authReducer = (state = initState, action) => {
         refresh_token: null,
       };
     case ActionTypes.LOGOUT_SUCCESS:
+      setAccessToken(null);
+      setRefreshToken(null);
       return {
         ...state,
         errmess: null,
         success: action.success,
-        access_token: action.access_token,
-        refresh_token: action.refresh_token,
       };
     case ActionTypes.LOGOUT_FAIL:
       return {
         ...state,
         errmess: "error",
       };
-
     default:
       return state;
   }

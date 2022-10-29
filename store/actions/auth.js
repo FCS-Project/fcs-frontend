@@ -32,7 +32,6 @@ export const signin = (dto) => {
       if (response) {
         dispatch({
           type: ActionTypes.LOGIN_SUCCESS,
-          data: response.data,
           access_token: response.data.access_token,
           refresh_token: response.data.refresh_token,
         });
