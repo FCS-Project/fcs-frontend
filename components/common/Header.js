@@ -13,9 +13,9 @@ function Header() {
 
   useEffect(() => {
     if (success) {
-      router.push("/");
+      router.push("/login");
     }
-  }, [success]);
+  }, [success, router]);
 
   const linkStyle =
     "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer";
