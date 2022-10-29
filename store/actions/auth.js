@@ -62,6 +62,7 @@ export const logout = () => {
         }
       );
       if (response.data.success) {
+        removeTokenFromState();
         dispatch({
           type: ActionTypes.LOGOUT_SUCCESS,
           success: response.data.success,
