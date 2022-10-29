@@ -18,7 +18,7 @@ function Search({ state, setState, filter, setFilter }) {
 
   return (
     <div className="m-5 mb-0">
-      <div className="flex justify-start items-center w-full border-2 p-1 br-4">
+      <div className="flex justify-start items-center w-full border-2 p-1 br-4 shadow">
         <SearchSharpIcon className="text-theme text-lg sm:text-xl mx-1 sm:mx-2" />
         <input
           value={state}
