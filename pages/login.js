@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
@@ -10,8 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Modal from "../components/otp/Modal";
 import { otpSignIn } from "../utils/otp/otpSignIn";
+import Loader from "../components/common/Loader";
 
 function Login() {
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,10 +34,21 @@ function Login() {
         });
       } else {
         dispatch(signin(dto));
-        router.push("/profile");
       }
     }
   };
+
+  useEffect(() => {
+    if (!auth?.loading && auth.access_token) {
+      router.push("/profile");
+    }
+  }, [auth]);
+
+  useEffect(() => {
+    if (auth?.errmess) {
+      setError(auth.errmess);
+    }
+  }, [auth]);
 
   return (
     <>
@@ -50,6 +63,9 @@ function Login() {
               <div className="text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl">
                 Login {otp ? "With OTP" : "With Password"}
               </div>
+              {error && (
+                <div className="text-theme text-center">Error: {error}</div>
+              )}
               <Input
                 heading={"Email Address"}
                 placeholder={"Email"}

@@ -79,17 +79,18 @@ function Signup() {
         displaySrc: fileDPSrc,
       };
       dispatch(signup(dto));
-      // router.push("/profile");
     }
   };
 
   useEffect(() => {
-    if (!auth?.loading) {
-      if (auth.errmess) {
-        setError(auth.errmess);
-      } else {
-        router.push("/profile");
-      }
+    if (!auth?.loading && auth.access_token) {
+      router.push("/profile");
+    }
+  }, [auth]);
+
+  useEffect(() => {
+    if (auth?.errmess) {
+      setError(auth.errmess);
     }
   }, [auth]);
 
