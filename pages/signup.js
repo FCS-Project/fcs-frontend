@@ -82,7 +82,11 @@ function Signup() {
   };
 
   useEffect(() => {
-    if (!auth?.loading && auth.access_token) {
+    setError("");
+  }, []);
+
+  useEffect(() => {
+    if ((!auth?.loading && auth.access_token) || user.data) {
       router.push("/profile");
     }
   }, [auth, user]);

@@ -1,10 +1,14 @@
 import instance from "../../axios";
 import { getAccessToken } from "../../lib/auth";
 
-export const postDocument = async (dto) => {
+export const getUserDocuments = async (id) => {
   const jwt = getAccessToken();
   return instance
-    .post("/document", dto, { headers: { Authorization: `Bearer ${jwt}` } })
+    .get(
+      "/user/documents",
+      { id },
+      { headers: { Authorization: `Bearer ${jwt}` } }
+    )
     .then((response) => {
       if (response.data.success) {
         return {

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CreateDoc from "../components/profile/createDoc";
 import ProfileDocs from "../components/profile/ProfileDocs";
 import ProfileTop from "../components/profile/ProfileTop";
@@ -9,15 +9,35 @@ import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
 import { getUser } from "../store/actions/user";
 import { useRouter } from "next/router";
+import { getUserDocuments } from "../utils/document/getUserDocuments";
+import { BounceLoader } from "react-spinners";
 
 function ProfilePage() {
   const user = useSelector((state) => state.user.data);
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const router = useRouter();
+  const [docs, setDocs] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchUserDocs = async () => {
+    getUserDocuments().then((response) => {
+      if (response.success) {
+        setDocs(response.data);
+        console.log(response.data);
+        setLoading(false);
+      }
+    });
+  };
 
   useEffect(() => {
-    if (!auth?.loading && auth?.access_token) {
+    if (auth?.access_token || !user.data) {
+      fetchUserDocs();
+    }
+  }, []);
+
+  useEffect(() => {
+    if ((!auth?.loading && auth?.access_token) || !user?.data) {
       dispatch(getUser());
     }
   }, [user?.data]);
@@ -49,7 +69,12 @@ function ProfilePage() {
             type={user.type}
             email={user.email}
           />
-          <ProfileDocs documents={user.documents} />
+          {loading ? (
+            <BounceLoader height={8} width={200} color={"var(--theme)"} />
+          ) : (
+            <ProfileDocs documents={docs} />
+          )}
+          {/* <ProfileDocs documents={user.documents} /> */}
           <CreateDoc />
         </>
       )}

@@ -39,7 +39,11 @@ function Login() {
   };
 
   useEffect(() => {
-    if (!auth?.loading && auth.access_token) {
+    setError("");
+  }, []);
+
+  useEffect(() => {
+    if ((!auth?.loading && auth.access_token) || user.data) {
       router.push("/profile");
     }
   }, [auth]);
@@ -117,7 +121,6 @@ function Login() {
                   <Link href="/signup">Sign Up</Link>
                 </span>
               </div>
-              {error ?? ""}
             </div>
           </div>
         </>
