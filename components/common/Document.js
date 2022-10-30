@@ -1,21 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "./Button";
 import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
 import { useRouter } from "next/router";
 import { deleteDocument } from "../../utils/document/deleteDocument";
 
-function Document({ id, name, createdAt, link, deleteDoc }) {
-  const created = new Date(createdAt);
+function Document({ id, name, createdAt, link }) {
   const router = useRouter();
+  const created = new Date(createdAt);
+  const formattedDate =
+    created.getDate() +
+    "/" +
+    (created.getMonth() + 1) +
+    "/" +
+    created.getFullYear();
 
   const downloadPDF = () => {
-    // using Java Script method to get PDF file
     fetch(link).then((response) => {
       response.blob().then((blob) => {
-        // Creating new object of PDF file
         const fileURL = window.URL.createObjectURL(blob);
-        // Setting various property values
         let alink = document.createElement("a");
         alink.href = fileURL;
         alink.download = name;
@@ -33,12 +36,7 @@ function Document({ id, name, createdAt, link, deleteDoc }) {
       <div className="my-1">
         <div className="text-md lg:text-lg">{name ?? "Document Name"}</div>
         <div className="text-xs sm:text-sm opacity-50">
-          Uploaded on:{" "}
-          {created.getDate() +
-            "/" +
-            (created.getMonth() + 1) +
-            "/" +
-            created.getFullYear() ?? "22/10/2022"}
+          Uploaded on: {formattedDate ?? "22/10/2022"}
         </div>
       </div>
       <div className="flex justify-start items-center gap-1">
