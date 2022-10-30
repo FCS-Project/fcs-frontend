@@ -29,10 +29,10 @@ function Header() {
           <>
             {user?.roles[0] == "Admin" ? (
               <>
-                <Link href="/">
+                <Link href="/users">
                   <p className={linkStyle}>Users</p>
                 </Link>
-                <Link href="/">
+                <Link href="/organisations">
                   <p className={linkStyle}>Organisations</p>
                 </Link>
                 <Link href="/profile">
