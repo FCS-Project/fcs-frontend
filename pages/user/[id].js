@@ -44,7 +44,7 @@ function User() {
 
   useEffect(() => {
     fetchProfile(id);
-  }, [id]);
+  }, [id, user]);
 
   return (
     <>

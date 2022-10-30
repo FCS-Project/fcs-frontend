@@ -10,10 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Modal from "../components/otp/Modal";
 import { otpSignIn } from "../utils/otp/otpSignIn";
-import Loader from "../components/common/Loader";
 
 function Login() {
   const auth = useSelector((state) => state.auth);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

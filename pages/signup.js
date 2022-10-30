@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../store/actions/auth";
 import { useRouter } from "next/router";
 import uploadImage from "../utils/imageUpload";
-import { getUser } from "../store/actions/user";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
@@ -64,7 +63,7 @@ function Signup() {
         bannerSrc: fileBannerSrc,
       };
       dispatch(signup(dto));
-      router.push("/profile");
+      // router.push("/profile");
     }
   };
 
@@ -86,7 +85,7 @@ function Signup() {
     if (!auth?.loading && auth.access_token) {
       router.push("/profile");
     }
-  }, [auth]);
+  }, [auth, user]);
 
   useEffect(() => {
     if (auth?.errmess) {
@@ -141,8 +140,8 @@ function Signup() {
           />
 
           {!organisationFlag && (
-            <>
-              <div className="mt-2 text-sm sm:text-base lg:text-lg">
+            <div className="my-1">
+              <div className="text-sm sm:text-base lg:text-lg">
                 Upload Pictures
               </div>
               <div className="flex w-full items-start justify-between mt-2 gap-2 lg:gap-5">
@@ -153,7 +152,7 @@ function Signup() {
                 >
                   <label htmlFor="dp">
                     <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
-                      Upload Dp
+                      Profile Picture
                     </div>
                   </label>
 
@@ -177,7 +176,7 @@ function Signup() {
                   />
                 </form>
               </div>
-            </>
+            </div>
           )}
 
           {organisationFlag && (
@@ -220,7 +219,7 @@ function Signup() {
                 >
                   <label htmlFor="dp">
                     <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
-                      Upload Dp
+                      Profile Picture
                     </div>
                   </label>
 
@@ -249,7 +248,7 @@ function Signup() {
                 >
                   <label htmlFor="banner">
                     <div className="w-[full] py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
-                      Upload Banner
+                      Cover Photo
                     </div>
                   </label>
                   {fileBannerSrc && (
@@ -273,7 +272,7 @@ function Signup() {
               </div>
             </>
           )}
-          <div className="flex items-center my-4">
+          <div className="flex items-center my-2">
             {organisationFlag ? (
               <>
                 <div className="mr-3 flex items-center">
@@ -360,16 +359,17 @@ function Signup() {
           <Button
             type={"primary"}
             text={"Sign Up"}
+            style={"mb-4"}
             onClick={organisationFlag ? onSubmitOrg : onSubmit}
           />
-          <div className="text-sm md:text-base mt-4">
+          <div className="text-sm md:text-base">
             Already a User?{" "}
             <span className="text-theme hover:underline">
               <Link href="/login">Login</Link>
             </span>
           </div>
           {organisationFlag ? (
-            <div className="text-sm md:text-base mt-4">
+            <div className="text-sm md:text-base mt-1">
               Want to sign up as a User?{" "}
               <span
                 className="text-theme hover:underline cursor-pointer"
@@ -379,7 +379,7 @@ function Signup() {
               </span>
             </div>
           ) : (
-            <div className="text-sm md:text-base mt-4">
+            <div className="text-sm md:text-base mt-1.5">
               Want to sign up as an Organization?{" "}
               <span
                 className="text-theme hover:underline cursor-pointer"

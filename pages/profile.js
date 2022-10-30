@@ -17,13 +17,13 @@ function ProfilePage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!auth?.loading) {
+    if (!auth?.loading && auth?.access_token) {
       dispatch(getUser());
     }
   }, [user?.data]);
 
   useEffect(() => {
-    if (!auth?.access_token) {
+    if (!auth?.access_token && !user?.data) {
       router.push("/login");
     }
   }, [auth]);
