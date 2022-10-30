@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Link from "next/link";
 import React, { useEffect } from "react";
 import Logo from "./Logo";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { logout } from "../../store/actions/auth";
-import { emptyUser } from "../../store/actions/user";
+import { emptyUser, getUser } from "../../store/actions/user";
 
 function Header() {
   const user = useSelector((state) => state.user.data);
@@ -26,10 +27,7 @@ function Header() {
       <div className="sm:pr-5 flex items-center flex-end gap-5 md:gap-8 lg:gap-10">
         {user && (
           <>
-            <Link href="/">
-              <p className={linkStyle}>Home</p>
-            </Link>
-            {user?.roles[0] == "Admin" && (
+            {user?.roles[0] == "Admin" ? (
               <>
                 <Link href="/">
                   <p className={linkStyle}>Users</p>
@@ -37,14 +35,26 @@ function Header() {
                 <Link href="/">
                   <p className={linkStyle}>Organisations</p>
                 </Link>
+                <Link href="/profile">
+                  <p className={linkStyle}>Profile</p>
+                </Link>
+                <p className={linkStyle} onClick={() => onClick()}>
+                  Logout
+                </p>
+              </>
+            ) : (
+              <>
+                <Link href="/">
+                  <p className={linkStyle}>Home</p>
+                </Link>
+                <Link href="/profile">
+                  <p className={linkStyle}>Profile</p>
+                </Link>
+                <p className={linkStyle} onClick={() => onClick()}>
+                  Logout
+                </p>
               </>
             )}
-            <Link href="/profile">
-              <p className={linkStyle}>Profile</p>
-            </Link>
-            <p className={linkStyle} onClick={() => onClick()}>
-              Logout
-            </p>
           </>
         )}
       </div>
