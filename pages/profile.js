@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import CreateDoc from "../components/profile/createDoc";
 import ProfileDocs from "../components/profile/ProfileDocs";
 import ProfileTop from "../components/profile/ProfileTop";
 import SEO from "../components/common/SEO";
