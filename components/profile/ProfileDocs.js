@@ -4,7 +4,7 @@ import Document from "../common/Document";
 function ProfileDocs({ documents }) {
   console.log("my docs", documents);
   return (
-    <div className="w-full p-6 md:p-8 lg:p-10 mt-0 mr-auto ml-auto">
+    <div className="w-full p-5 md:p-6 lg:p-8 mt-0 mr-auto ml-auto">
       <h1 className="text-xl md:text-2xl font-semibold">My Documents</h1>
       <div className="flex justify-center items-center flex-wrap">
         {documents.length > 0 ? (
@@ -12,6 +12,7 @@ function ProfileDocs({ documents }) {
             {documents.map((item, i) => {
               return (
                 <Document
+                  id={item.id}
                   link={item.dataSrc}
                   createdAt={item.createdAt}
                   name={item.name}

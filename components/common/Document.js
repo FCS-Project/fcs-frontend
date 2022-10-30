@@ -4,12 +4,12 @@ import Button from "./Button";
 import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
 import { useRouter } from "next/router";
 
-function Document({ name, createdAt, link }) {
+function Document({ id, name, createdAt, link, deleteDoc }) {
   const created = new Date(createdAt);
 
   const router = useRouter();
   return (
-    <div className="p-2 md:p-3 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 w-full md:mx-3 lg:mx-4 min-w-80 md:w-[30%]">
+    <div className="p-2 md:p-3 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 w-full md:mx-3 lg:mx-4 min-w-80 md:w-1/2 lg:w-1/3">
       <iframe
         src={link}
         className="w-full h-full overflow-hidden pointer-events-none min-h-[3rem]"
@@ -27,9 +27,9 @@ function Document({ name, createdAt, link }) {
       </div>
       <div className="flex justify-start items-center gap-1">
         <a href={link} target="_blank" className="w-full" rel="noreferrer">
-          <Button text="Open Doc" type="tertiary" />
+          <Button text="View" type="tertiary" />
         </a>
-        <div className="w-12">
+        <div className="w-12" onClick={() => deleteDoc}>
           <Button
             icon={<DeleteSharpIcon sx={{ fontSize: "1.2rem" }} />}
             type="secondary"
