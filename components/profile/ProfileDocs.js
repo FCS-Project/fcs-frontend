@@ -6,7 +6,7 @@ function ProfileDocs({ documents }) {
     <div className="w-full p-6 md:p-8 lg:p-10 mt-0 mr-auto ml-auto">
       <h1 className="text-xl md:text-2xl font-semibold">My Documents</h1>
       <div className="flex justify-center items-center flex-wrap">
-        {documents ? (
+        {documents.length > 0 ? (
           <>
             {documents.map((item, i) => {
               return <Document key={i} />;
@@ -15,12 +15,6 @@ function ProfileDocs({ documents }) {
         ) : (
           <div>You have no uploaded documents.</div>
         )}
-        {/* <Document />
-        <Document />
-        <Document />
-        <Document />
-        <Document />
-        <Document /> */}
       </div>
     </div>
   );

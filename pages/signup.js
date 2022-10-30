@@ -63,7 +63,6 @@ function Signup() {
         bannerSrc: fileBannerSrc,
       };
       dispatch(signup(dto));
-      // router.push("/profile");
     }
   };
 

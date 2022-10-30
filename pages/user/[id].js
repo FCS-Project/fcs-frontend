@@ -11,6 +11,7 @@ import Header from "../../components/common/Header";
 import { useSelector } from "react-redux";
 import Button from "../../components/common/Button";
 import { deleteUser } from "../../utils/user/deleteUser";
+import CreateDoc from "../../components/profile/createDoc";
 
 function User() {
   const userRole = useSelector((state) => state.user?.data?.roles[0]);
@@ -71,6 +72,7 @@ function User() {
               </div>
             )}
           </div>
+          <CreateDoc />
         </>
       )}
     </>

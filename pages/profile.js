@@ -24,7 +24,7 @@ function ProfilePage() {
     getUserDocuments().then((response) => {
       if (response.success) {
         setDocs(response.data);
-        console.log(response.data);
+        console.log("hello", response.data);
         setLoading(false);
       }
     });
@@ -74,8 +74,6 @@ function ProfilePage() {
           ) : (
             <ProfileDocs documents={docs} />
           )}
-          {/* <ProfileDocs documents={user.documents} /> */}
-          <CreateDoc />
         </>
       )}
     </>
