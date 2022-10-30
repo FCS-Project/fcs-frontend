@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
 import { useRouter } from "next/router";
+import { deleteDocument } from "../../utils/document/deleteDocument";
 
 function Document({ id, name, createdAt, link, deleteDoc }) {
   const created = new Date(createdAt);
@@ -31,7 +32,19 @@ function Document({ id, name, createdAt, link, deleteDoc }) {
         </a>
         <div className="w-12" onClick={() => deleteDoc}>
           <Button
-            icon={<DeleteSharpIcon sx={{ fontSize: "1.2rem" }} />}
+            icon={
+              <DeleteSharpIcon
+                sx={{ fontSize: "1.2rem" }}
+                onClick={() => {
+                  deleteDocument(id).then((response) => {
+                    if (response.success) {
+                      console.log("response", response);
+                      router.push("/profile");
+                    }
+                  });
+                }}
+              />
+            }
             type="secondary"
           />
         </div>
