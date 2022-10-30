@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
@@ -21,12 +22,16 @@ function User() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const fetchProfile = async (id) => {
-    getProfile(id).then((response) => {
-      if (response.success) {
-        setUser(response.data);
-        setLoading(false);
-      }
-    });
+    getProfile(id)
+      .then((response) => {
+        if (response?.success) {
+          setUser(response.data);
+          setLoading(false);
+        }
+      })
+      .then((error) => {
+        setError(error);
+      });
   };
 
   const delUser = async (id) => {
@@ -45,7 +50,7 @@ function User() {
 
   useEffect(() => {
     fetchProfile(id);
-  }, [id, user]);
+  }, []);
 
   return (
     <>
@@ -73,6 +78,7 @@ function User() {
             )}
           </div>
           <CreateDoc shareId={id} />
+          {error}
         </>
       )}
     </>

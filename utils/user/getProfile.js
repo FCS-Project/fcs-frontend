@@ -1,5 +1,4 @@
 import instance from "../../axios";
-import { getAccessToken } from "../../lib/auth";
 
 export const getProfile = (id) => {
   return instance
