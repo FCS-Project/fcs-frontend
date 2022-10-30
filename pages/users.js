@@ -48,10 +48,11 @@ export default function UsersPage() {
   }, []);
 
   useEffect(() => {
-    if (!user) {
+    if (!user.data) {
       router.push("/login");
     }
-  }, [user]);
+  }, [user.data]);
+
   return (
     <>
       {loading ? (

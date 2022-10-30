@@ -50,10 +50,10 @@ export default function OrganisationPage() {
   }, []);
 
   useEffect(() => {
-    if (!user) {
+    if (!user.data) {
       router.push("/login");
     }
-  }, [user]);
+  }, [user.data]);
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function OrganisationPage() {
         <Loader />
       ) : (
         <>
-          <SEO />
+          <SEO title={"Organisations"} />
           <Header />
           <Search
             state={state}

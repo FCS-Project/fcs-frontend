@@ -52,7 +52,7 @@ export default function Home() {
         <Loader />
       ) : (
         <>
-          <SEO />
+          <SEO title={"Home"} />
           <Header />
           <Search
             state={state}
