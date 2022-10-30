@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
 import { getUser } from "../store/actions/user";
-import { useRouter } from "next/router";
 import { getUserDocuments } from "../utils/document/getUserDocuments";
 import { BounceLoader } from "react-spinners";
 
@@ -15,7 +14,6 @@ function ProfilePage() {
   const user = useSelector((state) => state.user.data);
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const router = useRouter();
   const [docs, setDocs] = useState(null);
   const [loading, setLoading] = useState(true);
 
