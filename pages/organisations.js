@@ -49,11 +49,11 @@ export default function OrganisationPage() {
     fetchHomeData();
   }, []);
 
-  // useEffect(() => {
-  //   if (!user.data) {
-  //     router.push("/login");
-  //   }
-  // }, [user.data]);
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user]);
 
   return (
     <>

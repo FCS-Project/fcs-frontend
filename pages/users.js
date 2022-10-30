@@ -47,12 +47,11 @@ export default function UsersPage() {
     fetchHomeData();
   }, []);
 
-  // useEffect(() => {
-  //   if (!user.data) {
-  //     router.push("/login");
-  //   }
-  // }, [user.data]);
-
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user]);
   return (
     <>
       {loading ? (
