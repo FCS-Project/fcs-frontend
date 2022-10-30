@@ -14,6 +14,7 @@ function ProfileDocs({ documents }) {
                 <Document
                   link={item.dataSrc}
                   createdAt={item.createdAt}
+                  name={item.name}
                   key={i}
                 />
               );

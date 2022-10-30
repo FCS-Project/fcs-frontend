@@ -12,12 +12,10 @@ function Document({ name, createdAt, link }) {
     <div className="p-2 md:p-3 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 w-full md:mx-3 lg:mx-4 min-w-80 md:w-[30%]">
       <iframe
         src={link}
-        height="100%"
-        width="100%"
-        className="overflow-hidden pointer-events-none min-h-[3rem]"
+        className="w-full h-full overflow-hidden pointer-events-none min-h-[3rem]"
       />
       <div className="my-1">
-        <div className="text-lg lg:text-xl">{name ?? "Document Name"}</div>
+        <div className="text-md lg:text-lg">{name ?? "Document Name"}</div>
         <div className="text-xs sm:text-sm opacity-50">
           Uploaded on:{" "}
           {created.getDate() +
@@ -28,11 +26,10 @@ function Document({ name, createdAt, link }) {
         </div>
       </div>
       <div className="flex justify-start items-center gap-1">
-        <a href={link} target="_blank" className="w-full">
+        <a href={link} target="_blank" className="w-full" rel="noreferrer">
           <Button text="Open Doc" type="tertiary" />
         </a>
-
-        <div className="w-[3rem]">
+        <div className="w-12">
           <Button
             icon={<DeleteSharpIcon sx={{ fontSize: "1.2rem" }} />}
             type="secondary"
