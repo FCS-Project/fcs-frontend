@@ -41,7 +41,6 @@ function ProfilePage() {
   if (user?.loading || auth?.loading) {
     return (
       <>
-        <SEO title={"Profile"} />
         <Loader />
       </>
     );

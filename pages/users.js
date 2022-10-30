@@ -5,7 +5,7 @@ import Search from "../components/common/Search";
 import SEO from "../components/common/SEO";
 import OrgCardsFlex from "../components/organisation/OrgCardsFlex";
 import Loader from "../components/common/Loader";
-import { getHome } from "../utils/user/getHome";
+import { getUsers } from "../utils/admin/getUsers";
 
 export default function UsersPage() {
   const [filter, setFilter] = useState("type");
@@ -13,19 +13,13 @@ export default function UsersPage() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
-  const fetchHomeData = async () => {
-    const response = await getHome();
-    if (response.success) {
-      setData(
-        response.data.filter((item) => {
-          return (
-            item?.type[0]?.toLowerCase() == "patient" ||
-            item?.type[0]?.toLowerCase() == "professional"
-          );
-        })
-      );
-      setLoading(false);
-    }
+  const fetchUsersData = async () => {
+    getUsers().then((response) => {
+      if (response.success) {
+        setData(response.data);
+        setLoading(false);
+      }
+    });
   };
 
   var filteredData = data?.filter((item) => {
@@ -40,7 +34,7 @@ export default function UsersPage() {
   });
 
   useEffect(() => {
-    fetchHomeData();
+    fetchUsersData();
   }, []);
 
   return (
@@ -57,7 +51,13 @@ export default function UsersPage() {
             filter={filter}
             setFilter={setFilter}
           />
-          <OrgCardsFlex userArr={filteredData} />
+          {data.length > 0 ? (
+            <OrgCardsFlex userArr={filteredData} />
+          ) : (
+            <div className="text-theme">
+              There are no users on the platform.
+            </div>
+          )}
         </>
       )}
     </>

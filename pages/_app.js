@@ -7,6 +7,7 @@ import { getAccessToken, getRefreshToken } from "../lib/auth";
 import { setTokensInState } from "../store/actions/auth";
 import { getUser } from "../store/actions/user";
 import { useRouter } from "next/router";
+import SEO from "../components/common/SEO";
 
 function MyApp({ Component, pageProps }) {
   const auth = useSelector((state) => state.auth);
@@ -15,7 +16,12 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!auth?.access_token || !user.data) {
+    const path = router.asPath;
+    const publicPaths = ["/login", "/signup"];
+    if (
+      (!auth?.access_token || !user.data) &&
+      !publicPaths.includes(path ?? "")
+    ) {
       router.push("/login");
     }
   }, [auth, user]);
@@ -28,7 +34,12 @@ function MyApp({ Component, pageProps }) {
       }
     }
   }, [dispatch]);
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <SEO />
+      <Component {...pageProps} />{" "}
+    </>
+  );
 }
 
 export default wrapper.withRedux(MyApp);
