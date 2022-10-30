@@ -15,6 +15,7 @@ function CreateDocForm({ file, setFile }) {
     reader.onload = function (onLoadEvent) {
       setFile(onLoadEvent.target.result);
     };
+    setName(changeEvent.target.files[0].name);
     reader.readAsDataURL(changeEvent.target.files[0]);
     // await uploadImage(changeEvent, setFileBannerSrc, "file");
   };
@@ -27,20 +28,9 @@ function CreateDocForm({ file, setFile }) {
 
   return (
     <div className="flex flex-col w-full mt-5">
-      <Input
-        heading="Document Name"
-        placeholder="Document Name"
-        state={name}
-        setState={setName}
-      />
-      <Input
-        heading="Document Type"
-        placeholder="Document Type"
-        state={type}
-        setState={setType}
-      />
-      <div className="my-2 sm:my-5">
+      <div className="my-2 mb-5 sm:my-5">
         <form method="post" onChange={(event) => handleFileChange(event)}>
+          {file && <div className="text-sm mb-2">File Uploaded : {name}</div>}
           <label htmlFor="file">
             <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
               Upload File

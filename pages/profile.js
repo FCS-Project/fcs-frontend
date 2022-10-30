@@ -23,8 +23,8 @@ function ProfilePage() {
   const fetchUserDocs = async () => {
     getUserDocuments().then((response) => {
       if (response.success) {
-        setDocs(response.data);
-        console.log("hello", response.data);
+        setDocs(response.data.Documents);
+        console.log("hello", response.data.Documents);
         setLoading(false);
       }
     });
