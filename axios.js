@@ -2,16 +2,19 @@ import axios from "axios";
 import { BASE_API_URL, REFRESH_TOKEN } from "./constants";
 import {
   clearAuthToken,
+  getAccessToken,
   getCookie,
   getRefreshToken,
   setAccessToken,
 } from "./lib/auth";
 
+const jwt = getAccessToken();
+
 const instance = axios.create({
   timeout: 15000,
   baseURL: BASE_API_URL,
   headers: {
-    token: getCookie(),
+    Authorization: `Bearer ${jwt}`,
     "Content-Type": "application/json",
     accept: "application/json",
   },
