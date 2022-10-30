@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import Logo from "./Logo";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { logout } from "../../store/actions/auth";
-import { emptyUser, getUser } from "../../store/actions/user";
+import { emptyUser } from "../../store/actions/user";
 
 function Header() {
   const user = useSelector((state) => state.user.data);
