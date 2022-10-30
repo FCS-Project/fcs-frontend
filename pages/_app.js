@@ -10,14 +10,15 @@ import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const auth = useSelector((state) => state.auth);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const router = useRouter();
 
   useEffect(() => {
-    if (!auth?.access_token) {
+    if (!auth?.access_token || !user.data) {
       router.push("/login");
     }
-  }, [auth]);
+  }, [auth, user]);
 
   useEffect(() => {
     if (typeof window !== undefined) {
