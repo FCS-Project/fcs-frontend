@@ -40,12 +40,6 @@ export default function Home() {
     fetchHomeData();
   }, []);
 
-  useEffect(() => {
-    if (!user.data) {
-      router.push("/login");
-    }
-  }, [user.data]);
-
   return (
     <>
       {loading ? (

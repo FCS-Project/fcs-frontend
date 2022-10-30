@@ -40,12 +40,6 @@ function ProfilePage() {
     }
   }, [user?.data]);
 
-  useEffect(() => {
-    if (!auth?.access_token && !user?.data) {
-      router.push("/login");
-    }
-  }, [auth]);
-
   if (user?.loading || auth?.loading) {
     return (
       <>

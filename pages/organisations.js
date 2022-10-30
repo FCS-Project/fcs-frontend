@@ -49,12 +49,6 @@ export default function OrganisationPage() {
     fetchHomeData();
   }, []);
 
-  useEffect(() => {
-    if (!user.data) {
-      router.push("/login");
-    }
-  }, [user.data]);
-
   return (
     <>
       {loading ? (
