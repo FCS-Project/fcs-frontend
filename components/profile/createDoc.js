@@ -4,9 +4,10 @@ import { postDocument } from "../../utils/document/postDocument";
 import Button from "../common/Button";
 import CreateDocForm from "./createDocForm";
 
-function CreateDoc() {
+function CreateDoc({ shareId }) {
   const [modal, setModal] = useState(false);
   const [file, setFile] = useState("");
+  const [name, setName] = useState("");
   const user = useSelector((state) => state.user.data);
 
   const submit = () => {
@@ -14,7 +15,12 @@ function CreateDoc() {
     if (file) {
       let dataURI = file.split(";base64,").pop();
       console.log("data uriii>>>>>", dataURI);
-      postDocument({ dataURI: dataURI, userId: user?.id });
+      postDocument({
+        dataURI: dataURI,
+        userId: user?.id,
+        name: name,
+        sharedWith: shareId,
+      });
     }
   };
   return (
@@ -31,7 +37,12 @@ function CreateDoc() {
                 &times;
               </div>
             </div>
-            <CreateDocForm file={file} setFile={setFile} />
+            <CreateDocForm
+              file={file}
+              setFile={setFile}
+              name={name}
+              setName={setName}
+            />
             <div className="mt-1 md:mt-2 flex justify-between gap-40 sm:gap-52 md:gap-64 lg:gap-72">
               <Button
                 text="Cancel"

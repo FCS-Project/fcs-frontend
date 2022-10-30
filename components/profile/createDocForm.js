@@ -5,8 +5,7 @@ import uploadImage from "../../utils/imageUpload";
 import Button from "../common/Button";
 import Input from "../common/Input";
 
-function CreateDocForm({ file, setFile }) {
-  const [name, setName] = useState("");
+function CreateDocForm({ file, setFile, name, setName }) {
   const [type, setType] = useState("");
 
   const handleFileChange = async (changeEvent) => {

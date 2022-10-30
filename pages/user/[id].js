@@ -72,7 +72,7 @@ function User() {
               </div>
             )}
           </div>
-          <CreateDoc />
+          <CreateDoc shareId={id} />
         </>
       )}
     </>
