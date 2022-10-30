@@ -22,7 +22,10 @@ export default function UsersPage() {
     if (response.success) {
       setData(
         response.data.filter((item) => {
-          return item?.type[0]?.toLowerCase() == "user";
+          return (
+            item?.type[0]?.toLowerCase() == "patient" ||
+            item?.type[0]?.toLowerCase() == "professional"
+          );
         })
       );
       setLoading(false);
@@ -44,11 +47,11 @@ export default function UsersPage() {
     fetchHomeData();
   }, []);
 
-  useEffect(() => {
-    if (!user.data) {
-      router.push("/login");
-    }
-  }, [user.data]);
+  // useEffect(() => {
+  //   if (!user.data) {
+  //     router.push("/login");
+  //   }
+  // }, [user.data]);
 
   return (
     <>

@@ -20,9 +20,14 @@ export default function OrganisationPage() {
   const fetchHomeData = async () => {
     const response = await getHome();
     if (response.success) {
+      console.log("dataa", response.data);
       setData(
         response.data.filter((item) => {
-          return item?.type[0]?.toLowerCase() == "organisation";
+          return (
+            item?.type[0]?.toLowerCase() == "pharmacy" ||
+            item?.type[0]?.toLowerCase() == "hospital" ||
+            item?.type[0]?.toLowerCase() == "insurance"
+          );
         })
       );
       setLoading(false);
@@ -44,11 +49,11 @@ export default function OrganisationPage() {
     fetchHomeData();
   }, []);
 
-  useEffect(() => {
-    if (!user.data) {
-      router.push("/login");
-    }
-  }, [user.data]);
+  // useEffect(() => {
+  //   if (!user.data) {
+  //     router.push("/login");
+  //   }
+  // }, [user.data]);
 
   return (
     <>
