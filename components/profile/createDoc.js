@@ -14,7 +14,6 @@ function CreateDoc({ shareId }) {
     setModal(false);
     if (file) {
       let dataURI = file.split(";base64,").pop();
-      console.log("data uriii>>>>>", dataURI);
       postDocument({
         dataURI: dataURI,
         userId: user?.id,

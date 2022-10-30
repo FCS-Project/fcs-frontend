@@ -1,29 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-
-import uploadImage from "../../utils/imageUpload";
-import Button from "../common/Button";
-import Input from "../common/Input";
+import React, { useState } from "react";
 
 function CreateDocForm({ file, setFile, name, setName }) {
-  const [type, setType] = useState("");
-
   const handleFileChange = async (changeEvent) => {
-    console.log("hello");
     const reader = new FileReader();
     reader.onload = function (onLoadEvent) {
       setFile(onLoadEvent.target.result);
     };
     setName(changeEvent.target.files[0].name);
     reader.readAsDataURL(changeEvent.target.files[0]);
-    // await uploadImage(changeEvent, setFileBannerSrc, "file");
   };
-
-  useEffect(() => {
-    if (file) {
-      console.log("fileSet", file);
-    }
-  }, [file]);
 
   return (
     <div className="flex flex-col w-full mt-5">

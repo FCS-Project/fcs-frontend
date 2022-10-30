@@ -77,7 +77,7 @@ function User() {
               </div>
             )}
           </div>
-          <CreateDoc shareId={id} />
+          <CreateDoc shareId={user.id} />
           {error}
         </>
       )}
