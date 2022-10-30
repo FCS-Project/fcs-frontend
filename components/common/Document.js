@@ -7,7 +7,6 @@ import { deleteDocument } from "../../utils/document/deleteDocument";
 
 function Document({ id, name, createdAt, link, deleteDoc }) {
   const created = new Date(createdAt);
-
   const router = useRouter();
   return (
     <div className="p-2 md:p-3 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 w-full md:mx-3 lg:mx-4 min-w-80 md:w-1/2 lg:w-1/3">
@@ -30,21 +29,18 @@ function Document({ id, name, createdAt, link, deleteDoc }) {
         <a href={link} target="_blank" className="w-full" rel="noreferrer">
           <Button text="View" type="tertiary" />
         </a>
-        <div className="w-12" onClick={() => deleteDoc}>
+        <div
+          className="w-12"
+          onClick={() => {
+            deleteDocument(id).then((response) => {
+              if (response.success) {
+                router.push("/profile");
+              }
+            });
+          }}
+        >
           <Button
-            icon={
-              <DeleteSharpIcon
-                sx={{ fontSize: "1.2rem" }}
-                onClick={() => {
-                  deleteDocument(id).then((response) => {
-                    if (response.success) {
-                      console.log("response", response);
-                      router.push("/profile");
-                    }
-                  });
-                }}
-              />
-            }
+            icon={<DeleteSharpIcon sx={{ fontSize: "1.2rem" }} />}
             type="secondary"
           />
         </div>

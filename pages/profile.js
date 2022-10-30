@@ -24,7 +24,6 @@ function ProfilePage() {
     getUserDocuments().then((response) => {
       if (response.success) {
         setDocs(response.data.Documents);
-        console.log("hello", response.data.Documents);
         setLoading(false);
       }
     });
@@ -34,7 +33,7 @@ function ProfilePage() {
     if (auth?.access_token || !user?.data) {
       fetchUserDocs();
     }
-  }, []);
+  }, [docs]);
 
   useEffect(() => {
     if ((!auth?.loading && auth?.access_token) || !user?.data) {
