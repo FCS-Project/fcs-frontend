@@ -43,7 +43,7 @@ export default function UsersPage() {
 
   useEffect(() => {
     if (user?.data?.roles[0] != "Admin") {
-      router.push("/login");
+      router.push("/profile");
     }
   }, []);
 
