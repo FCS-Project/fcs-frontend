@@ -8,7 +8,8 @@ import Loader from "../components/common/Loader";
 import { getSharedDocuments } from "../utils/document/getSharedDocuments";
 
 export default function OrganisationPage() {
-  const [filter, setFilter] = useState("type");
+  const shared = true;
+  const [filter, setFilter] = useState(shared ? "name" : "type");
   const [state, setState] = useState("");
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -22,16 +23,14 @@ export default function OrganisationPage() {
     });
   };
 
-  //   var filteredData = data?.filter((item) => {
-  //     switch (filter) {
-  //       case "type":
-  //         return item?.type[0]?.toLowerCase().includes(state.toLowerCase());
-  //       case "name":
-  //         return item?.name?.toLowerCase().includes(state.toLowerCase());
-  //       case "location":
-  //         return item?.location?.toLowerCase().includes(state.toLowerCase());
-  //     }
-  //   });
+  var filteredData = data?.filter((item) => {
+    switch (filter) {
+      case "name":
+        return item?.user?.name?.toLowerCase().includes(state.toLowerCase());
+      case "document name":
+        return item?.name?.toLowerCase().includes(state.toLowerCase());
+    }
+  });
 
   useEffect(() => {
     fetchSharedDocs();
@@ -50,16 +49,19 @@ export default function OrganisationPage() {
             setState={setState}
             filter={filter}
             setFilter={setFilter}
+            document={shared}
           />
           {data ? (
             <div>
-              {data?.map((item, i) => {
+              {filteredData?.map((item, i) => {
                 return (
                   <Document
                     key={i}
                     name={item.name}
-                    link={item.link}
+                    link={item.dataSrc}
+                    user={item.user}
                     createdAt={item.createdAt}
+                    shared={shared}
                   />
                 );
               })}

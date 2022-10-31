@@ -2,7 +2,7 @@ import React from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import FilterListSharpIcon from "@mui/icons-material/FilterListSharp";
 
-function Search({ state, setState, filter, setFilter }) {
+function Search({ state, setState, filter, setFilter, document }) {
   function FilterType({ text, selected }) {
     return (
       <div
@@ -29,12 +29,33 @@ function Search({ state, setState, filter, setFilter }) {
       </div>
       <div className="flex justify-start items-center gap-3 my-5">
         <FilterListSharpIcon className="text-theme text-3xl sm:text-4xl" />
-        <FilterType text="type" selected={filter == "type" ? true : false} />
-        <FilterType text="name" selected={filter == "name" ? true : false} />
-        <FilterType
-          text="location"
-          selected={filter == "location" ? true : false}
-        />
+        {document ? (
+          <>
+            <FilterType
+              text="name"
+              selected={filter == "name" ? true : false}
+            />
+            <FilterType
+              text="document name"
+              selected={filter == "document name" ? true : false}
+            />
+          </>
+        ) : (
+          <>
+            <FilterType
+              text="type"
+              selected={filter == "type" ? true : false}
+            />
+            <FilterType
+              text="name"
+              selected={filter == "name" ? true : false}
+            />
+            <FilterType
+              text="location"
+              selected={filter == "location" ? true : false}
+            />
+          </>
+        )}
       </div>
     </div>
   );
