@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { logout } from "../../store/actions/auth";
 import { emptyUser } from "../../store/actions/user";
+import DrawerComponent from "./Drawer";
 
 function Header() {
   const user = useSelector((state) => state.user.data);
@@ -18,7 +19,7 @@ function Header() {
     router.push("/login");
   };
   const linkStyle =
-    "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer";
+    "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer hidden md:block";
   return (
     <div className="mb-10 bg-white top-0 sticky z-10 w-full px-4 md:px-3 lg:px-4 h-10 sm:h-11 md:h-12 lg:h-14 flex justify-between items-center shadow">
       <Logo />
@@ -58,6 +59,9 @@ function Header() {
             )}
           </>
         )}
+      </div>
+      <div className="block md:hidden ">
+        <DrawerComponent />
       </div>
     </div>
   );
