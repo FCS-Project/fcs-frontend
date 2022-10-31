@@ -5,8 +5,6 @@ export default async function uploadImage(event, setFileSrc, inputName) {
     ({ name }) => name === inputName
   );
   const formData = new FormData();
-  console.log("formDataaa", fileInput);
-
   for (const file of fileInput.files) {
     formData.append("file", file);
   }

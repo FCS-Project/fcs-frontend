@@ -1,8 +1,10 @@
 import instance from "../../axios";
+import { getAccessToken } from "../../lib/auth";
 
 export const getProfile = (id) => {
+  const jwt = getAccessToken();
   return instance
-    .get(`/user/profile/${id}`)
+    .get(`/user/profile/${id}`, { headers: { Authorization: `Bearer ${jwt}` } })
     .then((response) => {
       if (response.data.success) {
         return {

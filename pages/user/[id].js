@@ -21,6 +21,7 @@ function User() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
   const fetchProfile = async (id) => {
     getProfile(id)
       .then((response) => {
@@ -46,8 +47,6 @@ function User() {
       });
   };
 
-  const [document, setDocument] = useState(false);
-
   useEffect(() => {
     fetchProfile(id);
   }, []);
@@ -72,7 +71,10 @@ function User() {
             {user.email && <InfoBox email={user.email} />}
             {user.mobileNumber && <InfoBox mobileNumber={user.mobileNumber} />}
             {userRole === "Admin" && (
-              <div className="text-right my-2 p-2" onClick={() => delUser(id)}>
+              <div
+                className="text-right my-2 p-2"
+                onClick={() => delUser(user.id)}
+              >
                 <Button text={"Remove"} type="tertiary" />
               </div>
             )}
