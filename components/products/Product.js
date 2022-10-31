@@ -22,7 +22,7 @@ function Product({ id, name, price, owner }) {
 
       <img
         src="https://i.ibb.co/myvq6GR/aryan.jpg"
-        className="w-full h-1/2 object-cover"
+        className="w-full h-1/2 object-cover md:max-h-60"
       />
 
       <div className="my-1 flex justify-between items-center">
