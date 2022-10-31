@@ -9,11 +9,8 @@ function CreateDoc({ shareId }) {
   const [file, setFile] = useState("");
   const [name, setName] = useState("");
   const user = useSelector((state) => state.user.data);
-
   const submit = () => {
     setModal(false);
-    setFile("");
-    setName("");
     if (file) {
       let dataURI = file.split(";base64,").pop();
       postDocument({
@@ -24,6 +21,7 @@ function CreateDoc({ shareId }) {
       });
     }
   };
+
   return (
     <>
       {modal && (

@@ -33,7 +33,7 @@ function Document({ id, name, createdAt, link, user, shared }) {
         <div className="flex jusitfy-start items-center gap-2 text-md lg:text-lg capitalise">
           <img
             alt="display picture"
-            src={user.displaySrc ?? "/user.png"}
+            src={user.displaySrc == "" ? "/user.png" : user.displaySrc}
             className="w-8 h-8 rounded-full object-cover border border-theme"
           />
           <div className="text-xs lg:text-sm capitalise">
