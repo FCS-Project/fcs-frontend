@@ -7,13 +7,13 @@ function ProfileInfo({ name, type, displaySrc, bannerSrc }) {
     <div className="w-full h-56 sm:h-60 md:h-72 lg:h-80 flex flex-col justify-start overflow-hidden border-2 bg-white shadow-md">
       <img
         alt="cover picture"
-        src={bannerSrc ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
+        src={bannerSrc == "" ? "https://i.ibb.co/myvq6GR/aryan.jpg" : bannerSrc}
         className="w-full h-2/3 object-cover overflow-hidden bg-gray-200"
       />
       <div className="flex flex-col justify-between pl-2 sm:pl-4 pb-2">
         <img
           alt="display picture"
-          src={displaySrc == "" ? "/user.png" : ""}
+          src={displaySrc == "" ? "/user.png" : displaySrc}
           className="object-cover w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden bg-gray-200 mt-[-3.5rem] md:mt-[-4rem] lg:mt-[-5rem] mb-0.5"
         />
         <p className="mt-1 text-lg md:text-xl lg:text-2xl">
