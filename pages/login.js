@@ -90,7 +90,7 @@ function Login() {
               )}
               <Button
                 type={"primary"}
-                text={"Login"}
+                text={otp ? "Send OTP" : "Login"}
                 onClick={onSubmit}
                 style={"my-4"}
               />

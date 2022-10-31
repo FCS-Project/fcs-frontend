@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyOtp } from "../../store/actions/auth";
-import { getUser } from "../../store/actions/user";
 import { otpSignIn } from "../../utils/otp/otpSignIn";
 import Button from "../common/Button";
 import VerifyPopup from "./VerifyPopup";
@@ -12,7 +11,6 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
   const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user);
   const [otp, setOtp] = useState("");
-  const success = useSelector((state) => state.auth.success);
   const router = useRouter();
   const [emailState, setEmailState] = useState(user?.data?.email);
   const [error, setError] = useState("");

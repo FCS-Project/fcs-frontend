@@ -1,6 +1,6 @@
 import instance from "../../axios";
 
-export const getUserDocuments = async () => {
+export const getSharedDocuments = async () => {
   return instance
     .get("/document/shared")
     .then((response) => {
