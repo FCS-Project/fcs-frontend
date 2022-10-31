@@ -1,8 +1,10 @@
 import instance from "../../axios";
+import { getAccessToken } from "../../lib/auth";
 
 export const getSharedDocuments = async () => {
+  const jwt = getAccessToken();
   return instance
-    .get("/document/shared")
+    .get("/document/shared", { headers: { Authorization: `Bearer ${jwt}` } })
     .then((response) => {
       if (response.data.success) {
         return {
