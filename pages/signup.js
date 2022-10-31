@@ -306,11 +306,11 @@ function Signup() {
                     name="hospital"
                     value={organistionType}
                     checked={organistionType == "Hospital"}
-                    onClick={() => {
+                    onChange={() => {
                       setOrganistionType("Hospital");
                     }}
                   />
-                  <label for="hospital" className={labelStyle}>
+                  <label htmlFor="hospital" className={labelStyle}>
                     Hospital
                   </label>
                 </div>
@@ -321,11 +321,11 @@ function Signup() {
                     name="pharmacy"
                     value={organistionType}
                     checked={organistionType == "Pharmacy"}
-                    onClick={() => {
+                    onChange={() => {
                       setOrganistionType("Pharmacy");
                     }}
                   />
-                  <label for="pharmacy" className={labelStyle}>
+                  <label htmlFor="pharmacy" className={labelStyle}>
                     Pharmacy
                   </label>
                 </div>
@@ -336,11 +336,11 @@ function Signup() {
                     name="insurance"
                     value={organistionType}
                     checked={organistionType == "Insurance"}
-                    onClick={() => {
+                    onChange={() => {
                       setOrganistionType("Insurance");
                     }}
                   />
-                  <label for="insurance" className={labelStyle}>
+                  <label htmlFor="insurance" className={labelStyle}>
                     Insurance
                   </label>
                 </div>
@@ -354,11 +354,11 @@ function Signup() {
                     name="patient"
                     value={userType}
                     checked={userType == "Patient"}
-                    onClick={() => {
+                    onChange={() => {
                       setUserType("Patient");
                     }}
                   />
-                  <label for="patient" className={labelStyle}>
+                  <label htmlFor="patient" className={labelStyle}>
                     Patient
                   </label>
                 </div>
@@ -369,11 +369,11 @@ function Signup() {
                     name="professional"
                     value={userType}
                     checked={userType == "Professional"}
-                    onClick={() => {
+                    onChange={() => {
                       setUserType("Professional");
                     }}
                   />
-                  <label for="professional" className={labelStyle}>
+                  <label htmlFor="professional" className={labelStyle}>
                     Professional
                   </label>
                 </div>
