@@ -47,6 +47,9 @@ function Header() {
                 <Link href="/">
                   <p className={linkStyle}>Home</p>
                 </Link>
+                <Link href="/documents">
+                  <p className={linkStyle}>Shared Documents</p>
+                </Link>
                 <Link href="/profile">
                   <p className={linkStyle}>Profile</p>
                 </Link>
