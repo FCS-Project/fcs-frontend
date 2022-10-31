@@ -5,6 +5,8 @@ import { IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { logout } from "../../store/actions/auth";
+import { emptyUser } from "../../store/actions/user";
 
 export default function DrawerComponent() {
   const [open, setOpen] = useState(false);
@@ -13,6 +15,7 @@ export default function DrawerComponent() {
   const dispatch = useDispatch();
   const router = useRouter();
   const onClick = () => {
+    setOpen(false);
     dispatch(logout());
     dispatch(emptyUser());
     router.push("/login");
@@ -23,11 +26,13 @@ export default function DrawerComponent() {
 
   return (
     <div>
-      <IconButton onClick={() => setOpen(true)}>
-        <MenuIcon className="text-gray-600" />
-      </IconButton>
+      {user && (
+        <IconButton onClick={() => setOpen(true)}>
+          <MenuIcon className="text-black" />
+        </IconButton>
+      )}
       <Drawer anchor={"right"} open={open} onClose={() => setOpen(false)}>
-        <div className="w-[45vw] p-5">
+        <div className="w-64 p-5">
           {user && (
             <>
               {user?.roles[0] == "Admin" ? (

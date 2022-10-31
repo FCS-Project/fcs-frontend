@@ -19,7 +19,7 @@ function Header() {
     router.push("/login");
   };
   const linkStyle =
-    "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer hidden md:block";
+    "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer hidden sm:flex";
   return (
     <div className="mb-10 bg-white top-0 sticky z-10 w-full px-4 md:px-3 lg:px-4 h-10 sm:h-11 md:h-12 lg:h-14 flex justify-between items-center shadow">
       <Logo />
@@ -60,7 +60,7 @@ function Header() {
           </>
         )}
       </div>
-      <div className="block md:hidden ">
+      <div className="block sm:hidden ">
         <DrawerComponent />
       </div>
     </div>
