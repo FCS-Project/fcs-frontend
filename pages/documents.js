@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/common/Header";
 import Search from "../components/common/Search";
 import SEO from "../components/common/SEO";
-import OrgCardsFlex from "../components/organisation/OrgCardsFlex";
+import Document from "../components/common/Document";
 import Loader from "../components/common/Loader";
 import { getSharedDocuments } from "../utils/document/getSharedDocuments";
 
@@ -22,16 +22,16 @@ export default function OrganisationPage() {
     });
   };
 
-  var filteredData = data?.filter((item) => {
-    switch (filter) {
-      case "type":
-        return item?.type[0]?.toLowerCase().includes(state.toLowerCase());
-      case "name":
-        return item?.name?.toLowerCase().includes(state.toLowerCase());
-      case "location":
-        return item?.location?.toLowerCase().includes(state.toLowerCase());
-    }
-  });
+  //   var filteredData = data?.filter((item) => {
+  //     switch (filter) {
+  //       case "type":
+  //         return item?.type[0]?.toLowerCase().includes(state.toLowerCase());
+  //       case "name":
+  //         return item?.name?.toLowerCase().includes(state.toLowerCase());
+  //       case "location":
+  //         return item?.location?.toLowerCase().includes(state.toLowerCase());
+  //     }
+  //   });
 
   useEffect(() => {
     fetchSharedDocs();
@@ -51,7 +51,22 @@ export default function OrganisationPage() {
             filter={filter}
             setFilter={setFilter}
           />
-          <OrgCardsFlex userArr={filteredData} />
+          {data ? (
+            <div>
+              {data?.map((item, i) => {
+                return (
+                  <Document
+                    key={i}
+                    name={item.name}
+                    link={item.link}
+                    createdAt={item.createdAt}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <div>No documents have been shared with you hahaha loner</div>
+          )}
         </>
       )}
     </>

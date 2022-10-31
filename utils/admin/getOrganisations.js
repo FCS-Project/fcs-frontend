@@ -1,8 +1,12 @@
 import instance from "../../axios";
+import { getAccessToken } from "../../lib/auth";
 
 export const getOrganisations = async () => {
+  const jwt = getAccessToken();
   return instance
-    .get("/user/admin/organisations")
+    .get("/user/admin/organisations", {
+      headers: { Authorization: `Bearer ${jwt}` },
+    })
     .then((response) => {
       if (response.data.success) {
         return {
