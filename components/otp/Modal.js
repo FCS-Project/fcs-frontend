@@ -55,14 +55,15 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
             <div className="flex items-center justify-between">
               <h1 className="text-xl md:text-2xl">Verify OTP</h1>
               <div className="text-theme">{error}</div>
-              {!noCancel && (
-                <div
-                  className="cursor-pointer float-right text-3xl"
-                  onClick={() => setModal(false)}
-                >
-                  &times;
-                </div>
-              )}
+
+              <div
+                className="cursor-pointer float-right text-3xl"
+                onClick={() =>
+                  editInfo ? router.push("/profile") : setModal(false)
+                }
+              >
+                &times;
+              </div>
             </div>
             <VerifyPopup otp={otp} setOtp={setOtp} />
             <div className="mt-5 flex justify-between gap-10 sm:gap-52 md:gap-64 lg:gap-72 lg:mt-5">
