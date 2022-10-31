@@ -12,6 +12,8 @@ function CreateDoc({ shareId }) {
 
   const submit = () => {
     setModal(false);
+    setFile("");
+    setName("");
     if (file) {
       let dataURI = file.split(";base64,").pop();
       postDocument({
