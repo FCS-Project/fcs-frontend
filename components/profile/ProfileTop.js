@@ -9,7 +9,7 @@ function ProfileTop({ name, type, displaySrc, email }) {
     <div className="flex flex-col items-center gap-3 md:gap-4 shadow-md px-8 py-4 md:py-4 md:px-8 lg:px-10 lg:py-5 w-4/5 ml-auto my-6 md:my-8 lg:my-10 mr-auto md:w-2/5">
       <img
         alt="display"
-        src={displaySrc == "" ? "/user.png" : ""}
+        src={displaySrc == "" || !displaySrc ? "/user.png" : displaySrc}
         className="rounded-full object-cover w-32 h-32 md:h-36 md:w-36 lg:h-40 lg:w-40 border-2 border-theme"
       />
       <div className="flex flex-col items-center">

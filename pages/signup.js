@@ -28,9 +28,9 @@ function Signup() {
   const [userType, setUserType] = useState("");
   const [organisationFlag, setOrganizationFlag] = useState(false);
   const [fileDP, setFileDP] = useState("");
-  const [fileDPSrc, setFileDPSrc] = useState("");
+  const [fileDPSrc, setFileDPSrc] = useState(null);
   const [fileBanner, setFileBanner] = useState("");
-  const [fileBannerSrc, setFileBannerSrc] = useState("");
+  const [fileBannerSrc, setFileBannerSrc] = useState(null);
   const handleFileChange = async (changeEvent, dp) => {
     const reader = new FileReader();
     if (dp) {
