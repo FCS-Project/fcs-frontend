@@ -50,33 +50,53 @@ function Signup() {
 
   const onSubmitOrg = () => {
     if (name != "" && email != "" && password != "") {
-      const dto = {
-        name: name,
-        email: email,
-        password: password,
-        mobileNumber: mobileNumber,
-        roles: [organisationFlag ? "Organisation" : "User"],
-        type: [organisationFlag ? organistionType : userType],
-        location: location,
-        description: description,
-        displaySrc: fileDPSrc,
-        bannerSrc: fileBannerSrc,
-      };
-      dispatch(signup(dto));
+      if (password.length >= 8) {
+        const dto = {
+          name: name,
+          email: email,
+          password: password,
+          mobileNumber: mobileNumber,
+          roles: [organisationFlag ? "Organisation" : "User"],
+          type: [organisationFlag ? organistionType : userType],
+          location: location,
+          description: description,
+          displaySrc: fileDPSrc,
+          bannerSrc: fileBannerSrc,
+        };
+        dispatch(signup(dto));
+      } else {
+        setError("Password has to be atleast 8 digits long.");
+      }
+    } else if (!email) {
+      setError("Email cannot be empty!");
+    } else if (!password) {
+      setError("Password cannot be empty!");
+    } else if (!name) {
+      setError("Name cannot be empty!");
     }
   };
 
   const onSubmit = () => {
     if (name != "" && email != "" && password != "") {
-      const dto = {
-        name: name,
-        email: email,
-        password: password,
-        roles: [organisationFlag ? "Organisation" : "User"],
-        type: [organisationFlag ? organistionType : userType],
-        displaySrc: fileDPSrc,
-      };
-      dispatch(signup(dto));
+      if (password.length >= 8) {
+        const dto = {
+          name: name,
+          email: email,
+          password: password,
+          roles: [organisationFlag ? "Organisation" : "User"],
+          type: [organisationFlag ? organistionType : userType],
+          displaySrc: fileDPSrc,
+        };
+        dispatch(signup(dto));
+      } else {
+        setError("Password has to be atleast 8 digits long.");
+      }
+    } else if (!email) {
+      setError("Email cannot be empty!");
+    } else if (!password) {
+      setError("Password cannot be empty!");
+    } else if (!name) {
+      setError("Name cannot be empty!");
     }
   };
 

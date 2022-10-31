@@ -24,17 +24,28 @@ function Login() {
 
   const onSubmit = () => {
     if (email && password) {
-      const dto = { email: email, password: password };
-      if (otp) {
-        const otpDto = { email: email };
-        otpSignIn(otpDto).then((response) => {
-          if (response.success) {
-            setModal(response.success);
-          }
-        });
+      if (password.length >= 8) {
+        console.log(regex.test(password));
+        const dto = { email: email, password: password };
+        if (otp) {
+          const otpDto = { email: email };
+          otpSignIn(otpDto).then((response) => {
+            if (response.success) {
+              setModal(response.success);
+            }
+          });
+        } else {
+          dispatch(signin(dto));
+        }
       } else {
-        dispatch(signin(dto));
+        setError(
+          "Password needs to be atleast 8 digits long and should contain numbers and alphabets"
+        );
       }
+    } else if (!email) {
+      setError("Email cannot be empty!");
+    } else if (!password) {
+      setError("Password cannot be empty!");
     }
   };
 
@@ -73,6 +84,7 @@ function Login() {
               <Input
                 heading={"Email Address"}
                 placeholder={"Email"}
+                type="email"
                 state={email}
                 setState={setEmail}
                 required={true}
