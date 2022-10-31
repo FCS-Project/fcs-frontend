@@ -5,6 +5,7 @@ import { IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
 export default function DrawerComponent() {
   const [open, setOpen] = useState(false);
   const user = useSelector((state) => state.user.data);
@@ -23,11 +24,10 @@ export default function DrawerComponent() {
   return (
     <div>
       <IconButton onClick={() => setOpen(true)}>
-        <MenuIcon />
+        <MenuIcon className="text-gray-600" />
       </IconButton>
-
       <Drawer anchor={"right"} open={open} onClose={() => setOpen(false)}>
-        <div className="w-[40vw] p-5">
+        <div className="w-[45vw] p-5">
           {user && (
             <>
               {user?.roles[0] == "Admin" ? (
