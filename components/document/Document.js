@@ -28,10 +28,11 @@ function Document({ id, name, createdAt, link, user, shared }) {
   };
 
   return (
-    <div className="p-2 md:p-3 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 w-full md:mx-3 lg:mx-4 min-w-80 md:w-1/2 lg:w-1/3">
+    <div className="mx-4 md:w-1/2 lg:w-1/3 p-2 md:p-3 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 ">
       {shared && (
         <div className="flex jusitfy-start items-center gap-2 text-md lg:text-lg capitalise">
           <img
+            alt="display picture"
             src={user.displaySrc}
             className="w-8 h-8 rounded-full object-cover"
           />
