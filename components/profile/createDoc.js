@@ -8,9 +8,9 @@ function CreateDoc({ shareId }) {
   const [modal, setModal] = useState(false);
   const [file, setFile] = useState("");
   const [name, setName] = useState("");
+  const [error, setError] = useState("");
   const user = useSelector((state) => state.user.data);
   const submit = () => {
-    setModal(false);
     if (file) {
       let dataURI = file.split(";base64,").pop();
       postDocument({
@@ -19,6 +19,10 @@ function CreateDoc({ shareId }) {
         name: name,
         sharedWith: shareId,
       });
+      setModal(false);
+      setError("");
+    } else {
+      setError("Please Upload A File First!");
     }
   };
 
@@ -36,6 +40,7 @@ function CreateDoc({ shareId }) {
                 &times;
               </div>
             </div>
+            {error && <p className="text-theme text-center mt-3">{error}</p>}
             <CreateDocForm
               file={file}
               setFile={setFile}
