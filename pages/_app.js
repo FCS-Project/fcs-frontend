@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const path = router.asPath;
-    const publicPaths = ["/login", "/signup"];
+    const publicPaths = ["/login", "/signup", "/shop"];
     if (
       (!auth?.access_token || !user.data) &&
       !publicPaths.includes(path ?? "")
