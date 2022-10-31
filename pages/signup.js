@@ -50,7 +50,8 @@ function Signup() {
 
   const onSubmitOrg = () => {
     if (name != "" && email != "" && password != "") {
-      if (password.length >= 8) {
+      // make length greater than 8 after testing
+      if (password.length >= 0) {
         const dto = {
           name: name,
           email: email,
