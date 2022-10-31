@@ -26,7 +26,6 @@ function Login() {
     if (email && password) {
       // make length greater than 8 after testing
       if (password.length >= 0) {
-        console.log(regex.test(password));
         const dto = { email: email, password: password };
         if (otp) {
           const otpDto = { email: email };
