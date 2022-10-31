@@ -7,7 +7,7 @@ import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
 import Modal from "../components/otp/Modal";
-import { getUser, updateUser } from "../store/actions/user";
+import { updateUser } from "../store/actions/user";
 import uploadImage from "../utils/imageUpload";
 
 function EditInfo() {
@@ -60,7 +60,7 @@ function EditInfo() {
         dispatch(updateUser(user?.id, dto));
         router.push("/profile");
       }
-    } else if ((roles = "Organisation")) {
+    } else if (roles == "Organisation") {
       if (name != "" && email != "") {
         const dto = {
           name: name,
