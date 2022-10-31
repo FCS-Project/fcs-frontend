@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const path = router.asPath;
-    const publicPaths = ["/login", "/signup", "/shop"];
+    const publicPaths = ["/login", "/signup"];
     if (
       (!auth?.access_token || !user.data) &&
       !publicPaths.includes(path ?? "")
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <SEO />
-      <Component {...pageProps} />{" "}
+      <Component {...pageProps} />
     </>
   );
 }
