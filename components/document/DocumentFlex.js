@@ -3,7 +3,7 @@ import Document from "./document";
 
 function DocumentFlex({ documents, shared }) {
   return (
-    <div className="px-2 md:px-8 lg:px-8 flex flex-wrap justify-center gap-1">
+    <div className="px-2 md:px-8 lg:px-8 flex flex-wrap justify-center md:justify-evenly gap-1">
       {documents?.map((item, i) => {
         return (
           <Document
