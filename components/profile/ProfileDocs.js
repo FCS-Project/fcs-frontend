@@ -1,5 +1,4 @@
 import React from "react";
-import Document from "../common/Document";
 
 function ProfileDocs({ documents }) {
   return (

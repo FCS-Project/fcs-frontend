@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import Header from "../components/common/Header";
 import Search from "../components/common/Search";
 import SEO from "../components/common/SEO";
-import Document from "../components/common/Document";
+import Document from "../components/document/Document";
 import Loader from "../components/common/Loader";
 import { getSharedDocuments } from "../utils/document/getSharedDocuments";
+import DocFlex from "../components/document/DocumentFlex";
+import DocumentFlex from "../components/document/DocumentFlex";
 
 export default function OrganisationPage() {
   const shared = true;
@@ -52,20 +54,7 @@ export default function OrganisationPage() {
             document={shared}
           />
           {data ? (
-            <div>
-              {filteredData?.map((item, i) => {
-                return (
-                  <Document
-                    key={i}
-                    name={item.name}
-                    link={item.dataSrc}
-                    user={item.user}
-                    createdAt={item.createdAt}
-                    shared={shared}
-                  />
-                );
-              })}
-            </div>
+            <DocumentFlex documents={filteredData} shared={shared} />
           ) : (
             <div>No documents have been shared with you hahaha loner</div>
           )}

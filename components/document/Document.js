@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Button from "./Button";
+import Button from "../common/Button";
 import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
 import { useRouter } from "next/router";
 import { deleteDocument } from "../../utils/document/deleteDocument";
