@@ -21,21 +21,19 @@ function Header() {
     "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer";
   return (
     <div className="mb-10 bg-white top-0 sticky z-10 w-full px-4 md:px-3 lg:px-4 h-10 sm:h-11 md:h-12 lg:h-14 flex justify-between items-center shadow">
-      <Link href="/">
-        <Logo />
-      </Link>
+      <Logo />
       <div className="sm:pr-5 flex items-center flex-end gap-5 md:gap-8 lg:gap-10">
         {user && (
           <>
             {user?.roles[0] == "Admin" ? (
               <>
-                <Link href="/users">
+                <Link href="/users" passHref={true}>
                   <p className={linkStyle}>Users</p>
                 </Link>
-                <Link href="/organisations">
+                <Link href="/organisations" passHref={true}>
                   <p className={linkStyle}>Organisations</p>
                 </Link>
-                <Link href="/profile">
+                <Link href="/profile" passHref={true}>
                   <p className={linkStyle}>Profile</p>
                 </Link>
                 <p className={linkStyle} onClick={() => onClick()}>
@@ -44,13 +42,13 @@ function Header() {
               </>
             ) : (
               <>
-                <Link href="/">
+                <Link href="/" passHref={true}>
                   <p className={linkStyle}>Home</p>
                 </Link>
-                <Link href="/documents">
+                <Link href="/documents" passHref={true}>
                   <p className={linkStyle}>Shared Documents</p>
                 </Link>
-                <Link href="/profile">
+                <Link href="/profile" passHref={true}>
                   <p className={linkStyle}>Profile</p>
                 </Link>
                 <p className={linkStyle} onClick={() => onClick()}>
