@@ -79,7 +79,9 @@ function EditInfo() {
 
   useEffect(() => {
     if (!auth?.verified_otp) {
-      router.push("/profile");
+      setModal(true);
+    } else {
+      setModal(false);
     }
   }, [auth, router]);
 
