@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
 import React from "react";
 import { otpSignIn } from "../../utils/otp/otpSignIn";
 import Button from "../common/Button";
@@ -16,15 +15,18 @@ function ProfileTop({ name, type, displaySrc, email }) {
         <div className="text-center text-xl md:text-2xl">{name}</div>
         <div className="text-lg md:text-xl text-gray-500">{type}</div>
       </div>
-      <Link href="/edit-info">
-        <Button
-          type="tertiary"
-          text="Edit Info"
-          onClick={() => {
-            otpSignIn({ email: email });
-          }}
-        />
-      </Link>
+
+      <Button
+        type="tertiary"
+        text="Edit Info"
+        onClick={() => {
+          otpSignIn({ email: email }).then((response) => {
+            if (response.success) {
+              router.push("/edit-info");
+            }
+          });
+        }}
+      />
     </div>
   );
 }
