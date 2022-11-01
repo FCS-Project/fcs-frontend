@@ -47,45 +47,85 @@ function EditInfo() {
   };
 
   const submit = () => {
-    //basic error handling
-    if (roles == "Admin") {
-      if (name != "" && email != "") {
-        const dto = {
-          name: name,
-          email: email,
-          mobileNumber: mobile,
-          displaySrc: fileDPSrc,
-        };
-        dispatch(updateUser(user?.id, dto));
-        router.push("/profile");
-      }
+    switch (roles) {
+      case "Admin":
+        if (name != "" && email != "") {
+          const dto = {
+            name: name,
+            email: email,
+            mobileNumber: mobile,
+            displaySrc: fileDPSrc,
+          };
+          dispatch(updateUser(user?.id, dto));
+          router.push("/profile");
+        }
+        break;
+      case "User":
+        if (name != "" && email != "") {
+          const dto = {
+            name: name,
+            email: email,
+            mobileNumber: mobile,
+            displaySrc: fileDPSrc,
+          };
+          dispatch(updateUser(user?.id, dto));
+          router.push("/profile");
+        }
+        break;
+      case "Organisation":
+        if (name != "" && email != "") {
+          const dto = {
+            name: name,
+            email: email,
+            location: location,
+            mobileNumber: mobile,
+            description: description,
+            displaySrc: fileDPSrc,
+            bannerSrc: fileBannerSrc,
+          };
+          dispatch(updateUser(user?.id, dto));
+          router.push("/profile");
+        }
+        break;
     }
-    if (roles == "User") {
-      if (name != "" && email != "") {
-        const dto = {
-          name: name,
-          email: email,
-          mobileNumber: mobile,
-          displaySrc: fileDPSrc,
-        };
-        dispatch(updateUser(user?.id, dto));
-        router.push("/profile");
-      }
-    } else if (roles == "Organisation") {
-      if (name != "" && email != "") {
-        const dto = {
-          name: name,
-          email: email,
-          location: location,
-          mobileNumber: mobile,
-          description: description,
-          displaySrc: fileDPSrc,
-          bannerSrc: fileBannerSrc,
-        };
-        dispatch(updateUser(user?.id, dto));
-        router.push("/profile");
-      }
-    }
+    // if (roles == "Admin") {
+    //   if (name != "" && email != "") {
+    //     const dto = {
+    //       name: name,
+    //       email: email,
+    //       mobileNumber: mobile,
+    //       displaySrc: fileDPSrc,
+    //     };
+    //     dispatch(updateUser(user?.id, dto));
+    //     router.push("/profile");
+    //   }
+    // }
+    // if (roles == "User") {
+    //   if (name != "" && email != "") {
+    //     const dto = {
+    //       name: name,
+    //       email: email,
+    //       mobileNumber: mobile,
+    //       displaySrc: fileDPSrc,
+    //     };
+    //     dispatch(updateUser(user?.id, dto));
+    //     router.push("/profile");
+    //   }
+    // } else if (roles == "Organisation") {
+    //   if (name != "" && email != "") {
+    //     const dto = {
+    //       name: name,
+    //       email: email,
+    //       location: location,
+    //       mobileNumber: mobile,
+    //       description: description,
+    //       displaySrc: fileDPSrc,
+    //       bannerSrc: fileBannerSrc,
+    //     };
+    //     dispatch(updateUser(user?.id, dto));
+    //     router.push("/profile");
+    //   }
+    // }
   };
 
   useEffect(() => {
