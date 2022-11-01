@@ -64,8 +64,8 @@ export default function UsersPage() {
           {data.length > 0 ? (
             <OrgCardsFlex userArr={filteredData} />
           ) : (
-            <div className="text-theme">
-              There are no users on the platform.
+            <div className="mt-10 flex justify-center text-theme">
+              There are no users on the platform currently.
             </div>
           )}
         </>
