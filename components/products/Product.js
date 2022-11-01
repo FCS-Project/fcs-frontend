@@ -4,7 +4,7 @@ import Button from "../common/Button";
 
 function Product({ id, name, price, owner }) {
   return (
-    <div className="mx-0 md:w-[30%] lg:w-[20%] p-2 md:p-2 md:mx-0 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 h-fit">
+    <div className="mx-0 md:w-[30%] lg:w-1/5 p-2 md:p-2 md:mx-0 lg:p-4 flex flex-col gap-2 lg:py-3 shadow-lg my-5 h-fit">
       <div className="flex jusitfy-start items-center gap-2 text-md lg:text-lg capitalise">
         <img
           alt="display picture"
@@ -16,15 +16,14 @@ function Product({ id, name, price, owner }) {
           className="w-8 h-8 rounded-full object-cover border border-theme"
         />
         <div className="text-xs lg:text-sm capitalise">
-          {owner?.name ?? "Owner Name"}
+          {owner?.name ?? "Pharma Company"}
         </div>
       </div>
-
       <img
+        alt="product"
         src="https://i.ibb.co/myvq6GR/aryan.jpg"
         className="w-full h-1/2 object-cover md:max-h-60"
       />
-
       <div className="my-1 flex justify-between items-center">
         <div className="text-md lg:text-lg capitalise">
           {name ?? "Product Name"}
