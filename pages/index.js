@@ -10,8 +10,6 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 export default function Home() {
-  const user = useSelector((state) => state.user);
-  const router = useRouter();
   const [filter, setFilter] = useState("type");
   const [state, setState] = useState("");
   const [loading, setLoading] = useState(true);
