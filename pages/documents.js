@@ -54,7 +54,7 @@ export default function OrganisationPage() {
           {data.length ? (
             <DocumentFlex documents={filteredData} shared={shared} />
           ) : (
-            <div className="mt-10 flex justify-center">
+            <div className="mt-10 flex justify-center text-theme">
               No documents have been shared with you yet.
             </div>
           )}
