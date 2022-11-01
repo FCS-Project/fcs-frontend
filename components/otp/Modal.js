@@ -15,7 +15,7 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
   const [emailState, setEmailState] = useState(user?.data?.email);
   const [error, setError] = useState("");
   const submit = () => {
-    const dto = { email: emailState, otp: otp, editInfo: editInfo };
+    const dto = { email: email, otp: otp, editInfo: editInfo };
     dispatch(verifyOtp(dto));
   };
 

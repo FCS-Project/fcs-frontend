@@ -17,6 +17,7 @@ export const authReducer = (state = initState, action) => {
         ...state,
         loading: true,
         errmess: null,
+        otp_verified: false,
       };
     case ActionTypes.REGISTER_SUCCESS:
       setAccessToken(action.access_token);
@@ -25,6 +26,7 @@ export const authReducer = (state = initState, action) => {
         ...state,
         errmess: null,
         loading: false,
+        otp_verified: false,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };
@@ -32,12 +34,14 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         loading: false,
+        otp_verified: false,
         errmess: action.errmess,
       };
     case ActionTypes.LOGIN_REQUEST:
       return {
         ...state,
         loading: true,
+        otp_verified: false,
         errmess: null,
       };
     case ActionTypes.LOGIN_SUCCESS:
@@ -47,6 +51,7 @@ export const authReducer = (state = initState, action) => {
         ...state,
         errmess: null,
         loading: false,
+        otp_verified: false,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };
@@ -54,6 +59,7 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         errmess: action.errmess,
+        otp_verified: false,
         access_token: null,
         refresh_token: null,
       };
@@ -104,6 +110,7 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         loading: false,
+        otp_verified: false,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };
@@ -111,6 +118,7 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         loading: false,
+        otp_verified: false,
         access_token: null,
         refresh_token: null,
       };
@@ -121,6 +129,7 @@ export const authReducer = (state = initState, action) => {
         ...state,
         errmess: null,
         loading: false,
+        otp_verified: false,
         access_token: action.access_token,
         refresh_token: action.refresh_token,
       };
@@ -128,6 +137,7 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         loading: false,
+        otp_verified: false,
         errmess: action.errmess,
       };
     default:

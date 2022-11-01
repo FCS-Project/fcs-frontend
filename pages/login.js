@@ -23,20 +23,20 @@ function Login() {
   const router = useRouter();
 
   const onSubmit = () => {
+    if (otp) {
+      const otpDto = { email: email };
+      otpSignIn(otpDto).then((response) => {
+        if (response.success) {
+          console.log("res", response.success);
+          setModal(response.success);
+        }
+      });
+    }
     if (email && password) {
       // make length greater than 8 after testing
       if (password.length > 0) {
         const dto = { email: email, password: password };
-        if (otp) {
-          const otpDto = { email: email };
-          otpSignIn(otpDto).then((response) => {
-            if (response.success) {
-              setModal(response.success);
-            }
-          });
-        } else {
-          dispatch(signin(dto));
-        }
+        dispatch(signin(dto));
       } else {
         setError(
           "Password needs to be atleast 8 digits long and should contain numbers and alphabets"

@@ -106,7 +106,7 @@ export const verifyOtp = (dto) => {
       } else {
         dispatch({ type: ActionTypes.OTP_LOGIN_REQUEST });
         const response = await instance.post(VERIFY_OTP, dto);
-        if (response.data.success) {
+        if (response.data.access_token) {
           dispatch({
             type: ActionTypes.OTP_LOGIN_SUCCESS,
             errmess: null,
