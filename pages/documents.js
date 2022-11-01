@@ -51,10 +51,12 @@ export default function OrganisationPage() {
             setFilter={setFilter}
             document={shared}
           />
-          {data ? (
+          {data.length ? (
             <DocumentFlex documents={filteredData} shared={shared} />
           ) : (
-            <div>No documents have been shared with you hahaha loner</div>
+            <div className="mt-10 flex justify-center">
+              No documents have been shared with you yet.
+            </div>
           )}
         </>
       )}
