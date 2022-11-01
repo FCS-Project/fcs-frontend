@@ -53,7 +53,14 @@ export default function Home() {
             filter={filter}
             setFilter={setFilter}
           />
-          <OrgCardsFlex userArr={filteredData} />
+          {data.length > 0 ? (
+            <OrgCardsFlex userArr={filteredData} />
+          ) : (
+            <div className="mt-10 flex justify-center text-theme">
+              There are no professionals or organisations on the platform
+              currently.
+            </div>
+          )}
         </>
       )}
     </>
