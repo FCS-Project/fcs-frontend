@@ -21,7 +21,9 @@ function ProfileDocs({ documents }) {
             })}
           </>
         ) : (
-          <div className="mt-20">You have no uploaded documents :(</div>
+          <div className="mt-10 flex justify-center text-theme">
+            You have no uploaded documents.
+          </div>
         )}
       </div>
     </div>
