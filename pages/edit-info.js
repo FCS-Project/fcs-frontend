@@ -80,6 +80,8 @@ function EditInfo() {
   useEffect(() => {
     if (!auth?.verified_otp) {
       setModal(true);
+    } else {
+      setModal(false);
     }
   }, [auth, router]);
 
