@@ -134,9 +134,9 @@ function Signup() {
           >
             Sign Up as {organisationFlag ? "an Organisation" : "a User"}
           </div>
-          {error && (
+          {/* {error && (
             <div className="text-theme text-center">Error: {error}</div>
-          )}
+          )} */}
           <Input
             heading={"Name"}
             placeholder={"Name"}
