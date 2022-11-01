@@ -37,6 +37,9 @@ export default function DrawerComponent() {
             <>
               {user?.roles[0] == "Admin" ? (
                 <>
+                  <Link href="/" passHref={true}>
+                    <p className={linkStyle}>Home</p>
+                  </Link>
                   <Link href="/users" passHref={true}>
                     <p className={linkStyle}>Users</p>
                   </Link>
