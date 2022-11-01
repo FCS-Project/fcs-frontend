@@ -25,7 +25,7 @@ function Login() {
   const onSubmit = () => {
     if (email && password) {
       // make length greater than 8 after testing
-      if (password.length >= 0) {
+      if (password.length > 0) {
         const dto = { email: email, password: password };
         if (otp) {
           const otpDto = { email: email };
@@ -78,9 +78,9 @@ function Login() {
               <div className="text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl">
                 Login {otp ? "With OTP" : "With Password"}
               </div>
-              {error && (
+              {/* {error && (
                 <div className="text-theme text-center">Error: {error}</div>
-              )}
+              )} */}
               <Input
                 heading={"Email Address"}
                 placeholder={"Email"}

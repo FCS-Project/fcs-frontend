@@ -52,7 +52,7 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
           <div className="p-5 w-11/12 sm:w-10/12 md:w-9/12 lg:w-1/2 h-fit bg-white block p-5 border-2 mx-auto">
             <div className="flex items-center justify-between">
               <h1 className="text-xl md:text-2xl">Verify OTP</h1>
-              <div className="text-theme">{error}</div>
+              {/* <div className="text-theme">{error}</div> */}
 
               <div
                 className="cursor-pointer float-right text-3xl"

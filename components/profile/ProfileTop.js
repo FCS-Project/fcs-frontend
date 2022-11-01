@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from "next/router";
 import React from "react";
 import { otpSignIn } from "../../utils/otp/otpSignIn";
 import Button from "../common/Button";
 
 function ProfileTop({ name, type, displaySrc, email }) {
+  const router = useRouter();
   return (
     <div className="flex flex-col items-center gap-3 md:gap-4 shadow-md px-8 py-4 md:py-4 md:px-8 lg:px-10 lg:py-5 w-4/5 ml-auto my-6 md:my-8 lg:my-10 mr-auto md:w-2/5">
       <img

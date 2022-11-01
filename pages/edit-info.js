@@ -18,7 +18,6 @@ function EditInfo() {
   const [mobile, setMobile] = useState(user?.mobileNumber ?? "");
   const [location, setLocation] = useState(user?.location ?? "");
   const [description, setDescription] = useState(user?.description ?? "");
-  const success = useSelector((state) => state.user.success);
   const [modal, setModal] = useState(true);
   const roles = user?.roles[0];
   const router = useRouter();
@@ -49,6 +48,18 @@ function EditInfo() {
 
   const submit = () => {
     //basic error handling
+    if (roles == "Admin") {
+      if (name != "" && email != "") {
+        const dto = {
+          name: name,
+          email: email,
+          mobileNumber: mobile,
+          displaySrc: fileDPSrc,
+        };
+        dispatch(updateUser(user?.id, dto));
+        router.push("/profile");
+      }
+    }
     if (roles == "User") {
       if (name != "" && email != "") {
         const dto = {
@@ -83,7 +94,7 @@ function EditInfo() {
     } else {
       setModal(false);
     }
-  }, [auth, router]);
+  }, [auth?.verified_otp, router]);
 
   return (
     <>
@@ -147,7 +158,7 @@ function EditInfo() {
                 <form
                   method="post"
                   onChange={(event) => handleFileChange(event, true)}
-                  className="w-[100%]"
+                  className="w-full"
                 >
                   {fileDPSrc && (
                     <>
@@ -157,7 +168,7 @@ function EditInfo() {
                       <img
                         alt="display picture"
                         src={fileDP ? fileDP : fileDPSrc}
-                        className="w-[50%] object-contain max-w-1/2  block mr-auto border-theme my-5"
+                        className="w-1/2 object-contain max-w-1/2  block mr-auto border-theme my-5"
                       />
                     </>
                   )}
@@ -186,7 +197,7 @@ function EditInfo() {
                     <form
                       method="post"
                       onChange={(event) => handleFileChange(event)}
-                      className="w-[100%]"
+                      className="w-full"
                     >
                       {fileBannerSrc && (
                         <>
@@ -228,7 +239,7 @@ function EditInfo() {
                   type="primary"
                   text="Save Info"
                   style={"w-1/4 sm:w-1/5"}
-                  onClick={() => submit()}
+                  onClick={submit}
                 />
               </div>
             </div>
