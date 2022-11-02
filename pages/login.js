@@ -54,10 +54,10 @@ function Login() {
   }, []);
 
   useEffect(() => {
-    if ((!auth?.loading && auth.access_token) || user.data) {
+    if ((!auth?.loading && auth.access_token) || user?.data) {
       router.push("/profile");
     }
-  }, [auth]);
+  }, [auth, user]);
 
   useEffect(() => {
     if (auth?.errmess) {

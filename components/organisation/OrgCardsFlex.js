@@ -10,7 +10,7 @@ function OrgCardsFlex({ userArr }) {
             return (
               <OrgCard
                 key={i}
-                id={item.id}
+                id={item.handle}
                 name={item.name}
                 imgSrc={item.bannerSrc}
                 desc={item.desc}
