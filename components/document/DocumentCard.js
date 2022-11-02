@@ -47,7 +47,7 @@ function DocumentCard({ id, name, createdAt, link, user, shared }) {
       />
       <div className="my-1">
         <div className="text-md lg:text-lg capitalise">
-          {name ?? "DocumentCard Name"}
+          {name ?? "Document Name"}
         </div>
 
         <div className="text-xs sm:text-sm opacity-50">
@@ -55,11 +55,7 @@ function DocumentCard({ id, name, createdAt, link, user, shared }) {
         </div>
       </div>
       <div className="flex justify-start items-center gap-1">
-        <Button
-          text="Download DocumentCard"
-          type="tertiary"
-          onClick={() => downloadPDF()}
-        />
+        <Button text="Download" type="tertiary" onClick={() => downloadPDF()} />
         {!shared && (
           <div
             className="w-12"

@@ -48,7 +48,7 @@ export default function DrawerComponent() {
                 <>
                   {navItems.map((item, i) => {
                     return (
-                      <Link key={item} href={item.href} passHref={true}>
+                      <Link key={i} href={item.href} passHref={true}>
                         <p className={linkStyle}>Home</p>
                       </Link>
                     );
@@ -74,7 +74,7 @@ export default function DrawerComponent() {
                       src={
                         user?.data?.displaySrc == "" || !user?.data?.displaySrc
                           ? "/user.png"
-                          : displaySrc
+                          : user?.data?.displaySrc
                       }
                       className="w-20 h-20 rounded-full object-cover border-2 border-theme"
                     />
