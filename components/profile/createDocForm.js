@@ -12,7 +12,7 @@ function CreateDocForm({ file, setFile, name, setName }) {
   };
 
   return (
-    <div className="flex flex-col w-full mt-5">
+    <div className="flex flex-col w-full">
       <div className="my-2 mb-5 sm:my-5">
         <form method="post" onChange={(event) => handleFileChange(event)}>
           {file && <div className="text-sm mb-2">File Uploaded : {name}</div>}
