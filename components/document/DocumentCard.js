@@ -5,7 +5,7 @@ import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
 import { useRouter } from "next/router";
 import { deleteDocument } from "../../utils/document/deleteDocument";
 
-function Document({ id, name, createdAt, link, user, shared }) {
+function DocumentCard({ id, name, createdAt, link, user, shared }) {
   const router = useRouter();
   const created = new Date(createdAt);
   const formattedDate =
@@ -47,7 +47,7 @@ function Document({ id, name, createdAt, link, user, shared }) {
       />
       <div className="my-1">
         <div className="text-md lg:text-lg capitalise">
-          {name ?? "Document Name"}
+          {name ?? "DocumentCard Name"}
         </div>
 
         <div className="text-xs sm:text-sm opacity-50">
@@ -56,7 +56,7 @@ function Document({ id, name, createdAt, link, user, shared }) {
       </div>
       <div className="flex justify-start items-center gap-1">
         <Button
-          text="Download Document"
+          text="Download DocumentCard"
           type="tertiary"
           onClick={() => downloadPDF()}
         />
@@ -82,4 +82,4 @@ function Document({ id, name, createdAt, link, user, shared }) {
   );
 }
 
-export default Document;
+export default DocumentCard;

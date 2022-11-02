@@ -5,7 +5,7 @@ import Search from "../components/common/Search";
 import SEO from "../components/common/SEO";
 import Loader from "../components/common/Loader";
 import { getSharedDocuments } from "../utils/document/getSharedDocuments";
-import DocumentFlex from "../components/document/DocumentFlex";
+import DocumentCardFlex from "../components/document/DocumentCardFlex";
 
 export default function OrganisationPage() {
   const shared = true;
@@ -52,7 +52,7 @@ export default function OrganisationPage() {
             document={shared}
           />
           {data.length ? (
-            <DocumentFlex documents={filteredData} shared={shared} />
+            <DocumentCardFlex documents={filteredData} shared={shared} />
           ) : (
             <div className="mt-10 flex justify-center text-theme">
               No documents have been shared with you yet.

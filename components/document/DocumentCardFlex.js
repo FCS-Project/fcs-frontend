@@ -1,12 +1,12 @@
 import React from "react";
-import Document from "./document";
+import DocumentCard from "./DocumentCard";
 
-function DocumentFlex({ documents, shared }) {
+function DocumentCardFlex({ documents, shared }) {
   return (
     <div className="px-2 md:px-8 lg:px-8 flex flex-wrap justify-center md:justify-evenly gap-1">
       {documents?.map((item, i) => {
         return (
-          <Document
+          <DocumentCard
             key={i}
             name={item.name}
             link={item.dataSrc}
@@ -20,4 +20,4 @@ function DocumentFlex({ documents, shared }) {
   );
 }
 
-export default DocumentFlex;
+export default DocumentCardFlex;

@@ -1,5 +1,5 @@
 import React from "react";
-import Document from "../document/Document";
+import DocumentCard from "../document/DocumentCard";
 
 function ProfileDocs({ documents }) {
   return (
@@ -10,7 +10,7 @@ function ProfileDocs({ documents }) {
           <>
             {documents.map((item, i) => {
               return (
-                <Document
+                <DocumentCard
                   id={item.id}
                   link={item.dataSrc}
                   createdAt={item.createdAt}

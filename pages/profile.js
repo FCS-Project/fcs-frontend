@@ -20,7 +20,7 @@ function ProfilePage() {
   const fetchUserDocs = async () => {
     getUserDocuments().then((response) => {
       if (response.success) {
-        setDocs(response.data.Documents);
+        setDocs(response.data.documents);
         setLoading(false);
       }
     });
