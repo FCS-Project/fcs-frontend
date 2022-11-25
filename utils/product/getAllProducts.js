@@ -6,10 +6,10 @@ export const getAllProducts = async () => {
   return instance
     .get("/product", { headers: { Authorization: `Bearer ${jwt}` } })
     .then((response) => {
-      if (response.success) {
+      if (response.data.success) {
         return {
-          success: response.success,
-          data: response.data,
+          success: response.data.success,
+          data: response.data.data,
         };
       }
     })
