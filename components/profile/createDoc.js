@@ -30,7 +30,7 @@ function CreateDoc({ shareId }) {
     <>
       {modal && (
         <div className="fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-[rgb(0,0,0,0.8)] flex items-center justify-center">
-          <div className="p-5 w-11/12 sm:w-10/12 md:w-9/12 lg:w-1/2 h-fit bg-white block p-5 border-2 mx-auto">
+          <div className="w-11/12 sm:w-10/12 md:w-9/12 lg:w-1/2 h-fit bg-white block p-5 border-2 mx-auto">
             <div className="flex items-center justify-between">
               <h1 className="text-xl md:text-2xl">Upload Document</h1>
               <div
