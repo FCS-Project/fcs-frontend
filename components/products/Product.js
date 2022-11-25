@@ -2,64 +2,33 @@
 import React, { useCallback } from "react";
 import Button from "../common/Button";
 import useRazorpay from "react-razorpay";
+import { createOrder } from "../../utils/order/createOrder";
+import { useSelector } from "react-redux";
+import { optionsCreate } from "../../utils/razorpay/options";
 
 function Product({ product }) {
-  console.log("PRODUCT", product);
+  const user = useSelector((state) => state.user.data);
   const razorpayInstance = useRazorpay({
     authKey: {
-      key_id: "rzp_test_ZiVolzO6sax6X4",
-      key_secret: "NWiFcQYN3sqtdcawncbg5Vaz",
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_SECRET,
     },
   });
 
   const openRazorpay = async () => {
-    const order = await razorpayInstance.orders.create({
-      amount: 111,
-      currency: "INR",
-    });
+    createOrder({ amount: product.price + "00", productId: product.id }).then(
+      (res) => {
+        if (res.success) {
+          const options = optionsCreate(res, user);
+          const rzpay = new razorpayInstance(options);
+          rzpay.open();
 
-    const options = {
-      key: "rzp_test_ZiVolzO6sax6X4",
-      amount: 100,
-      currency: "INR",
-      name: "VAMA CARE",
-      description: "Proceed to buy this product",
-      image: "https://i.ibb.co/Ct1jrgj/Logo2.png",
-      order_id: order.id,
-      handler: (res) => {
-        console.log(res);
-        //  Call dispatch
-      },
-      prefill: {
-        name: "Avi",
-        email: "email",
-        contact: "phone",
-      },
-      notes: {
-        address: "VAMA CARE OFFICE",
-      },
-      theme: {
-        color: "var(--black)",
-      },
-      callback_url: "",
-    };
-
-    const rzpay = new razorpayInstance(options);
-    rzpay.open();
-
-    rzpay.on("payment.failed", function (response) {
-      console.log(response.error.code);
-      console.log(response.error.description);
-      console.log(response.error.source);
-      console.log(response.error.step);
-      console.log(response.error.reason);
-      console.log(response.error.metadata.order_id);
-      console.log(response.error.metadata.payment_id);
-    });
-
-    rzpay.on("payment.success", (res) => {
-      console.log("WOHOOOO", res);
-    });
+          rzpay.on("payment.failed", function (response) {
+            console.log(response.error);
+          });
+        }
+      }
+    );
   };
 
   return (
@@ -88,11 +57,11 @@ function Product({ product }) {
           {product.name ?? "Product Name"}
         </div>
         <div className="text-md lg:text-lg capitalise">
-          ${product.price ?? "299"}
+          ₹{product.price ?? "299"}
         </div>
       </div>
       <div className="flex justify-start items-center gap-1">
-        <Button text="Buy" type="tertiary" onClick={() => alert("bought")} />
+        <Button text="Buy" type="tertiary" onClick={() => openRazorpay()} />
       </div>
     </div>
   );
