@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
 import ProductFlex from "../components/products/ProductFlex";
@@ -7,6 +7,7 @@ import { getAllProducts } from "../utils/product/getAllProducts";
 function ShopPage() {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
+
   const fetchProducts = async () => {
     getAllProducts().then((response) => {
       if (response.success) {

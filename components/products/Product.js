@@ -3,7 +3,8 @@ import React, { useCallback } from "react";
 import Button from "../common/Button";
 import useRazorpay from "react-razorpay";
 
-function Product({ id, name, price, owner }) {
+function Product({ product }) {
+  console.log("PRODUCT", product);
   const razorpayInstance = useRazorpay({
     authKey: {
       key_id: "rzp_test_ZiVolzO6sax6X4",
@@ -67,26 +68,28 @@ function Product({ id, name, price, owner }) {
         <img
           alt="display picture"
           src={
-            owner?.displaySrc == "" || !owner?.displaySrc
+            product.user?.displaySrc == "" || !product.user?.displaySrc
               ? "/user.png"
-              : owner?.displaySrc
+              : product.user?.displaySrc
           }
           className="w-8 h-8 rounded-full object-cover border border-theme"
         />
         <div className="text-xs lg:text-sm capitalise">
-          {owner?.name ?? "Pharma Company"}
+          {product.user?.name ?? "Pharma Company"}
         </div>
       </div>
       <img
         alt="product"
-        src="https://i.ibb.co/myvq6GR/aryan.jpg"
-        className="w-full h-1/2 object-cover md:max-h-60"
+        src={product.imgSrc}
+        className="w-[100vw] h-64 object-cover md:max-h-64"
       />
       <div className="my-1 flex justify-between items-center">
         <div className="text-md lg:text-lg capitalise">
-          {name ?? "Product Name"}
+          {product.name ?? "Product Name"}
         </div>
-        <div className="text-md lg:text-lg capitalise">${price ?? "299"}</div>
+        <div className="text-md lg:text-lg capitalise">
+          ${product.price ?? "299"}
+        </div>
       </div>
       <div className="flex justify-start items-center gap-1">
         <Button text="Buy" type="tertiary" onClick={() => alert("bought")} />

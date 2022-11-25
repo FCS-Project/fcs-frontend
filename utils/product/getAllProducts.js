@@ -6,6 +6,7 @@ export const getAllProducts = async () => {
   return instance
     .get("/product", { headers: { Authorization: `Bearer ${jwt}` } })
     .then((response) => {
+      console.log("respins>>>>", response);
       if (response.data.success) {
         return {
           success: response.data.success,
