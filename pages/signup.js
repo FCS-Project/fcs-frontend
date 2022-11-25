@@ -9,7 +9,7 @@ import SEO from "../components/common/SEO";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../store/actions/auth";
 import { useRouter } from "next/router";
-import uploadImage from "../utils/imageUpload";
+import uploadImage from "../utils/image/imageUpload";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
