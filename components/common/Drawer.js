@@ -29,7 +29,7 @@ export default function DrawerComponent() {
   const navItems = [
     { page: "Home", href: "/" },
     { page: "Shared Documents", href: "/documents" },
-    { page: "Shop", href: "/" },
+    { page: "Shop", href: "/shop" },
     { page: "Profile", href: "/profile" },
   ];
 
