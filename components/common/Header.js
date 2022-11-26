@@ -14,9 +14,9 @@ function Header() {
   const dispatch = useDispatch();
   const router = useRouter();
   const onClick = () => {
+    router.push("/login");
     dispatch(logout());
     dispatch(emptyUser());
-    router.push("/login");
   };
   const linkStyle =
     "text-sm md:text-md lg:text-lg transition all delay-30 hover:text-theme cursor-pointer hidden sm:flex";

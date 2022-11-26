@@ -6,8 +6,12 @@ import SEO from "../components/common/SEO";
 import OrgCardsFlex from "../components/organisation/OrgCardsFlex";
 import Loader from "../components/common/Loader";
 import { getHome } from "../utils/user/getHome";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const user = useSelector((state) => state.user);
+  const router = useRouter();
   const [filter, setFilter] = useState("type");
   const [state, setState] = useState("");
   const [loading, setLoading] = useState(true);
@@ -34,6 +38,12 @@ export default function Home() {
   useEffect(() => {
     fetchHomeData();
   }, []);
+
+  useEffect(() => {
+    if (!user?.data) {
+      router.push("/login");
+    }
+  }, [user, router]);
 
   return (
     <>
