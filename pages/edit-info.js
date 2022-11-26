@@ -22,13 +22,10 @@ function EditInfo() {
   const roles = user?.roles[0];
   const router = useRouter();
   const dispatch = useDispatch();
-
   const [fileDP, setFileDP] = useState("");
   const [fileDPSrc, setFileDPSrc] = useState(user?.displaySrc ?? "");
-
   const [fileBanner, setFileBanner] = useState("");
   const [fileBannerSrc, setFileBannerSrc] = useState(user?.bannerSrc ?? "");
-
   const handleFileChange = async (changeEvent, dp) => {
     const reader = new FileReader();
     if (dp) {
@@ -45,7 +42,6 @@ function EditInfo() {
       await uploadImage(changeEvent, setFileBannerSrc, "banner");
     }
   };
-
   const submit = () => {
     switch (roles) {
       case "Admin":
@@ -88,44 +84,6 @@ function EditInfo() {
         }
         break;
     }
-    // if (roles == "Admin") {
-    //   if (name != "" && email != "") {
-    //     const dto = {
-    //       name: name,
-    //       email: email,
-    //       mobileNumber: mobile,
-    //       displaySrc: fileDPSrc,
-    //     };
-    //     dispatch(updateUser(user?.id, dto));
-    //     router.push("/profile");
-    //   }
-    // }
-    // if (roles == "User") {
-    //   if (name != "" && email != "") {
-    //     const dto = {
-    //       name: name,
-    //       email: email,
-    //       mobileNumber: mobile,
-    //       displaySrc: fileDPSrc,
-    //     };
-    //     dispatch(updateUser(user?.id, dto));
-    //     router.push("/profile");
-    //   }
-    // } else if (roles == "Organisation") {
-    //   if (name != "" && email != "") {
-    //     const dto = {
-    //       name: name,
-    //       email: email,
-    //       location: location,
-    //       mobileNumber: mobile,
-    //       description: description,
-    //       displaySrc: fileDPSrc,
-    //       bannerSrc: fileBannerSrc,
-    //     };
-    //     dispatch(updateUser(user?.id, dto));
-    //     router.push("/profile");
-    //   }
-    // }
   };
 
   useEffect(() => {
@@ -189,11 +147,9 @@ function EditInfo() {
                   />
                 </>
               )}
-
               <div className="mt-2 text-sm sm:text-base lg:text-lg">
                 Upload Pictures
               </div>
-
               <div className="flex w-full items-start justify-between mt-2 gap-2 lg:gap-5">
                 <form
                   method="post"
@@ -217,7 +173,6 @@ function EditInfo() {
                       Upload Dp
                     </div>
                   </label>
-
                   <input
                     type="file"
                     id="dp"
@@ -227,7 +182,6 @@ function EditInfo() {
                   />
                 </form>
               </div>
-
               {roles == "Organisation" && (
                 <>
                   <div className="mt-2 text-sm sm:text-base lg:text-lg">
@@ -268,7 +222,6 @@ function EditInfo() {
                   </div>
                 </>
               )}
-
               <div className="mt-5 flex items-center justify-between gap-20">
                 <Button
                   type="secondary"
