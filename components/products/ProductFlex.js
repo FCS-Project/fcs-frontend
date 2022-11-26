@@ -9,7 +9,7 @@ function ProductFlex({ products }) {
           return <Product key={i} product={item} />;
         })
       ) : (
-        <p>No Products</p>
+        <p>No Products are uploaded on the platform currently</p>
       )}
     </div>
   );
