@@ -25,7 +25,7 @@ function ShopPage() {
     return <Loader />;
   }
   return (
-    <div>
+    <>
       <Header />
       <ProductFlex products={products} />
       <Link href="/create-product" passHref={true}>
@@ -33,7 +33,7 @@ function ShopPage() {
           +
         </div>
       </Link>
-    </div>
+    </>
   );
 }
 

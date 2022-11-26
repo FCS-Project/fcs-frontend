@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import Button from "../components/common/Button";
 import Header from "../components/common/Header";
@@ -22,14 +23,14 @@ function CreateProductPage() {
   };
 
   return (
-    <div>
+    <>
       <Header />
       <div className="flex justify-center items-center">
         <div
           className={`flex flex-col p-10 w-11/12 sm:w-4/5 md:w-3/5 lg:w-1/2 shadow-lg mt-10`}
         >
           <div
-            className={`text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl mb-2`}
+            className={`text-center mb-2 sm:mb-5 text-lg sm:text-xl lg:text-2xl`}
           >
             Create A Product
           </div>
@@ -104,7 +105,7 @@ function CreateProductPage() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
