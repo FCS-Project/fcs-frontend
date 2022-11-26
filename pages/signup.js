@@ -47,7 +47,6 @@ function Signup() {
       await uploadImage(changeEvent, setFileBannerSrc, "banner");
     }
   };
-
   const onSubmitOrg = () => {
     if (name != "" && email != "" && password != "") {
       // make length greater than 8 after testing
@@ -76,7 +75,6 @@ function Signup() {
       setError("Name cannot be empty!");
     }
   };
-
   const onSubmit = () => {
     if (name != "" && email != "" && password != "") {
       if (password.length >= 8) {
@@ -134,9 +132,9 @@ function Signup() {
           >
             Sign Up as {organisationFlag ? "an Organisation" : "a User"}
           </div>
-          {/* {error && (
+          {error && (
             <div className="text-theme text-center">Error: {error}</div>
-          )} */}
+          )}
           <Input
             heading={"Name"}
             placeholder={"Name"}
@@ -166,7 +164,7 @@ function Signup() {
           {!organisationFlag && (
             <div className="my-1">
               <div className="text-sm sm:text-base lg:text-lg">
-                Upload Pictures
+                Upload Photos
               </div>
               <div className="flex w-full items-start justify-between mt-2 gap-2 lg:gap-5">
                 <form
@@ -175,11 +173,10 @@ function Signup() {
                   className="w-full"
                 >
                   <label htmlFor="dp">
-                    <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
+                    <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center cursor-pointer">
                       Profile Picture
                     </div>
                   </label>
-
                   {fileDPSrc && (
                     <>
                       <p className="text-sm mt-5">Image Uploaded</p>
@@ -190,7 +187,6 @@ function Signup() {
                       />
                     </>
                   )}
-
                   <input
                     type="file"
                     id="dp"
@@ -202,7 +198,6 @@ function Signup() {
               </div>
             </div>
           )}
-
           {organisationFlag && (
             <>
               <Input
@@ -233,27 +228,26 @@ function Signup() {
                 style="my-0.5"
               />
               <div className="mt-2 text-sm sm:text-base lg:text-lg">
-                Upload Pictures
+                Upload Photos
               </div>
               <div className="flex w-full items-start justify-between mt-2 gap-2 lg:gap-5">
                 <form
                   method="post"
                   onChange={(event) => handleFileChange(event, true)}
-                  className="w-[50%]"
+                  className="w-1/2"
                 >
                   <label htmlFor="dp">
-                    <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
+                    <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center cursor-pointer">
                       Profile Picture
                     </div>
                   </label>
-
                   {fileDPSrc && (
                     <>
                       <p className="text-sm mt-5">Image Uploaded</p>
                       <img
                         alt="display picture"
                         src={fileDP}
-                        className="w-[100%] h-[10rem] object-cover max-w-1/2  block ml-auto mr-auto border-theme my-5"
+                        className="w-full h-[10rem] object-cover max-w-1/2 block ml-auto mr-auto border-theme my-5"
                       />
                     </>
                   )}
@@ -271,7 +265,7 @@ function Signup() {
                   className="w-1/2"
                 >
                   <label htmlFor="banner">
-                    <div className="w-[full] py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
+                    <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center cursor-pointer">
                       Cover Photo
                     </div>
                   </label>
