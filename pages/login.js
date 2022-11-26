@@ -22,12 +22,11 @@ function Login() {
   const [otp, setOtp] = useState(false);
   const router = useRouter();
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (otp) {
       const otpDto = { email: email };
       otpSignIn(otpDto).then((response) => {
         if (response.success) {
-          console.log("res", response.success);
           setModal(response.success);
         }
       });

@@ -1,10 +1,10 @@
 import instance from "../../axios";
 import { getAccessToken } from "../../lib/auth";
 
-export const createProduct = async () => {
+export const createProduct = async (dto) => {
   const jwt = getAccessToken();
   return instance
-    .post("/product", { headers: { Authorization: `Bearer ${jwt}` } })
+    .post("/product", dto, { headers: { Authorization: `Bearer ${jwt}` } })
     .then((response) => {
       if (response.data.success) {
         return {

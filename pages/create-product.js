@@ -1,11 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Button from "../components/common/Button";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import uploadImage from "../utils/image/imageUpload";
+import { createProduct } from "../utils/product/createProduct";
 
 function CreateProductPage() {
+  const user = useSelector((state) => state.user);
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [productDP, setProductDP] = useState("");
@@ -18,8 +21,22 @@ function CreateProductPage() {
       setProductDP(onLoadEvent.target.result);
     };
     reader.readAsDataURL(changeEvent.target.files[0]);
-    const upload = await uploadImage(changeEvent, setProductDPSrc, "file");
+    await uploadImage(changeEvent, setProductDPSrc, "file");
     setLoading(false);
+  };
+
+  const submit = async () => {
+    const dto = {
+      name: productName,
+      imgSrc: productDPSrc,
+      price: price,
+      userId: user?.id,
+    };
+    createProduct(dto).then((response) => {
+      if (response.success) {
+        alert("Product Created!");
+      }
+    });
   };
 
   return (
@@ -100,7 +117,7 @@ function CreateProductPage() {
             text={"Create Product"}
             style={"mb-4"}
             onClick={() => {
-              alert("creating product");
+              submit();
             }}
           />
         </div>
