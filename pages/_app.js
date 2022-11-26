@@ -17,12 +17,15 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const path = router.asPath;
-    const publicPaths = ["/login", "/signup", "/shop"];
+    const publicPaths = ["/login", "/signup"];
     if (
       (!auth?.access_token || !user.data) &&
       !publicPaths.includes(path ?? "")
     ) {
-      router.push("/login");
+      router.push({
+        pathname: "/",
+        query: { returnUrl: router.asPath },
+      });
     }
   }, [auth, user]);
 
