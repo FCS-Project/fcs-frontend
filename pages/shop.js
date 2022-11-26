@@ -1,14 +1,17 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
 import ProductFlex from "../components/products/ProductFlex";
 import { getAllProducts } from "../utils/product/getAllProducts";
 
 function ShopPage() {
+  const user = useSelector((state) => state.user);
+  const router = useRouter();
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
-
   const fetchProducts = async () => {
     getAllProducts().then((response) => {
       if (response.success) {
@@ -17,9 +20,16 @@ function ShopPage() {
       }
     });
   };
+
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    if (!user?.data) {
+      router.push("/login");
+    }
+  }, [user, router]);
 
   if (loading) {
     return <Loader />;
