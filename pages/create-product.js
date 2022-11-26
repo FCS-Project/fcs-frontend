@@ -9,6 +9,7 @@ import { createProduct } from "../utils/product/createProduct";
 
 function CreateProductPage() {
   const user = useSelector((state) => state.user);
+  const [error, setError] = useState(null);
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [productDP, setProductDP] = useState("");
@@ -35,6 +36,8 @@ function CreateProductPage() {
     createProduct(dto).then((response) => {
       if (response.success) {
         alert("Product Created!");
+      } else {
+        setError(response.error);
       }
     });
   };
@@ -51,9 +54,9 @@ function CreateProductPage() {
           >
             Create A Product
           </div>
-          {/* {error && (
+          {error && (
             <div className="text-theme text-center">Error: {error}</div>
-          )} */}
+          )}
           <Input
             heading={"Product Name"}
             placeholder={"Name"}
