@@ -42,10 +42,14 @@ export default function UsersPage() {
   }, []);
 
   useEffect(() => {
-    if (user?.data?.roles[0] != "Admin") {
-      router.push("/profile");
+    if (user?.data) {
+      if (user?.data?.roles[0] != "Admin") {
+        router.push("/profile");
+      }
+    } else {
+      router.push("/login");
     }
-  }, []);
+  }, [user]);
 
   return (
     <>
