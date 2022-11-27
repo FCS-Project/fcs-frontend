@@ -105,7 +105,7 @@ function Signup() {
         const dto = {
           name: name,
           email: email,
-          password: encrypt(JSON.stringify({ password })),
+          password: encrypt(password),
           roles: [organisationFlag ? "Organisation" : "User"],
           type: [organisationFlag ? organistionType : userType],
           displaySrc: fileDPSrc,
@@ -125,12 +125,6 @@ function Signup() {
 
   useEffect(() => {
     setError("");
-    // let encryptText = encrypt("aryan");
-    // console.log("encryptText", encryptText);
-    // let decryptText = decrypt(encryptText);
-    // console.log("decrypted", decryptText);
-    console.log("hell", process.env.RSA_PRIVATE_KEY);
-    encrypt();
   }, []);
 
   useEffect(() => {
