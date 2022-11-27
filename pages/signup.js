@@ -11,7 +11,6 @@ import { signup } from "../store/actions/auth";
 import { useRouter } from "next/router";
 import uploadImage from "../utils/image/imageUpload";
 import { encrypt } from "../utils/crypto/encryption";
-import { decrypt } from "../utils/crypto/decryption";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
@@ -126,10 +125,12 @@ function Signup() {
 
   useEffect(() => {
     setError("");
-    let encryptText = encrypt("aryanavi");
-    console.log("encryptText", encryptText);
-    let decryptText = decrypt(encryptText);
-    console.log("decrypted", decryptText);
+    // let encryptText = encrypt("aryan");
+    // console.log("encryptText", encryptText);
+    // let decryptText = decrypt(encryptText);
+    // console.log("decrypted", decryptText);
+    console.log("hell", process.env.RSA_PRIVATE_KEY);
+    encrypt();
   }, []);
 
   useEffect(() => {
