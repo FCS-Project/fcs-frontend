@@ -131,12 +131,6 @@ function Signup() {
     }
   }, [auth, user]);
 
-  useEffect(() => {
-    if (auth?.errmess) {
-      setError(auth.errmess);
-    }
-  }, [auth]);
-
   return (
     <>
       <SEO title={"Sign Up"} />
