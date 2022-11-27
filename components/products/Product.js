@@ -49,7 +49,7 @@ function Product({ product }) {
       <img
         alt="product"
         src={product.imgSrc}
-        className="w-[100vw] h-64 object-cover md:max-h-64"
+        className="w-[90vw] h-64 object-cover md:max-h-64"
       />
       <div className="my-1 flex justify-between items-center">
         <div className="text-md lg:text-lg capitalise">
