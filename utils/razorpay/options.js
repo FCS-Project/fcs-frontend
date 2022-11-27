@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { updateOrder } from "../order/updateOrder";
 
 export const optionsCreate = (res, user, owner) => {
@@ -23,9 +24,9 @@ export const optionsCreate = (res, user, owner) => {
         res.data.id
       ).then((res) => {
         if (res.success) {
-          alert("Payment Success!");
+          toast.success("Payment Success!");
         } else {
-          alert("Payment Failed!");
+          toast.error("Payment Failed!");
         }
       });
     },
