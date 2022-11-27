@@ -1,4 +1,5 @@
 import * as ActionTypes from "../ActionTypes";
+import { toast } from "react-toastify";
 
 const initState = {
   errmess: null,
@@ -23,6 +24,7 @@ export const userReducer = (state = initState, action) => {
         data: action.data,
       };
     case ActionTypes.GET_USER_FAIL:
+      toast.error("Unable to fetch user data!");
       return {
         ...state,
         data: null,
@@ -36,6 +38,7 @@ export const userReducer = (state = initState, action) => {
         errmess: null,
       };
     case ActionTypes.UPDATE_USER_SUCCESS:
+      toast.success("Updated user data successfully!");
       return {
         ...state,
         loading: false,
@@ -44,6 +47,7 @@ export const userReducer = (state = initState, action) => {
         data: action.data,
       };
     case ActionTypes.UPDATE_USER_FAIL:
+      toast.error("Unable to update user data!");
       return {
         ...state,
         loading: false,
@@ -58,6 +62,7 @@ export const userReducer = (state = initState, action) => {
         data: action.data,
       };
     case ActionTypes.EMPTY_USER_FAIL:
+      toast.error("Unable to empty user data!");
       return {
         ...state,
         loading: false,
