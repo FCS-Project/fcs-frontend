@@ -113,7 +113,7 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         loading: false,
-        otp_verified: true,
+        otp_verified: false,
         errmess: action.errmess,
       };
     case ActionTypes.SET_TOKEN_IN_STATE:
