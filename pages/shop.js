@@ -7,7 +7,7 @@ import Loader from "../components/common/Loader";
 import ProductFlex from "../components/products/ProductFlex";
 import { getAllProducts } from "../utils/product/getAllProducts";
 
-function ShopPage() {
+function Shop() {
   const user = useSelector((state) => state.user);
   const router = useRouter();
   const [products, setProducts] = useState(null);
@@ -57,4 +57,4 @@ function ShopPage() {
   );
 }
 
-export default ShopPage;
+export default Shop;
