@@ -1,8 +1,7 @@
-//The Function Below To Decrypt Text
-const CryptoJS = require("crypto-js");
-export const decryptWithAES = (ciphertext) => {
-  const passphrase = "zXpuh)hbuq&w2ThqxF*JVBXXTF75NSQW";
-  const bytes = CryptoJS.AES.decrypt(ciphertext, passphrase);
-  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+var CryptoJS = require("crypto-js");
+
+export const decrypt = (ciphertext) => {
+  var bytes = CryptoJS.AES.decrypt(ciphertext, `${process.env.ENCRYPTION_KEY}`);
+  var originalText = bytes.toString(CryptoJS.enc.Utf8);
   return originalText;
 };

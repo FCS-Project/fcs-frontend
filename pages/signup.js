@@ -103,9 +103,9 @@ function Signup() {
 
   useEffect(() => {
     setError("");
-    let encryptText = encryptWithAES("hihello");
+    let encryptText = encrypt("aryanavi");
     console.log("encryptText", encryptText);
-    let decryptText = decryptWithAES(encryptText);
+    let decryptText = decrypt(encryptText);
     console.log("decrypted", decryptText);
   }, []);
 
