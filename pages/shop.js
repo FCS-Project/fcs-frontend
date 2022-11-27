@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -37,6 +38,12 @@ function Shop() {
   //     router.push("/login");
   //   }
   // }, [user, router]);
+
+  useEffect(() => {
+    if (!user?.data) {
+      router.push("/login");
+    }
+  }, []);
 
   if (loading) {
     return <Loader />;
