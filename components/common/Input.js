@@ -23,6 +23,7 @@ function Input({
         value={state}
         onChange={(e) => setState(e.target.value)}
         disabled={disabled}
+        maxLength={150}
       />
     </div>
   );

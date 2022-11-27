@@ -50,6 +50,7 @@ function Signup() {
     }
   };
   const onSubmitOrg = () => {
+    var regex = /^[A-Za-z0-9 ]+$/;
     if (
       name != "" &&
       email != "" &&
@@ -57,7 +58,9 @@ function Signup() {
       mobileNumber != "" &&
       organistionType != "" &&
       location != "" &&
-      description != ""
+      description != "" &&
+      description.length <= 150 &&
+      regex.test(description)
     ) {
       // make length greater than 8 after testing
       if (password.length > 0) {
@@ -91,6 +94,10 @@ function Signup() {
       setError("Description cannot be empty!");
     } else if (!organistionType) {
       setError("Organistion type cannot be empty!");
+    } else if (description > 150) {
+      setError("Description needs to be less than 150 characters!");
+    } else if (!regex.test(description)) {
+      setError("No special characters allowed in the description!");
     }
   };
   const onSubmit = () => {
@@ -226,9 +233,9 @@ function Signup() {
                 style="my-0.5"
               />
               <Input
-                heading={"Description"}
+                heading={"Description (Not more than 150 characters)"}
                 type={"text"}
-                placeholder={"Description"}
+                placeholder={"Description "}
                 state={description}
                 setState={setDescription}
                 required={true}
