@@ -4,7 +4,7 @@ import { getAccessToken } from "../../lib/auth";
 export const getDocument = async (id) => {
   const jwt = getAccessToken();
   return instance
-    .get(`/document${id}`, { headers: { Authorization: `Bearer ${jwt}` } })
+    .get(`/document/${id}`, { headers: { Authorization: `Bearer ${jwt}` } })
     .then((response) => {
       if (response.data.success) {
         return {
