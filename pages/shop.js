@@ -26,7 +26,14 @@ function ShopPage() {
   }, []);
 
   useEffect(() => {
-    if (!user?.data) {
+    if (user?.data) {
+      if (
+        user?.data?.type[0] != "Patient" ||
+        user?.data?.type[0] != "Pharmacy"
+      ) {
+        router.push("/profile");
+      }
+    } else {
       router.push("/login");
     }
   }, [user, router]);
@@ -34,6 +41,7 @@ function ShopPage() {
   if (loading) {
     return <Loader />;
   }
+
   return (
     <>
       <Header />
