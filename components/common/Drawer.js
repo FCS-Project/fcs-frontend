@@ -2,13 +2,12 @@
 import { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Avatar, Divider, IconButton, List } from "@mui/material";
+import { Divider, IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { logout } from "../../store/actions/auth";
 import { emptyUser } from "../../store/actions/user";
-import { ListItem, ListItemButton, ListItemText } from "@mui/material";
 
 export default function DrawerComponent() {
   const [open, setOpen] = useState(false);
