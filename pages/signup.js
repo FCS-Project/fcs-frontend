@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../store/actions/auth";
 import { useRouter } from "next/router";
 import uploadImage from "../utils/image/imageUpload";
-import { encrypt, encryptWithAES } from "../utils/crypto/encryption";
-import { decrypt, decryptWithAES } from "../utils/crypto/decryption";
+import { encrypt } from "../utils/crypto/encryption";
+import { decrypt } from "../utils/crypto/decryption";
 
 function Signup() {
   const labelStyle = "my-1 mx-1.5 text-sm sm:text-base lg:text-lg";
