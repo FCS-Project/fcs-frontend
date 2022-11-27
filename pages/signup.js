@@ -50,13 +50,21 @@ function Signup() {
     }
   };
   const onSubmitOrg = () => {
-    if (name != "" && email != "" && password != "") {
+    if (
+      name != "" &&
+      email != "" &&
+      password != "" &&
+      mobileNumber != "" &&
+      organistionType != "" &&
+      location != "" &&
+      description != ""
+    ) {
       // make length greater than 8 after testing
       if (password.length > 0) {
         const dto = {
           name: name,
           email: email,
-          password: password,
+          password: encrypt(password),
           mobileNumber: mobileNumber,
           roles: [organisationFlag ? "Organisation" : "User"],
           type: [organisationFlag ? organistionType : userType],
@@ -75,6 +83,14 @@ function Signup() {
       setError("Password cannot be empty!");
     } else if (!name) {
       setError("Name cannot be empty!");
+    } else if (!mobileNumber) {
+      setError("Mobile number cannot be empty!");
+    } else if (!location) {
+      setError("Location cannot be empty!");
+    } else if (!description) {
+      setError("Description cannot be empty!");
+    } else if (!organistionType) {
+      setError("Organistion type cannot be empty!");
     }
   };
   const onSubmit = () => {
@@ -83,7 +99,7 @@ function Signup() {
         const dto = {
           name: name,
           email: email,
-          password: password,
+          password: encrypt(password),
           roles: [organisationFlag ? "Organisation" : "User"],
           type: [organisationFlag ? organistionType : userType],
           displaySrc: fileDPSrc,

@@ -34,7 +34,7 @@ function Login() {
     if (email && password) {
       // make length greater than 8 after testing
       if (password.length > 0) {
-        const dto = { email: email, password: password };
+        const dto = { email: email, password: encrypt(password) };
         dispatch(signin(dto));
       } else {
         setError(
