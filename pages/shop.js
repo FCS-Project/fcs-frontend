@@ -39,16 +39,17 @@ function Shop() {
   //   }
   // }, [user, router]);
 
-  useEffect(() => {
-    if (!user?.data) {
-      router.push("/login");
-    } else if (
-      user?.data?.type[0] != "Pharmacy" ||
-      user?.data.type[0] != "Patient"
-    ) {
-      router.push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!user?.data) {
+  //     router.push("/login");
+  //   } else if (
+  //     user?.data?.type[0] != "Pharmacy" ||
+  //     user?.data?.type[0] != "Admin" ||
+  //     user?.data.type[0] != "Patient"
+  //   ) {
+  //     router.push("/");
+  //   }
+  // }, []);
 
   if (loading) {
     return <Loader />;

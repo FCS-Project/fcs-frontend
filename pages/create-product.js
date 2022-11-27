@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Button from "../components/common/Button";
@@ -15,6 +16,7 @@ function CreateProductPage() {
   const [productDP, setProductDP] = useState("");
   const [productDPSrc, setProductDPSrc] = useState(null);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const handleFileChange = async (changeEvent) => {
     setLoading(true);
     const reader = new FileReader();
@@ -31,11 +33,11 @@ function CreateProductPage() {
       name: productName,
       imgSrc: productDPSrc,
       price: price,
-      userId: user?.id,
+      userId: user?.data?.id,
     };
     createProduct(dto).then((response) => {
       if (response.success) {
-        alert("Product Created!");
+        router.push("/shop");
       } else {
         setError(response.error);
       }
