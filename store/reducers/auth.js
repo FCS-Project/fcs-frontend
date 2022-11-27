@@ -21,6 +21,7 @@ export const authReducer = (state = initState, action) => {
         otp_verified: false,
       };
     case ActionTypes.REGISTER_SUCCESS:
+      toast.success("Signed up successfully!");
       setAccessToken(action.access_token);
       setRefreshToken(action.refresh_token);
       return {
@@ -32,6 +33,7 @@ export const authReducer = (state = initState, action) => {
         refresh_token: action.refresh_token,
       };
     case ActionTypes.REGISTER_FAIL:
+      toast.error(action.errmess);
       return {
         ...state,
         loading: false,
@@ -58,6 +60,7 @@ export const authReducer = (state = initState, action) => {
         refresh_token: action.refresh_token,
       };
     case ActionTypes.LOGIN_FAIL:
+      toast.error(action.errmess);
       return {
         ...state,
         errmess: action.errmess,
@@ -66,18 +69,21 @@ export const authReducer = (state = initState, action) => {
         refresh_token: null,
       };
     case ActionTypes.EDIT_INFO_REQUEST:
+      toast.success("OTP has been set to your email!");
       return {
         ...state,
         otp_verified: false,
         errmess: null,
       };
     case ActionTypes.EDIT_INFO_OTP_SUCCESS:
+      toast.success("OTP is verified!");
       return {
         ...state,
         errmess: action.errmess,
         otp_verified: true,
       };
     case ActionTypes.EDIT_INFO_OTP_FAIL:
+      toast.error(action.errmess);
       return {
         ...state,
         errmess: action.errmess,
@@ -91,6 +97,7 @@ export const authReducer = (state = initState, action) => {
         errmess: null,
       };
     case ActionTypes.OTP_LOGIN_SUCCESS:
+      toast.success("Logged in successfully!");
       setAccessToken(action.access_token);
       setRefreshToken(action.refresh_token);
       return {
@@ -102,6 +109,7 @@ export const authReducer = (state = initState, action) => {
         refresh_token: action.refresh_token,
       };
     case ActionTypes.OTP_LOGIN_FAIL:
+      toast.error(action.errmess);
       return {
         ...state,
         loading: false,
@@ -125,6 +133,7 @@ export const authReducer = (state = initState, action) => {
         refresh_token: null,
       };
     case ActionTypes.LOGOUT_SUCCESS:
+      toast.success("Logged out successfully!");
       setAccessToken(null);
       setRefreshToken(null);
       return {

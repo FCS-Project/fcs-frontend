@@ -8,7 +8,7 @@ import Input from "../components/common/Input";
 import SEO from "../components/common/SEO";
 import Modal from "../components/otp/Modal";
 import { updateUser } from "../store/actions/user";
-import uploadImage from "../utils/imageUpload";
+import uploadImage from "../utils/image/imageUpload";
 
 function EditInfo() {
   const user = useSelector((state) => state.user.data);
@@ -170,7 +170,7 @@ function EditInfo() {
                   )}
                   <label htmlFor="dp">
                     <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
-                      Upload Dp
+                      Upload Display Picture
                     </div>
                   </label>
                   <input
@@ -207,7 +207,7 @@ function EditInfo() {
                       )}
                       <label htmlFor="banner">
                         <div className="w-full py-1.5 text-sm sm:text-base hover:opacity-90 bg-white text-theme border-2 border-theme text-center">
-                          Upload Dp
+                          Upload Display Picture
                         </div>
                       </label>
 
