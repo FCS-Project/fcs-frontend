@@ -8,7 +8,6 @@ export const updateOrder = async (data, id) => {
       headers: { Authorization: `Bearer ${jwt}` },
     })
     .then((response) => {
-      console.log("response>>>>", response);
       if (response.data.success) {
         return {
           success: response.data.success,
@@ -16,6 +15,7 @@ export const updateOrder = async (data, id) => {
       }
     })
     .catch((error) => {
+      toast.error(error.message.toString());
       return {
         error: error.message,
       };

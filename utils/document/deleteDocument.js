@@ -15,6 +15,7 @@ export const deleteDocument = async (id) => {
       }
     })
     .catch((error) => {
+      toast.error(error.message.toString());
       return {
         error: error.message,
       };

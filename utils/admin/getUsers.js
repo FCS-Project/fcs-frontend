@@ -15,7 +15,7 @@ export const getUsers = async () => {
       }
     })
     .catch((error) => {
-      toast.error(error);
+      toast.error(error.message);
       return {
         error: error.message,
       };

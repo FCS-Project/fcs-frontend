@@ -15,7 +15,7 @@ export const deleteUser = async (id) => {
       }
     })
     .catch((error) => {
-      toast.error(error);
+      toast.error(error.message.toString());
       return {
         error: error.message,
       };

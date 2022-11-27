@@ -24,7 +24,7 @@ export const userReducer = (state = initState, action) => {
         data: action.data,
       };
     case ActionTypes.GET_USER_FAIL:
-      toast.error(action.errmess);
+      toast.error(action.errmess.toString());
       return {
         ...state,
         data: null,
@@ -47,7 +47,7 @@ export const userReducer = (state = initState, action) => {
         data: action.data,
       };
     case ActionTypes.UPDATE_USER_FAIL:
-      toast.error(action.errmess);
+      toast.error(action.errmess.toString());
       return {
         ...state,
         loading: false,

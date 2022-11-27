@@ -33,7 +33,7 @@ export const authReducer = (state = initState, action) => {
         refresh_token: action.refresh_token,
       };
     case ActionTypes.REGISTER_FAIL:
-      toast.error(action.errmess);
+      toast.error(action.errmess.toString());
       return {
         ...state,
         loading: false,
@@ -60,7 +60,7 @@ export const authReducer = (state = initState, action) => {
         refresh_token: action.refresh_token,
       };
     case ActionTypes.LOGIN_FAIL:
-      toast.error(action.errmess);
+      toast.error(action.errmess.toString());
       return {
         ...state,
         errmess: action.errmess,
@@ -83,7 +83,7 @@ export const authReducer = (state = initState, action) => {
         otp_verified: true,
       };
     case ActionTypes.EDIT_INFO_OTP_FAIL:
-      toast.error(action.errmess);
+      toast.error(action.errmess.toString());
       return {
         ...state,
         errmess: action.errmess,
@@ -109,7 +109,7 @@ export const authReducer = (state = initState, action) => {
         refresh_token: action.refresh_token,
       };
     case ActionTypes.OTP_LOGIN_FAIL:
-      toast.error(action.errmess);
+      toast.error(action.errmess.toString());
       return {
         ...state,
         loading: false,
@@ -145,6 +145,7 @@ export const authReducer = (state = initState, action) => {
         refresh_token: action.refresh_token,
       };
     case ActionTypes.LOGOUT_FAIL:
+      toast.error(action.errmess.toString());
       return {
         ...state,
         loading: false,

@@ -1,5 +1,6 @@
 import instance from "../../axios";
 import { getAccessToken } from "../../lib/auth";
+import { toast } from "react-toastify";
 
 export const createOrder = async (data) => {
   const jwt = getAccessToken();
@@ -15,6 +16,7 @@ export const createOrder = async (data) => {
       }
     })
     .catch((error) => {
+      toast.error(error.message.toString());
       return {
         error: error.message,
       };

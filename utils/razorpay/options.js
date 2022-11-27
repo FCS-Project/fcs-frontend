@@ -7,14 +7,13 @@ export const optionsCreate = (res, user, owner) => {
     currency: "INR",
     name: owner.name,
     description: "Proceed to buy this product",
-    image: owner.displaySrc,
+    image: owner.displaySrc ?? "./logo.png",
     order_id: res.razorpayData.id,
     handler: (razorpayRes) => {
       var paymentStatus = false;
       if (razorpayRes.razorpayPaymentId != "") {
         paymentStatus = true;
       }
-
       updateOrder(
         {
           razorpayPaymentId: razorpayRes.razorpay_payment_id,
@@ -23,7 +22,6 @@ export const optionsCreate = (res, user, owner) => {
         },
         res.data.id
       ).then((res) => {
-        console.log("payment done>>>", res);
         if (res.success) {
           alert("Payment Success!");
         } else {
