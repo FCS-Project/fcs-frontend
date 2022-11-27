@@ -58,12 +58,6 @@ function Login() {
     }
   }, [auth, user]);
 
-  useEffect(() => {
-    if (auth?.errmess) {
-      setError(auth.errmess);
-    }
-  }, [auth]);
-
   return (
     <>
       {modal ? (
