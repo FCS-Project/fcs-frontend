@@ -46,10 +46,24 @@ export default function DrawerComponent() {
             <>
               {user?.data?.roles[0] == "Admin" ? (
                 <>
+                  <div className="flex flex-col items-center gap-2 mb-3">
+                    <img
+                      alt="display"
+                      src={
+                        user?.data?.displaySrc == "" || !user?.data?.displaySrc
+                          ? "/user.png"
+                          : user?.data?.displaySrc
+                      }
+                      className="w-20 h-20 rounded-full object-cover border-2 border-theme"
+                    />
+                    <div className="text-theme">{user.data?.name}</div>
+                  </div>
+                  <Divider />
+
                   {navItems.map((item, i) => {
                     return (
                       <Link key={i} href={item.href} passHref={true}>
-                        <p className={linkStyle}>Home</p>
+                        <p className={linkStyle}>{item.page}</p>
                       </Link>
                     );
                   })}
