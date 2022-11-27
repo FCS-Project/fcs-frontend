@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyOtp } from "../../store/actions/auth";
+import { encrypt } from "../../utils/crypto/encryption";
 import { otpSignIn } from "../../utils/otp/otpSignIn";
 import Button from "../common/Button";
 import VerifyPopup from "./VerifyPopup";
@@ -15,7 +16,7 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
   const [emailState, setEmailState] = useState(user?.data?.email);
   const [error, setError] = useState("");
   const submit = () => {
-    const dto = { email: email, otp: otp, editInfo: editInfo };
+    const dto = { email: email, otp: encrypt(otp), editInfo: editInfo };
     dispatch(verifyOtp(dto));
   };
 
@@ -39,8 +40,6 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
   useEffect(() => {
     if (auth?.otp_verified) {
       verified();
-    } else {
-      setError(auth?.errmess);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth]);
