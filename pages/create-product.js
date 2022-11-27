@@ -73,7 +73,6 @@ function CreateProductPage() {
             required={true}
             style="my-0.5"
           />
-
           <div className="my-1">
             <div className="text-sm sm:text-base lg:text-lg">
               Upload Product Picture
@@ -103,7 +102,6 @@ function CreateProductPage() {
                   </>
                 )}
                 {loading && <p className="text-sm mt-5">Image Loading...</p>}
-
                 <input
                   type="file"
                   id="file"

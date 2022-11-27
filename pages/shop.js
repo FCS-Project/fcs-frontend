@@ -25,18 +25,18 @@ function Shop() {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    if (user?.data) {
-      if (
-        user?.data?.type[0] != "Patient" ||
-        user?.data?.type[0] != "Pharmacy"
-      ) {
-        router.push("/profile");
-      }
-    } else {
-      router.push("/login");
-    }
-  }, [user, router]);
+  // useEffect(() => {
+  //   if (user?.data) {
+  //     if (
+  //       user?.data?.type[0] !== "Patient" ||
+  //       user?.data?.type[0] !== "Pharmacy"
+  //     ) {
+  //       router.push("/profile");
+  //     }
+  //   } else {
+  //     router.push("/login");
+  //   }
+  // }, [user, router]);
 
   if (loading) {
     return <Loader />;

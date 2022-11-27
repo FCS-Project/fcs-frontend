@@ -38,7 +38,6 @@ function Header() {
                 <Link href="/organisations" passHref={true}>
                   <p className={linkStyle}>Organisations</p>
                 </Link>
-
                 <Link href="/profile" passHref={true}>
                   <p className={linkStyle}>Profile</p>
                 </Link>
@@ -54,12 +53,9 @@ function Header() {
                 <Link href="/documents" passHref={true}>
                   <p className={linkStyle}>Shared Documents</p>
                 </Link>
-                {user?.data?.type[0] == "Patient" ||
-                user?.data?.type[0] == "Pharmacy" ? (
-                  <Link href="/shop" passHref={true}>
-                    <p className={linkStyle}>Shop</p>
-                  </Link>
-                ) : null}
+                <Link href="/shop" passHref={true}>
+                  <p className={linkStyle}>Shop</p>
+                </Link>
                 <Link href="/profile" passHref={true}>
                   <p className={linkStyle}>Profile</p>
                 </Link>
@@ -71,7 +67,7 @@ function Header() {
           </>
         )}
       </div>
-      <div className="block sm:hidden ">
+      <div className="block sm:hidden">
         <DrawerComponent />
       </div>
     </div>

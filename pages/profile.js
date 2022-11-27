@@ -8,7 +8,6 @@ import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
 import { getUser } from "../store/actions/user";
 import { getUserDocuments } from "../utils/document/getUserDocuments";
-import { BounceLoader } from "react-spinners";
 
 function ProfilePage() {
   const user = useSelector((state) => state.user.data);
@@ -21,24 +20,24 @@ function ProfilePage() {
     getUserDocuments().then((response) => {
       if (response.success) {
         setDocs(response.data.documents);
-        setLoading(false);
+        setLoading(true);
       }
     });
   };
 
   useEffect(() => {
-    if (auth?.access_token || !user?.data) {
+    if (auth?.access_token) {
       fetchUserDocs();
     }
   }, [docs]);
 
   useEffect(() => {
-    if ((!auth?.loading && auth?.access_token) || !user?.data) {
+    if (!auth?.loading && auth?.access_token) {
       dispatch(getUser());
     }
-  }, [user?.data]);
+  }, []);
 
-  if (user?.loading || auth?.loading) {
+  if (auth?.loading) {
     return (
       <>
         <Loader />
@@ -58,11 +57,7 @@ function ProfilePage() {
             type={user.type}
             email={user.email}
           />
-          {loading ? (
-            <BounceLoader height={8} width={200} color={"var(--theme)"} />
-          ) : (
-            <ProfileDocs documents={docs} />
-          )}
+          <ProfileDocs documents={docs} loading={loading} />
         </>
       )}
     </>
