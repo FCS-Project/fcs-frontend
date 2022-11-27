@@ -1,8 +1,8 @@
 var CryptoJS = require("crypto-js");
 
-export const encrypt = () => {
+export const encrypt = (text) => {
   var ciphertext = CryptoJS.AES.encrypt(
-    encrypt(JSON.stringify({ text })),
+    JSON.stringify({ text }),
     `${process.env.ENCRYPTION_KEY}`
   ).toString();
   return ciphertext;
