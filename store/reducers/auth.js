@@ -1,6 +1,6 @@
-import { Snackbar } from "@mui/material";
 import { setAccessToken, setRefreshToken } from "../../lib/auth";
 import * as ActionTypes from "../ActionTypes";
+import { toast } from "react-toastify";
 
 const initState = {
   errmess: null,
@@ -46,6 +46,7 @@ export const authReducer = (state = initState, action) => {
         errmess: null,
       };
     case ActionTypes.LOGIN_SUCCESS:
+      toast.success("Logged in successfully!");
       setAccessToken(action.access_token);
       setRefreshToken(action.refresh_token);
       return {

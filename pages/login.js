@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Modal from "../components/otp/Modal";
 import { otpSignIn } from "../utils/otp/otpSignIn";
-import { toast } from "react-toastify";
 
 function Login() {
   const auth = useSelector((state) => state.auth);
