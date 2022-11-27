@@ -2,7 +2,7 @@ import React from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import FilterListSharpIcon from "@mui/icons-material/FilterListSharp";
 
-function Search({ state, setState, filter, setFilter, document }) {
+function Search({ state, setState, filter, setFilter, document, noFilter }) {
   function FilterType({ text, selected }) {
     return (
       <div
@@ -24,39 +24,41 @@ function Search({ state, setState, filter, setFilter, document }) {
           value={state}
           onChange={(e) => setState(e.target.value)}
           className="w-full outline-none focus:border-theme placeholder:text-xs sm:placeholder:text-base"
-          placeholder={`Search by ${filter}`}
+          placeholder={noFilter ? "Search Products" : `Search by ${filter}`}
         />
       </div>
-      <div className="flex justify-start items-center gap-3 my-5">
-        <FilterListSharpIcon className="text-theme text-3xl sm:text-4xl" />
-        {document ? (
-          <>
-            <FilterType
-              text="name"
-              selected={filter == "name" ? true : false}
-            />
-            <FilterType
-              text="document name"
-              selected={filter == "document name" ? true : false}
-            />
-          </>
-        ) : (
-          <>
-            <FilterType
-              text="type"
-              selected={filter == "type" ? true : false}
-            />
-            <FilterType
-              text="name"
-              selected={filter == "name" ? true : false}
-            />
-            <FilterType
-              text="location"
-              selected={filter == "location" ? true : false}
-            />
-          </>
-        )}
-      </div>
+      {!noFilter && (
+        <div className="flex justify-start items-center gap-3 my-5">
+          <FilterListSharpIcon className="text-theme text-3xl sm:text-4xl" />
+          {document ? (
+            <>
+              <FilterType
+                text="name"
+                selected={filter == "name" ? true : false}
+              />
+              <FilterType
+                text="document name"
+                selected={filter == "document name" ? true : false}
+              />
+            </>
+          ) : (
+            <>
+              <FilterType
+                text="type"
+                selected={filter == "type" ? true : false}
+              />
+              <FilterType
+                text="name"
+                selected={filter == "name" ? true : false}
+              />
+              <FilterType
+                text="location"
+                selected={filter == "location" ? true : false}
+              />
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }
