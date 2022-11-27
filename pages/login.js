@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Modal from "../components/otp/Modal";
 import { otpSignIn } from "../utils/otp/otpSignIn";
+import { encrypt } from "../utils/crypto/encryption";
 
 function Login() {
   const auth = useSelector((state) => state.auth);
@@ -32,7 +33,6 @@ function Login() {
       });
     }
     if (email && password) {
-      // make length greater than 8 after testing
       if (password.length > 0) {
         const dto = { email: email, password: encrypt(password) };
         dispatch(signin(dto));
