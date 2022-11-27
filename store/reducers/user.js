@@ -58,7 +58,7 @@ export const userReducer = (state = initState, action) => {
       return {
         ...state,
         loading: false,
-        errmess: action.errmess,
+        errmess: null,
         data: action.data,
       };
     case ActionTypes.EMPTY_USER_FAIL:
