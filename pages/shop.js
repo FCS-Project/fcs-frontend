@@ -42,6 +42,11 @@ function Shop() {
   useEffect(() => {
     if (!user?.data) {
       router.push("/login");
+    } else if (
+      user?.data?.type[0] != "Pharmacy" ||
+      user?.data.type[0] != "Patient"
+    ) {
+      router.push("/");
     }
   }, []);
 

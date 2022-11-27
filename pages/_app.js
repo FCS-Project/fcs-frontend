@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <SEO />
       <Component {...pageProps} />
-      <ToastContainer />
+      <ToastContainer autoClose={1000} />
     </>
   );
 }

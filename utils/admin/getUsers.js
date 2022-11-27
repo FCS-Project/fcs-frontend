@@ -1,5 +1,6 @@
 import instance from "../../axios";
 import { getAccessToken } from "../../lib/auth";
+import { toast } from "react-toastify";
 
 export const getUsers = async () => {
   const jwt = getAccessToken();
@@ -14,6 +15,7 @@ export const getUsers = async () => {
       }
     })
     .catch((error) => {
+      toast.error(error);
       return {
         error: error.message,
       };

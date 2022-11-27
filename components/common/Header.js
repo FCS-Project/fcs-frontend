@@ -37,6 +37,9 @@ function Header() {
                 <Link href="/organisations" passHref={true}>
                   <p className={linkStyle}>Organisations</p>
                 </Link>
+                <Link href="/shop" passHref={true}>
+                  <p className={linkStyle}>Shop</p>
+                </Link>
                 <Link href="/profile" passHref={true}>
                   <p className={linkStyle}>Profile</p>
                 </Link>
@@ -52,9 +55,11 @@ function Header() {
                 <Link href="/documents" passHref={true}>
                   <p className={linkStyle}>Shared Documents</p>
                 </Link>
-                <Link href="/shop" passHref={true}>
-                  <p className={linkStyle}>Shop</p>
-                </Link>
+                {user?.type[0] == "Pharmacy" || user?.type[0] == "Patient" ? (
+                  <Link href="/shop" passHref={true}>
+                    <p className={linkStyle}>Shop</p>
+                  </Link>
+                ) : null}
                 <Link href="/profile" passHref={true}>
                   <p className={linkStyle}>Profile</p>
                 </Link>
