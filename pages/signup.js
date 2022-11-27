@@ -64,7 +64,7 @@ function Signup() {
         const dto = {
           name: name,
           email: email,
-          password: encrypt(password),
+          password: encrypt(JSON.stringify({ password })),
           mobileNumber: mobileNumber,
           roles: [organisationFlag ? "Organisation" : "User"],
           type: [organisationFlag ? organistionType : userType],
@@ -99,7 +99,7 @@ function Signup() {
         const dto = {
           name: name,
           email: email,
-          password: encrypt(password),
+          password: encrypt(JSON.stringify({ password })),
           roles: [organisationFlag ? "Organisation" : "User"],
           type: [organisationFlag ? organistionType : userType],
           displaySrc: fileDPSrc,
