@@ -6,6 +6,7 @@ export const otpSignIn = async (dto) => {
     .post("/auth/otp-signin", dto)
     .then((response) => {
       if (response.data.success) {
+        toast.success("OTP has been sent.");
         return {
           success: response.data.success,
         };

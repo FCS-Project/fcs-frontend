@@ -13,8 +13,8 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
   const user = useSelector((state) => state.user);
   const [otp, setOtp] = useState("");
   const router = useRouter();
-  const [emailState, setEmailState] = useState(user?.data?.email);
   const [error, setError] = useState("");
+
   const submit = () => {
     const dto = { email: email, otp: encrypt(otp), editInfo: editInfo };
     dispatch(verifyOtp(dto));
@@ -82,13 +82,7 @@ function Modal({ email, modal, setModal, noCancel, editInfo }) {
                   }}
                 />
               )}
-              <Button
-                text={"Submit"}
-                type="primary"
-                onClick={() => {
-                  submit();
-                }}
-              />
+              <Button text={"Submit"} type="primary" onClick={submit} />
             </div>
           </div>
         </div>

@@ -31,20 +31,21 @@ function Login() {
           setModal(response.success);
         }
       });
-    }
-    if (email && password) {
-      if (password.length > 0) {
-        const dto = { email: email, password: encrypt(password) };
-        dispatch(signin(dto));
-      } else {
-        setError(
-          "Password needs to be atleast 8 digits long and should contain numbers and alphabets"
-        );
+    } else {
+      if (email && password) {
+        if (password.length > 0) {
+          const dto = { email: email, password: encrypt(password) };
+          dispatch(signin(dto));
+        } else {
+          setError(
+            "Password needs to be atleast 8 digits long and should contain numbers and alphabets"
+          );
+        }
+      } else if (!email) {
+        setError("Email cannot be empty!");
+      } else if (!password) {
+        setError("Password cannot be empty!");
       }
-    } else if (!email) {
-      setError("Email cannot be empty!");
-    } else if (!password) {
-      setError("Password cannot be empty!");
     }
   };
 
