@@ -8,8 +8,10 @@ import Header from "../components/common/Header";
 import Loader from "../components/common/Loader";
 import { getUser } from "../store/actions/user";
 import { getUserDocuments } from "../utils/document/getUserDocuments";
+import { useRouter } from "next/router";
 
 function ProfilePage() {
+  const router = useRouter();
   const user = useSelector((state) => state.user.data);
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -32,10 +34,12 @@ function ProfilePage() {
   }, [docs]);
 
   useEffect(() => {
-    if (!auth?.loading && auth?.access_token) {
+    if (!auth.access_token) {
+      router.push("/login");
+    } else {
       dispatch(getUser());
     }
-  }, []);
+  }, [auth]);
 
   if (auth?.loading) {
     return (

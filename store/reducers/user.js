@@ -24,7 +24,7 @@ export const userReducer = (state = initState, action) => {
         data: action.data,
       };
     case ActionTypes.GET_USER_FAIL:
-      toast.error("Unable to fetch user data!");
+      toast.error(action.errmess);
       return {
         ...state,
         data: null,
@@ -47,7 +47,7 @@ export const userReducer = (state = initState, action) => {
         data: action.data,
       };
     case ActionTypes.UPDATE_USER_FAIL:
-      toast.error("Unable to update user data!");
+      toast.error(action.errmess);
       return {
         ...state,
         loading: false,

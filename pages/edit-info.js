@@ -42,7 +42,7 @@ function EditInfo() {
       await uploadImage(changeEvent, setFileBannerSrc, "banner");
     }
   };
-  const submit = () => {
+  const submit = async () => {
     switch (roles) {
       case "Admin":
         if (name != "" && email != "") {
@@ -52,7 +52,7 @@ function EditInfo() {
             mobileNumber: mobile,
             displaySrc: fileDPSrc,
           };
-          dispatch(updateUser(user?.id, dto));
+          await dispatch(updateUser(user?.id, dto));
           router.push("/profile");
         }
         break;
@@ -64,7 +64,7 @@ function EditInfo() {
             mobileNumber: mobile,
             displaySrc: fileDPSrc,
           };
-          dispatch(updateUser(user?.id, dto));
+          await dispatch(updateUser(user?.id, dto));
           router.push("/profile");
         }
         break;
@@ -79,7 +79,7 @@ function EditInfo() {
             displaySrc: fileDPSrc,
             bannerSrc: fileBannerSrc,
           };
-          dispatch(updateUser(user?.id, dto));
+          await dispatch(updateUser(user?.id, dto));
           router.push("/profile");
         }
         break;
