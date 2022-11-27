@@ -33,6 +33,14 @@ export default function DrawerComponent() {
     { page: "Profile", href: "/profile" },
   ];
 
+  const adminLinks = [
+    { page: "Home", href: "/" },
+    { page: "Shop", href: "/shop" },
+    { page: "Users", href: "/users" },
+    { page: "Organisations", href: "/organisations" },
+    { page: "Profile", href: "/profile" },
+  ];
+
   return (
     <div>
       {user?.data && (
@@ -45,7 +53,7 @@ export default function DrawerComponent() {
           {user && (
             <>
               {user?.data?.roles[0] == "Admin" ? (
-                <>
+                <div className="text-center">
                   <div className="flex flex-col items-center gap-2 mb-3">
                     <img
                       alt="display"
@@ -59,27 +67,19 @@ export default function DrawerComponent() {
                     <div className="text-theme">{user.data?.name}</div>
                   </div>
                   <Divider />
-
-                  {navItems.map((item, i) => {
-                    return (
-                      <Link key={i} href={item.href} passHref={true}>
-                        <p className={linkStyle}>{item.page}</p>
-                      </Link>
-                    );
-                  })}
-                  <Link href="/users" passHref={true}>
-                    <p className={linkStyle}>Users</p>
-                  </Link>
-                  <Link href="/organisations" passHref={true}>
-                    <p className={linkStyle}>Organisations</p>
-                  </Link>
-                  <Link href="/profile" passHref={true}>
-                    <p className={linkStyle}>Profile</p>
-                  </Link>
-                  <p className={linkStyle} onClick={() => onClick()}>
-                    Logout
-                  </p>
-                </>
+                  <div className="mt-5">
+                    {adminLinks.map((item, i) => {
+                      return (
+                        <Link key={i} href={item.href} passHref={true}>
+                          <p className={linkStyle}>{item.page}</p>
+                        </Link>
+                      );
+                    })}
+                    <p className={linkStyle} onClick={() => onClick()}>
+                      Logout
+                    </p>
+                  </div>
+                </div>
               ) : (
                 <div className="text-center">
                   <div className="flex flex-col items-center gap-2 mb-3">
