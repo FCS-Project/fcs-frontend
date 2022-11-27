@@ -54,9 +54,12 @@ function Header() {
                 <Link href="/documents" passHref={true}>
                   <p className={linkStyle}>Shared Documents</p>
                 </Link>
-                <Link href="/shop" passHref={true}>
-                  <p className={linkStyle}>Shop</p>
-                </Link>
+                {user?.data?.type[0] == "Patient" ||
+                user?.data?.type[0] == "Pharmacy" ? (
+                  <Link href="/shop" passHref={true}>
+                    <p className={linkStyle}>Shop</p>
+                  </Link>
+                ) : null}
                 <Link href="/profile" passHref={true}>
                   <p className={linkStyle}>Profile</p>
                 </Link>
