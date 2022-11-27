@@ -10,7 +10,6 @@ import DrawerComponent from "./Drawer";
 
 function Header() {
   const user = useSelector((state) => state.user.data);
-  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const router = useRouter();
   const onClick = () => {

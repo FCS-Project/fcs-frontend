@@ -8,6 +8,8 @@ import { setTokensInState } from "../store/actions/auth";
 import { getUser } from "../store/actions/user";
 import { useRouter } from "next/router";
 import SEO from "../components/common/SEO";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const auth = useSelector((state) => state.auth);
@@ -41,6 +43,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <SEO />
       <Component {...pageProps} />
+      <ToastContainer />
     </>
   );
 }

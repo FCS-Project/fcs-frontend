@@ -20,7 +20,7 @@ function ProfilePage() {
     getUserDocuments().then((response) => {
       if (response.success) {
         setDocs(response.data.documents);
-        setLoading(true);
+        setLoading(false);
       }
     });
   };
