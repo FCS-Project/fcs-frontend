@@ -64,7 +64,7 @@ function Signup() {
         const dto = {
           name: name,
           email: email,
-          password: encrypt(JSON.stringify({ password })),
+          password: encrypt(password),
           mobileNumber: mobileNumber,
           roles: [organisationFlag ? "Organisation" : "User"],
           type: [organisationFlag ? organistionType : userType],
