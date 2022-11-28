@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { updateOrder } from "../order/updateOrder";
 
-export const optionsCreate = (res, user, owner) => {
+export const optionsCreate = (res, user, owner, buyerId) => {
   return {
     key: process.env.RAZORPAY_KEY_ID,
     amount: res.data.amount,
@@ -20,6 +20,7 @@ export const optionsCreate = (res, user, owner) => {
           razorpayPaymentId: razorpayRes.razorpay_payment_id,
           razorpayOrderId: razorpayRes.razorpay_order_id,
           paymentStatus: paymentStatus,
+          buyerId: buyerId,
         },
         res.data.id
       ).then((res) => {

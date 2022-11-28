@@ -16,18 +16,19 @@ function Product({ product }) {
   });
 
   const openRazorpay = async () => {
-    createOrder({ amount: product.price + "00", productId: product.id }).then(
-      (res) => {
-        if (res.success) {
-          const options = optionsCreate(res, user, product.user);
-          const rzpay = new razorpayInstance(options);
-          rzpay.open();
-          rzpay.on("payment.failed", function (response) {
-            console.log(response.error);
-          });
-        }
+    createOrder({
+      amount: product.price + "00",
+      productId: product.id,
+    }).then((res) => {
+      if (res.success) {
+        const options = optionsCreate(res, user, product.user, user.id);
+        const rzpay = new razorpayInstance(options);
+        rzpay.open();
+        rzpay.on("payment.failed", function (response) {
+          console.log(response.error);
+        });
       }
-    );
+    });
   };
 
   return (
