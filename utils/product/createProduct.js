@@ -15,6 +15,7 @@ export const createProduct = async (dto) => {
       }
     })
     .catch((error) => {
+      toast.error(error.toString());
       return {
         error: error.message,
       };
