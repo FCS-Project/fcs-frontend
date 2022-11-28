@@ -14,9 +14,10 @@ function CreateProductPage() {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [productDP, setProductDP] = useState("");
-  const [productDPSrc, setProductDPSrc] = useState(null);
+  const [productDPSrc, setProductDPSrc] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const priceRegex = /^\d+$/;
   const handleFileChange = async (changeEvent) => {
     setLoading(true);
     const reader = new FileReader();
@@ -35,13 +36,29 @@ function CreateProductPage() {
       price: price,
       userId: user?.data?.id,
     };
-    createProduct(dto).then((response) => {
-      if (response.success) {
-        router.push("/shop");
-      } else {
-        setError(response.error);
-      }
-    });
+
+    if (
+      productName != "" &&
+      productDPSrc != "" &&
+      price != "" &&
+      priceRegex.test(price)
+    ) {
+      createProduct(dto).then((response) => {
+        if (response.success) {
+          router.push("/shop");
+        } else {
+          setError(response.error);
+        }
+      });
+    } else if (productName == "") {
+      setError("Product Name cannot be empty!");
+    } else if (price == "") {
+      setError("Product Price cannot be empty!");
+    } else if (productDPSrc == "") {
+      setError("Product Image cannot be empty!");
+    } else if (!priceRegex.test(price)) {
+      setError("Product Price has to be a number!");
+    }
   };
 
   return (

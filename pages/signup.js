@@ -29,23 +29,30 @@ function Signup() {
   const [userType, setUserType] = useState("");
   const [organisationFlag, setOrganizationFlag] = useState(false);
   const [fileDP, setFileDP] = useState("");
+  const [loadingDP, setLoadingDP] = useState(false);
+  const [loadingBanner, setLoadingBanner] = useState(false);
   const [fileDPSrc, setFileDPSrc] = useState(null);
   const [fileBanner, setFileBanner] = useState("");
   const [fileBannerSrc, setFileBannerSrc] = useState(null);
+
   const handleFileChange = async (changeEvent, dp) => {
     const reader = new FileReader();
     if (dp) {
+      setLoadingDP(true);
       reader.onload = function (onLoadEvent) {
         setFileDP(onLoadEvent.target.result);
       };
       reader.readAsDataURL(changeEvent.target.files[0]);
       await uploadImage(changeEvent, setFileDPSrc, "dp");
+      setLoadingDP(false);
     } else {
+      setLoadingBanner(true);
       reader.onload = function (onLoadEvent) {
         setFileBanner(onLoadEvent.target.result);
       };
       reader.readAsDataURL(changeEvent.target.files[0]);
       await uploadImage(changeEvent, setFileBannerSrc, "banner");
+      setLoadingBanner(false);
     }
   };
   const onSubmitOrg = () => {
@@ -205,6 +212,9 @@ function Signup() {
                       />
                     </>
                   )}
+                  {loadingDP && (
+                    <p className="text-sm mt-5">Image Uploading...</p>
+                  )}
                   <input
                     type="file"
                     id="dp"
@@ -268,6 +278,9 @@ function Signup() {
                         className="w-full h-[10rem] object-cover max-w-1/2 block ml-auto mr-auto border-theme my-5"
                       />
                     </>
+                  )}
+                  {loadingBanner && (
+                    <p className="text-sm mt-5">Image Uploading...</p>
                   )}
                   <input
                     type="file"
