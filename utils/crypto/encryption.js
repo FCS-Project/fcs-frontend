@@ -1,5 +1,3 @@
-var CryptoJS = require("crypto-js");
-
 export const encrypt = (text) => {
   const NodeRSA = require("node-rsa");
   const key = new NodeRSA(
