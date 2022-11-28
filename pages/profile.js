@@ -31,7 +31,7 @@ function ProfilePage() {
     if (auth?.access_token) {
       fetchUserDocs();
     }
-  }, [docs]);
+  }, []);
 
   useEffect(() => {
     if (!auth.access_token) {
