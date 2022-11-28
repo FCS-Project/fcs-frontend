@@ -62,7 +62,7 @@ function DocumentCard({ id, name, createdAt, link, user, shared }) {
             onClick={() => {
               deleteDocument(id).then((response) => {
                 if (response.success) {
-                  router.push("/profile");
+                  router.push("/");
                 }
               });
             }}
