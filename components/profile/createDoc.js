@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { encrypt } from "../../utils/crypto/encryption";
 import { postDocument } from "../../utils/document/postDocument";
 import Button from "../common/Button";
 import CreateDocForm from "./createDocForm";
@@ -14,7 +15,7 @@ function CreateDoc({ shareId }) {
     if (file) {
       let dataURI = file.split(";base64,").pop();
       postDocument({
-        dataURI: dataURI,
+        dataURI: encrypt(dataURI),
         userId: user?.id,
         name: name,
         sharedWith: shareId,
